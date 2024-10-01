@@ -30,6 +30,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
         public $child_theme = '';
 
         /**
+         * @var AWL_Integrations Active plugins arrray
+         */
+        public $active_plugins = array();
+
+        /**
          * Main AWL_Integrations Instance
          *
          * @static
@@ -56,6 +61,15 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                     $this->current_theme = $theme->parent()->get( 'Name' );
                 }
             }
+
+            $active_plugins = get_option( 'active_plugins', array() );
+
+            if ( is_multisite() ) {
+                $network_active_plugins = get_site_option( 'active_sitewide_plugins', array() );
+                $active_plugins = array_merge( $active_plugins, array_keys( $network_active_plugins ) );
+            }
+
+            $this->active_plugins = $active_plugins;
 
             $this->includes();
 
@@ -124,7 +138,7 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                 include_once( AWL_DIR . '/includes/modules/class-awl-divi.php' );
             }
 
-            if ( class_exists( 'WC_Product_Table_Plugin' ) ) {
+            if ( class_exists( 'WC_Product_Table_Plugin' ) || class_exists('Barn2\Plugin\WC_Product_Table\Product_Table') ) {
                 include_once( AWL_DIR . '/includes/modules/class-awl-barn-tables.php' );
             }
 
@@ -353,6 +367,7 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
 
                 case 'Uncode':
                     $hooks['on_image']['archive'] = array( 'uncode_entry_visual_after_image' => array( 'priority' => 10 ) );
+                    $hooks['before_title']['archive']= array( 'uncode_inner_entry_after_title' => array( 'priority' => 10 ) );
                     break;
 
                 case 'Total':
@@ -429,7 +444,7 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
             }
 
             // Product Gallery Slider for Woocommerce ( Formerly Twist )
-            if ( class_exists( 'Twist' ) ) {
+            if ( in_array( 'twist/twist.php', $this->active_plugins ) ) {
                 $hooks['on_image']['single']['wpgs_after_image_gallery'] = array( 'priority' => 10, 'js' => array( '.wpgs-image', 'prepend' ) );
             }
 
@@ -467,6 +482,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
             // CommerceKit by CommerceGurus
             if ( class_exists( 'CommerceGurus_Gallery' ) ) {
                 $hooks['on_image']['single']['commercekit_before_gallery'] = array( 'priority' => 10, 'js' => array( '#commercegurus-pdp-gallery .swiper-container', 'append' ) );
+            }
+
+            // Product Video Gallery for Woocommerce
+            if ( defined('NICKX_PLUGIN_VERSION') ) {
+                $hooks['on_image']['single']['woocommerce_before_single_product_summary'] = array( 'priority' => 10, 'js' => array( '.images .slider', 'append' ) );
             }
 
             return $hooks;
@@ -572,6 +592,18 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
 
             if ( 'Shopical' === $this->current_theme ) {
                 $output .= '<style>.products .product-image-wrapper { position: relative; }</style>';
+            }
+
+            // WooCommerce Load More Products plugin
+            if ( defined( 'BeRocket_Load_More_Products_version' ) ) {
+                $output .= '<script>
+                    jQuery(document).on( "berocket_lmp_end", function() {
+                        window.document.dispatchEvent(new Event("AWLTriggerJsReplace", {
+                            bubbles: true,
+                            cancelable: true
+                        }));
+                    } );
+                </script>';
             }
 
             echo $output;

@@ -276,7 +276,15 @@ class AWL_Hooks {
 
         <script>
 
+            document.addEventListener('AWLTriggerJsReplace', function() {
+                awlJsLabelsReplace();
+            }, false);
+
             document.addEventListener('DOMContentLoaded', function() {
+                awlJsLabelsReplace();
+            }, false);
+
+            function awlJsLabelsReplace() {
 
                 if (!Element.prototype.matches) {
                     Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
@@ -343,7 +351,7 @@ class AWL_Hooks {
 
                 }, 200 );
 
-            }, false);
+            }
 
         </script>
 

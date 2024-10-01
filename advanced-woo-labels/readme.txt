@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.6
-Stable tag: 2.02
+Stable tag: 2.03
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,13 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.03 ( 01.10.2024 ) =
+* Add - Support for Product Video Gallery for Woocommerce plugin
+* Update - Support for Product Gallery Slider for Woocommerce plugin
+* Update - Integration with Uncode theme
+* Update - Integration with WooCommerce Product Table plugin
+* Fix - Support for WooCommerce Load More Products plugin
 
 = 2.02 ( 16.09.2024 ) =
 * Add - Support for Shopical theme
@@ -339,7 +346,3 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 * Update - Tested with WC 7.1
 * Update - Support for Flatsome theme
 * Dev - Add awl_settings_field_{field_id} filter
-
-= 1.55 ( 31.10.2022 ) =
-* Update - Support for XStore theme
-* Dev - Add awl_compare_condition_values helper function
