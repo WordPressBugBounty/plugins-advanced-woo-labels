@@ -445,7 +445,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
 
             // Product Gallery Slider for Woocommerce ( Formerly Twist )
             if ( in_array( 'twist/twist.php', $this->active_plugins ) ) {
-                $hooks['on_image']['single']['wpgs_after_image_gallery'] = array( 'priority' => 10, 'js' => array( '.wpgs-image', 'prepend' ) );
+                if ( wp_is_mobile() ) {
+                    $hooks['on_image']['single']['wpgs_after_image_gallery'] = array( 'priority' => 10, 'js' => array( '.mob-image .wpgs-image', 'prepend' ) );
+                } else {
+                    $hooks['on_image']['single']['wpgs_after_image_gallery'] = array( 'priority' => 10, 'js' => array( '.wpgs-image', 'prepend' ) );
+                }
             }
 
             // Additional Variation Images Gallery for WooCommerce plugin
@@ -487,6 +491,12 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
             // Product Video Gallery for Woocommerce
             if ( defined('NICKX_PLUGIN_VERSION') ) {
                 $hooks['on_image']['single']['woocommerce_before_single_product_summary'] = array( 'priority' => 10, 'js' => array( '.images .slider', 'append' ) );
+            }
+
+            // Ultimate addons for Beaver Builder plugin
+            if ( in_array( 'bb-ultimate-addon/bb-ultimate-addon.php', $this->active_plugins ) ) {
+                $hooks['on_image']['archive']['uabb_woo_products_before_summary_wrap'] = array( 'priority' => 10, 'js' => array( '.uabb-woo-products-thumbnail-wrap', 'append' ) );
+                $hooks['before_title']['archive']['uabb_woo_products_title_before'] = array( 'priority' => 10 );
             }
 
             return $hooks;
@@ -632,6 +642,10 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
 
             if ( class_exists( 'Iconic_WooThumbs' ) ) {
                 remove_action( 'iconic_woothumbs_before_images', 'woocommerce_show_product_sale_flash', 10 );
+            }
+
+            if ( in_array( 'bb-ultimate-addon/bb-ultimate-addon.php', $this->active_plugins ) ) {
+                add_filter( 'uabb_woo_products_sale_flash', function ( $image ) { return ''; }, 100 );
             }
 
             add_filter( 'woocommerce_blocks_product_grid_item_html', 'AWL_Integrations_Callbacks::woocommerce_blocks_product_grid_item_html_hide_bagge', 10, 3 );

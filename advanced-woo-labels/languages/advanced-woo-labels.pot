@@ -646,7 +646,10 @@ msgstr ""
 msgid "WCFM PLugin Support"
 msgstr ""
 
-msgid "Build-in integration with WCFM Multivendor Marketplace plugin. Show vendor related data inside product labels and create special labels display conditions based on these data."
+msgid "WCFM / Dokan / WC Vendors Plugins Support"
+msgstr ""
+
+msgid "Build-in integration with WCFM Multivendor Marketplace, WC Vendors and Dokan Multivendor Marketplace plugins. Show vendor related data inside product labels and create special labels display conditions based on these data."
 msgstr ""
 
 msgid "Show vendor data via text variables"

@@ -495,6 +495,12 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
          */
         static public function get_advanced_integrations() {
 
+            $active_plugins = get_option( 'active_plugins', array() );
+            if ( is_multisite() ) {
+                $network_active_plugins = get_site_option( 'active_sitewide_plugins', array() );
+                $active_plugins = array_merge( $active_plugins, array_keys( $network_active_plugins ) );
+            }
+
             $integrations = array();
 
             if ( class_exists( 'WCFMmp' ) ) {
@@ -566,6 +572,14 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                     'id' => 'algwcean',
                     'name' => __( 'EAN for WooCommerce.', 'advanced-woo-labels' ),
                     'link' => 'https://advanced-woo-labels.com/guide/ean-for-woocommerce/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=algwcean',
+                );
+            }
+
+            if ( in_array( 'wc-vendors/class-wc-vendors.php', $active_plugins ) ) {
+                $integrations[] = array(
+                    'id' => 'wcvendors',
+                    'name' => __( 'WC Vendors.', 'advanced-woo-labels' ),
+                    'link' => 'https://advanced-woo-labels.com/guide/wc-vendors/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=wcvendors',
                 );
             }
 
