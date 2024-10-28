@@ -3,8 +3,8 @@ Contributors: Mihail Barinov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
-Tested up to: 6.6
-Stable tag: 2.04
+Tested up to: 6.7
+Stable tag: 2.05
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,9 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.05 ( 28.10.2024 ) =
+* Fix - Strip some html from labels preview
 
 = 2.04 ( 14.10.2024 ) =
 * Add - Support for Ultimate Addons for Beaver Builder plugin

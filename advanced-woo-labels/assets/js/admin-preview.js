@@ -133,6 +133,8 @@ jQuery(document).ready(function ($) {
             '\<noscript\>' : '',
             '\<\/noscript\>' : '',
             '\<iframe.*?\>' : '',
+            '\<noframes\>' : '',
+            '\<\/noframes\>' : '',
         };
 
         $.each(html_entities, function (name, value) {
