@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 2.05
+Stable tag: 2.06
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,10 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.06 ( 11.11.2024 ) =
+* Add - Discount Rules and Dynamic Pricing for WooCommerce plugin integration
+* Add - Integration with Variation Images Gallery for WooCommerce plugin
 
 = 2.05 ( 28.10.2024 ) =
 * Fix - Strip some html from labels preview

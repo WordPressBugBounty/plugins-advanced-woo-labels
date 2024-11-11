@@ -182,6 +182,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                 include_once( AWL_DIR . '/includes/modules/class-awl-breakdance.php' );
             }
 
+            // Discount Rules and Dynamic Pricing for WooCommerce
+            if ( in_array( 'easy-woocommerce-discounts/easy-woocommerce-discounts.php', $this->active_plugins ) ) {
+                include_once( AWL_DIR . '/includes/modules/class-awl-easy-discounts.php' );
+            }
+
             if ( 'Avada' === $this->current_theme ) {
                 include_once( AWL_DIR . '/includes/modules/class-awl-avada.php' );
             }
@@ -497,6 +502,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
             if ( in_array( 'bb-ultimate-addon/bb-ultimate-addon.php', $this->active_plugins ) ) {
                 $hooks['on_image']['archive']['uabb_woo_products_before_summary_wrap'] = array( 'priority' => 10, 'js' => array( '.uabb-woo-products-thumbnail-wrap', 'append' ) );
                 $hooks['before_title']['archive']['uabb_woo_products_title_before'] = array( 'priority' => 10 );
+            }
+
+            // Variation Images Gallery for WooCommerce
+            if ( in_array( 'woo-product-variation-gallery/woo-product-variation-gallery.php', $this->active_plugins ) ) {
+                $hooks['on_image']['single']['rtwpvg_product_badge'] = array( 'priority' => 10 );
             }
 
             return $hooks;
