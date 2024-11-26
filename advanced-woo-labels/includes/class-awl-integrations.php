@@ -685,6 +685,34 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                 } );
             }
 
+            if ( 'Blocksy' === $this->current_theme ) {
+
+                add_filter( 'blocksy:woocommerce:product-card:badges', function ( $badges ) {
+                    $new_badges = array();
+                    if ( ! empty( $badges ) ) {
+                        foreach ( $badges as $badge ) {
+                            if ( strpos( $badge, 'out-of-stock' ) === false ) {
+                                $new_badges[] = $badge;
+                            }
+                        }
+                    }
+                    return $new_badges;
+                } );
+
+                add_filter( 'blocksy:woocommerce:single:after-sale-badge', function ( $badges ) {
+                    $new_badges = array();
+                    if ( ! empty( $badges ) ) {
+                        foreach ( $badges as $badge ) {
+                            if ( strpos( $badge, 'out-of-stock' ) === false ) {
+                                $new_badges[] = $badge;
+                            }
+                        }
+                    }
+                    return $new_badges;
+                } );
+
+            }
+
         }
 
     }
