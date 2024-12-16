@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 2.07
+Stable tag: 2.08
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,9 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.08 ( 16.12.2024 ) =
+* Update - Automatically deactivate free version when activate pro
 
 = 2.07 ( 26.11.2024 ) =
 * Update - Tested with WC 9.4
@@ -347,11 +350,3 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 = 1.58 ( 12.12.2022 ) =
 * Update - Labels settings page
 * Update - Admin settings page styles
-
-= 1.57 ( 28.11.2022 ) =
-* Add - Support for WooCommerce Gutenberg blocks
-* Update - Formatting for price text variable
-* Update - XStore theme support
-* Update - Astra theme support
-* Fix - Ajax search for products for label editor
-* Fix - Product Filter for WooCommerce by XforWooCommerce plugin ajax filters bug

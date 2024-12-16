@@ -3,7 +3,7 @@
 /*
 Plugin Name: Advanced Woo Labels
 Description: Advance WooCommerce product labels plugin
-Version: 2.07
+Version: 2.08
 Author: ILLID
 Author URI: https://advanced-woo-labels.com/
 Text Domain: advanced-woo-labels
@@ -90,7 +90,7 @@ final class AWL_Main {
      */
     private function define_constants() {
 
-        $this->define( 'AWL_VERSION', '2.07' );
+        $this->define( 'AWL_VERSION', '2.08' );
 
         $this->define( 'AWL_DIR', plugin_dir_path( AWL_FILE ) );
         $this->define( 'AWL_URL', plugin_dir_url( AWL_FILE ) );
@@ -257,24 +257,14 @@ function AWL() {
 
 
 /*
- * Check if pro version of plugin is active
- */
-register_activation_hook( __FILE__, 'awl_activation_check' );
-function awl_activation_check() {
-    if ( awl_is_plugin_active( 'advanced-woo-labels-pro/advanced-woo-labels-pro.php' ) ) {
-        deactivate_plugins( plugin_basename( __FILE__ ) );
-        wp_die( __( 'Advanced Woo Labels plugin can\'t be activated because you already activate PRO plugin version.', 'advanced-woo-labels' ) );
-    }
-}
-
-
-/*
  * Check if WooCommerce is active
  */
-if ( awl_is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-    awl_init();
-} else {
-    add_action( 'admin_notices', 'awl_install_woocommerce_admin_notice' );
+if ( ! awl_is_plugin_active( 'advanced-woo-labels-pro/advanced-woo-labels-pro.php' ) ) {
+    if ( awl_is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+        awl_init();
+    } else {
+        add_action( 'admin_notices', 'awl_install_woocommerce_admin_notice' );
+    }
 }
 
 
