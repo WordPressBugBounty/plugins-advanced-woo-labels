@@ -80,11 +80,18 @@ jQuery(document).ready(function ($) {
         labelSvgLine.removeAttr( 'style' );
         previewBox.find('#awl-css').remove();
 
+        var isCustomStylesEnabled = customStylesCheckbox.is(':checked');
+
         window.setTimeout(function(){
             if ( ! firstInit ) {
-                $('#awl_label_settings [data-section="styles"], #awl_label_settings [data-option-id="position"]:visible, #awl_label_settings [data-option-id="position_x"]:visible').find('td:visible input, td:visible select, td:visible textarea').trigger('change').trigger('keyup');
+                // styles, position
+                $('#awl_label_settings .awl-position-on-image [data-option-id="position"], #awl_label_settings .awl-position-on-line [data-option-id="position_x"]').find('input, select, textarea').trigger('change').trigger('keyup');
             } else {
-                $('#awl_label_settings').find('td:visible input:not(#awl-label-params-settings-custom-styles), td:visible select:not(#awl-label-params-settings-type), td:visible textarea').trigger('change').trigger('keyup');
+                // all from general except label type
+                $('#awl_label_settings').find('td:visible input, td:visible select:not(#awl-label-params-settings-type), td:visible textarea').trigger('change').trigger('keyup');
+            }
+            if ( isCustomStylesEnabled ) {
+                $('#awl_label_settings [data-section="styles"]').find('input:not(#awl-label-params-settings-custom-styles), select, textarea').trigger('change').trigger('keyup');
             }
             previewBox.removeClass('awl-rebuild');
             firstInit = false;

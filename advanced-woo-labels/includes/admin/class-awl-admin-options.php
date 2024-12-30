@@ -370,6 +370,25 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
+            $operators['equals_contains'] = array(
+                array(
+                    "name" => __( "equal to", "advanced-woo-labels" ),
+                    "id"   => "equal",
+                ),
+                array(
+                    "name" => __( "not equal to", "advanced-woo-labels" ),
+                    "id"   => "not_equal",
+                ),
+                array(
+                    "name" => __( "contains", "advanced-woo-labels" ),
+                    "id"   => "contains",
+                ),
+                array(
+                    "name" => __( "not contains", "advanced-woo-labels" ),
+                    "id"   => "not_contains",
+                ),
+            );
+
             return $operators[$name];
 
         }
@@ -395,7 +414,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
             }
 
             if ( empty( $rule ) ) {
-                $rule = $rules['attributes'][0];
+                $rule = $rules['product'][0];
             }
 
             return $rule;
@@ -481,7 +500,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "class" => "awl-position-x"
             );
 
-            $options['general'][] = array(
+            $options['styles'][] = array(
                 "name" => __( "Set custom styles", "advanced-woo-labels" ),
                 "id"   => "custom_styles",
                 "value" => 'false',
@@ -613,8 +632,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             $options = array();
 
-            $options['attributes'][] = array(
-                "name" => __( "Stock status", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product stock status", "advanced-woo-labels" ),
                 "id"   => "stock_status",
                 "type" => "callback",
                 "operators" => "equals",
@@ -624,8 +643,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Visibility", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product visibility", "advanced-woo-labels" ),
                 "id"   => "visibility",
                 "type" => "callback",
                 "operators" => "equals",
@@ -635,8 +654,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Price", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product price", "advanced-woo-labels" ),
                 "id"   => "price",
                 "type" => "number",
                 "step" => "0.01",
@@ -647,8 +666,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Sale discount", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product sale discount", "advanced-woo-labels" ),
                 "id"   => "sale_discount",
                 "type" => "number",
                 "step" => "0.01",
@@ -659,15 +678,15 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Quantity", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product quantity", "advanced-woo-labels" ),
                 "id"   => "quantity",
                 "type" => "number",
                 "operators" => "equals_compare",
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Shipping class", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product shipping class", "advanced-woo-labels" ),
                 "id"   => "shipping_class",
                 "type" => "callback",
                 "operators" => "equals",
@@ -677,16 +696,16 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Rating", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product rating", "advanced-woo-labels" ),
                 "id"   => "rating",
                 "type" => "number",
                 "step" => "0.01",
                 "operators" => "equals_compare",
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Reviews count", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product reviews count", "advanced-woo-labels" ),
                 "id"   => "reviews_count",
                 "type" => "number",
                 "operators" => "equals_compare",
@@ -696,36 +715,36 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Is on sale", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product is on sale", "advanced-woo-labels" ),
                 "id"   => "sale_status",
                 "type" => "bool",
                 "operators" => "equals",
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Is featured", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product is featured", "advanced-woo-labels" ),
                 "id"   => "featured",
                 "type" => "bool",
                 "operators" => "equals",
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Has product image", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product has image", "advanced-woo-labels" ),
                 "id"   => "has_image",
                 "type" => "bool",
                 "operators" => "equals",
             );
 
-            $options['attributes'][] = array(
-                "name" => __( "Has gallery", "advanced-woo-labels" ),
+            $options['product'][] = array(
+                "name" => __( "Product has gallery", "advanced-woo-labels" ),
                 "id"   => "has_gallery",
                 "type" => "bool",
                 "operators" => "equals",
             );
 
             $options['product'][] = array(
-                "name" => __( "Product", "advanced-woo-labels" ),
+                "name" => __( "Product name", "advanced-woo-labels" ),
                 "id"   => "product",
                 "type" => "callback_ajax",
                 "ajax" => "awl-searchForProducts",
@@ -869,6 +888,28 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
             }
 
             return $variables;
+
+        }
+
+        /*
+         * Include label settings tabs
+         * @return array
+         */
+        static public function include_label_settings_tabs() {
+
+            $tabs = array(
+                'general' =>  __( "General", "advanced-woo-labels" ),
+                'styles' =>  __( "Styles", "advanced-woo-labels" ),
+            );
+
+            /**
+             * Filter label settings tabs
+             * @since 2.09
+             * @param array $tabs Array of label rules
+             */
+            $tabs = apply_filters( 'awl_label_admin_options_tabs', $tabs );
+
+            return $tabs;
 
         }
 

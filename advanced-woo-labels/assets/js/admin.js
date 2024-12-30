@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
     'use strict';
 
     var $settingsTable = $('.awl-label-settings-table');
-
+    var $settingsTabs = $('.awl-label-settings-tabs');
 
     // Quick edit panel
     $( '#the-list' ).on( 'click', '.editinline', function() {
@@ -50,6 +50,13 @@ jQuery(document).ready(function ($) {
     } );
 
 
+    $(document).on('click', function(e) {
+        if ( ! $(e.target).closest('.awl-content-vars').length && $('#tiptip_holder').is(":visible") ) {
+            $('#tiptip_holder').hide();
+        }
+    });
+
+
     $( '.awl-content-var-item' ).on('click', function(e) {
         if (navigator.clipboard) {
             var text = $(this).find('span').text();
@@ -60,6 +67,51 @@ jQuery(document).ready(function ($) {
             });
         }
     });
+
+
+    // Preview box floating
+    var $previewBox = $('#awl-preview');
+    var $settingsBox = $('#awl_label_settings');
+    var marginTop = 0;
+    var windowWidth = $(window).width();
+
+    $(window).on( 'resize', function(e) {
+        awl_preview_box_float();
+        windowWidth = $(window).width();
+    });
+
+    $(window).on( 'scroll', function(e) {
+        awl_preview_box_float();
+    });
+
+    function awl_preview_box_float() {
+
+        if ( ! $previewBox.length || ! $settingsBox.length ) {
+            return;
+        }
+
+        var currentScrollVal = $(document).scrollTop();
+
+        var offsetTop = $previewBox.offset().top;
+        var offsetTopWithoutMargin = offsetTop - parseFloat($previewBox.css('margin-top'));
+        var previewBreakPoint = offsetTopWithoutMargin - 50;
+
+        if ( currentScrollVal > previewBreakPoint && windowWidth > 1023 ) {
+
+            var settingsOffset = $settingsBox.offset();
+            var settingsBootom = settingsOffset.top + $settingsBox.innerHeight();
+            var previewBoxBottom = offsetTop + $previewBox.innerHeight() + 50;
+
+            if ( settingsBootom > previewBoxBottom || marginTop > currentScrollVal - previewBreakPoint ) {
+                marginTop = currentScrollVal - previewBreakPoint;
+                $previewBox.css( 'margin-top', marginTop + 'px' );
+            }
+
+        } else {
+            $previewBox.css( 'margin-top', '0px' );
+        }
+
+    }
 
 
     // Select2 init
@@ -290,8 +342,21 @@ jQuery(document).ready(function ($) {
 
     });
 
-    $(document).on('change', '#awl-label-params-settings-custom-styles', function(evt, params) {
-        $settingsTable.toggleClass('awl-show-styles');
+    $(document).on('change', '#awl-label-params-settings-custom-styles', function(e, params) {
+        $settingsTable.toggleClass('awl-disabled-styles');
+    });
+
+    $(document).on('click', '.awl-label-settings-tabs a', function(e, params) {
+
+        e.preventDefault();
+
+        if ( ! $(this).hasClass('current') ) {
+            $('.awl-label-settings-tabs a').removeClass('current');
+            $(this).addClass('current');
+            var section = $(this).data('section');
+            $settingsTable.attr( 'data-currect-section', section );
+        }
+
     });
 
     $(document).on('change', '#awl-label-params-settings-position-type', function(evt, params) {

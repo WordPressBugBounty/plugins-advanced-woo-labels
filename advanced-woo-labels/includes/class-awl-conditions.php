@@ -139,6 +139,10 @@ if ( ! class_exists( 'AWL_Conditions_Check' ) ) :
                 $match = ($compare_value >= $value);
             } elseif ( 'less' == $operator ) {
                 $match = ($compare_value <= $value);
+            } elseif ( 'contains' == $operator ) {
+                $match = strpos( $compare_value, $value) !== false;
+            } elseif ( 'not_contains' == $operator ) {
+                $match = strpos( $compare_value, $value) === false;
             }
 
             return $match;

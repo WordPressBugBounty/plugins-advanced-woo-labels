@@ -191,11 +191,12 @@ if ( ! class_exists( 'AWL_Admin_Page_Premium' ) ) :
                         echo '</h4>';
                         echo '<p class="desc">';
                             echo __( 'Use even more label styling options to fully adapt it to your needs.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://advanced-woo-labels.com/guide/label-custom-links/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
+                            echo '<br><a href="https://advanced-woo-labels.com/guide/styling-settings/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
                             echo '<ul>';
                                 echo '<li>' . __( 'Set label shadows', 'advanced-woo-labels' ) . '</li>';
                                 echo '<li>' . __( 'Set label borders color', 'advanced-woo-labels' ) . '</li>';
                                 echo '<li>' . __( 'Set label borders size', 'advanced-woo-labels' ) . '</li>';
+                                echo '<li>' . __( 'Set label rotation', 'advanced-woo-labels' ) . '</li>';
                                 echo '<li>' . __( 'Additional label templates', 'advanced-woo-labels' ) . '</li>';
                             echo '</ul>';
                         echo '</p>';

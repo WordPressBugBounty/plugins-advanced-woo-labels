@@ -39,6 +39,46 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
         }
 
         /*
+         * Generate label settings tabs
+         * @return string
+         */
+        public function generate_nav_tabs() {
+
+            if ( empty( $this->options ) ) {
+                return;
+            }
+
+            $tabs = AWL_Admin_Options::include_label_settings_tabs();
+
+            $html = '';
+
+            $html .= '<div class="awl-label-settings-tabs">';
+                $html .= '<div class="inner">';
+
+                    $html .= '<ul>';
+
+                    if ( ! empty( $tabs ) ) {
+                        foreach ( $tabs as $tab_slug => $tab_name ) {
+
+                            $class = $tab_slug === 'general' ? 'current' : '';
+
+                            $html .= '<li>';
+                                $html .= '<a href="#" data-section="' . $tab_slug . '" class="tab-' . $tab_slug . ' ' . $class . '">' . $tab_name . '</a>';
+                            $html .= '</li>';
+
+                        }
+                    }
+
+                    $html .= '</ul>';
+
+                $html .= '</div>';
+            $html .= '</div>';
+
+            return $html;
+
+        }
+
+        /*
          * Generate options fields
          * @return string
          */
@@ -50,7 +90,7 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
 
             $html = '';
 
-            $html .= '<table class="awl-label-settings-table' . $this->extra_classes() . '">';
+            $html .= '<table data-currect-section="general" class="awl-label-settings-table' . $this->extra_classes() . '">';
                 $html .= '<tbody>';
 
                 foreach ( $this->options as $section => $section_options ) {
@@ -157,7 +197,7 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
         private function extra_classes() {
             $classes = '';
             $classes .= ( $this->get_field_value( array( 'id' => 'position_type' ) ) === 'on_image' ) ? ' awl-position-on-image' : ' awl-position-on-line';
-            $classes .= ( $this->get_field_value( array( 'id' => 'custom_styles' ) ) === 'true' ) ? ' awl-show-styles' : '';
+            $classes .= ( $this->get_field_value( array( 'id' => 'custom_styles' ) ) === 'true' ) ? '' : ' awl-disabled-styles';
             return $classes;
         }
 
@@ -275,6 +315,20 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
          * Checkbox field html markup
          * @return string
          */
+        private function get_field_checkbox( $field ) {
+
+            $html = '';
+
+            $html .= '<input id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" type="checkbox" name="' . esc_attr( $this->field_name ) . '" value="1" ' . checked( $this->field_value, '1', false ) . '>';
+
+            return $html;
+
+        }
+
+        /*
+         * Checkbox field html markup
+         * @return string
+         */
         private function get_field_checkbox2( $field ) {
 
             $html = '';
@@ -325,23 +379,27 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
 
                 $html .= '<div data-template-select class="img-select">';
 
-                    foreach ( $field['choices'] as $template_group => $template_group_items ) {
+                    $html .= '<div class="img-select-inner">';
 
-                        $html .= '<ul data-templates="' . $template_group . '">';
+                        foreach ( $field['choices'] as $template_group => $template_group_items ) {
 
-                        foreach( $template_group_items as $template_val => $template_img ) {
+                            $html .= '<ul data-templates="' . $template_group . '">';
 
-                            $is_active = ( $this->field_value === $template_val ) ? ' awl-active' : '';
+                                foreach( $template_group_items as $template_val => $template_img ) {
 
-                            $html .= '<li class="option' . $is_active . '" data-val="' . $template_val . '">';
-                                $html .= '<span class="ico" style="background: url(' .  esc_url( $template_img ) . ') no-repeat 50% 50%;"></span>';
-                            $html .= '</li>';
+                                    $is_active = ( $this->field_value === $template_val ) ? ' awl-active' : '';
+
+                                    $html .= '<li class="option' . $is_active . '" data-val="' . $template_val . '">';
+                                        $html .= '<span class="ico" style="background: url(' .  esc_url( $template_img ) . ') no-repeat 50% 50%;"></span>';
+                                    $html .= '</li>';
+
+                                }
+
+                            $html .= '</ul>';
 
                         }
 
-                        $html .= '</ul>';
-
-                    }
+                    $html .= '</div>';
 
                 $html .= '</div>';
 

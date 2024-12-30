@@ -539,6 +539,72 @@
     display: none;
 }
 
+/* Label Settings tabs */
+.awl-label-settings-tabs {
+    border-bottom: 1px solid #ccd0d4;
+    margin: -6px -12px 0;
+    background: #fafafa;
+}
+
+.awl-label-settings-tabs .inner {
+    padding: 0;
+}
+
+.awl-label-settings-tabs .inner ul {
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+    margin: 0;
+}
+
+.awl-label-settings-tabs .inner ul li {
+    margin: 0;
+}
+
+.awl-label-settings-tabs .inner ul li a {
+    display: inline-block;
+    padding: 9px 12px 10px;
+    text-decoration: none;
+    outline: none;
+    border-right: 1px solid #eee;
+}
+.awl-label-settings-tabs .inner ul li a:hover {
+    color: #043959;
+}
+.awl-label-settings-tabs .inner ul li a:focus {
+    outline: none;
+    box-shadow: none;
+}
+.awl-label-settings-tabs .inner ul li a.current {
+    color: #555;
+    background-color: #eee;
+}
+
+.awl-label-settings-tabs .inner ul li a:before {
+    font-family: Dashicons;
+    speak: never;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    vertical-align: middle;
+    margin-right: 5px;
+    content: "\f111";
+}
+
+.awl-label-settings-tabs .inner ul li a.tab-general:before {
+    content: "\f108";
+}
+
+.awl-label-settings-tabs .inner ul li a.tab-styles:before {
+    content: "\f100";
+}
+
+.awl-label-settings-tabs .inner ul li a.tab-link:before {
+    content: "\f103";
+}
 
 /* Label Settings box*/
 .awl-label-settings,
@@ -550,6 +616,7 @@
 
 .awl-label-settings {
     display: flex;
+    margin-top: 12px;
 }
 
 .awl-label-settings.awl-disable-all * {
@@ -558,7 +625,7 @@
 
 .awl-label-settings .awl-column-table {
     width: 75%;
-
+    margin-top: 5px;
 }
 
 .awl-label-settings .awl-label-settings-table {
@@ -566,7 +633,7 @@
     border-spacing: 0;
     border-radius: 0;
     table-layout: auto;
-    padding: 0 60px 0 0;
+    padding: 0 60px 50px 0;
     margin: 0;
     /*width: 100%;*/
     clear: both;
@@ -784,14 +851,18 @@
     position: absolute;
     z-index: 9;
     font-size: 0;
+    left: -1px;
+    top: 100%;
+    padding-bottom: 50px;
+}
+
+.awl-label-settings .awl-label-settings-table td .img-select-inner {
     width: 500px;
     border: 1px solid #7e8993;
     border-radius: 3px;
     height: 100px;
     overflow-y: scroll;
     background: #fff;
-    left: -1px;
-    top: 100%;
     cursor: default;
 }
 
@@ -859,6 +930,7 @@
     border-radius: 10em;
     position: relative;
     margin-top: 4px;
+    cursor: pointer;
 }
 
 .awl-toggle-label input[type=checkbox]:checked + .awl-toggle {
@@ -942,32 +1014,78 @@
     border-color: #7e8993;
 }
 
-/* Styles section */
-.awl-label-settings .awl-label-settings-table [data-section="styles"] {
+/* Options sections show/hide */
+.awl-label-settings .awl-label-settings-table [data-section] {
     display: none;
 }
 
-.awl-label-settings .awl-label-settings-table.awl-show-styles [data-section="styles"] {
+.awl-label-settings .awl-label-settings-table[data-currect-section="general"] [data-section="general"]{
+    display: block;
+}
+.awl-label-settings .awl-label-settings-table[data-currect-section="styles"] [data-section="styles"]{
     display: block;
 }
 
-.awl-label-settings .awl-label-settings-table.awl-show-styles [data-option-id="border_color"] {
+.awl-label-settings .awl-label-settings-table[data-currect-section="styles"] [data-option-id="border_color"] {
     display: none;
 }
-.awl-label-settings .awl-label-settings-table.awl-show-styles [data-option-id="border_color"].awl-show {
+.awl-label-settings .awl-label-settings-table[data-currect-section="styles"] [data-option-id="border_color"].awl-show {
     display: block;
+}
+
+.awl-label-settings .awl-label-settings-table.awl-type-text tr.awl-for-image,
+.awl-label-settings .awl-label-settings-table.awl-type-image tr.awl-for-text {
+    display: none !important;
+}
+
+.awl-label-settings .awl-label-settings-table[data-currect-section="general"].awl-type-text [data-section="general"].awl-for-text,
+.awl-label-settings .awl-label-settings-table[data-currect-section="styles"].awl-type-text [data-section="styles"].awl-for-text {
+    display: block !important;
+}
+.awl-label-settings .awl-label-settings-table[data-currect-section="general"].awl-type-image [data-section="general"].awl-for-image,
+.awl-label-settings .awl-label-settings-table[data-currect-section="styles"].awl-type-image [data-section="styles"].awl-for-image{
+    display: block !important;
+}
+
+.awl-label-settings .awl-label-settings-table[data-currect-section="styles"].awl-type-text [data-option-id="border_color"].awl-for-text {
+    display: none !important;
+}
+.awl-label-settings .awl-label-settings-table[data-currect-section="styles"].awl-type-text [data-option-id="border_color"].awl-show.awl-for-text {
+    display: block !important;
 }
 
 /* Positions settings display */
-.awl-label-settings .awl-label-settings-table tr.awl-position-xy,
-.awl-label-settings .awl-label-settings-table tr.awl-position-x {
+.awl-label-settings .awl-label-settings-table[data-currect-section="general"] tr.awl-position-xy,
+.awl-label-settings .awl-label-settings-table[data-currect-section="general"] tr.awl-position-x {
     display: none;
 }
-.awl-label-settings .awl-label-settings-table.awl-position-on-image tr.awl-position-xy {
+.awl-label-settings .awl-label-settings-table[data-currect-section="general"].awl-position-on-image tr.awl-position-xy {
     display: block;
 }
-.awl-label-settings .awl-label-settings-table.awl-position-on-line tr.awl-position-x {
+.awl-label-settings .awl-label-settings-table[data-currect-section="general"].awl-position-on-line tr.awl-position-x {
     display: block;
+}
+
+/* tagglers for custom optios */
+.awl-label-settings .awl-label-settings-table.awl-disabled-styles [data-section="styles"] select,
+.awl-label-settings .awl-label-settings-table.awl-disabled-styles [data-section="styles"] input[type="number"],
+.awl-label-settings .awl-label-settings-table.awl-disabled-styles [data-section="styles"] input[type="text"],
+.awl-label-settings .awl-label-settings-table.awl-disabled-styles [data-section="styles"] textarea{
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(220, 220, 222, 0.75);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    color: rgba(44, 51, 56, 0.5);
+}
+
+.awl-label-settings .awl-label-settings-table.awl-disabled-styles [data-section="styles"] .wp-picker-container button {
+    pointer-events: none;
+    color: #a7aaad !important;
+    border-color: #dcdcde !important;
+    background: #f6f7f7 !important;
+    box-shadow: none !important;
+    cursor: default;
+    transform: none !important;
 }
 
 /* Help tips */
@@ -1276,6 +1394,25 @@
 }
 #awl-preview .advanced-woo-labels .awl-product-label.awl-type-label-right-angle svg .awl-right-angle {
     display: block;
+}
+
+@media (max-width: 1023px) {
+
+    .awl-column-preview {
+        order: -1;
+        border-left: 0;
+        border-bottom: 1px solid #ccd0d4;
+    }
+
+    .awl-label-settings {
+        flex-direction: column;
+    }
+
+    .awl-column-preview .image-wrapper,
+    .awl-column-preview .awl-preview-container {
+        display: inline-block;
+    }
+    
 }
 
 /* Premium tab */

@@ -316,6 +316,12 @@ msgstr ""
 msgid "less or equal to"
 msgstr ""
 
+msgid "contains"
+msgstr ""
+
+msgid "not contains"
+msgstr ""
+
 msgid "Label text"
 msgstr ""
 
@@ -493,40 +499,40 @@ msgstr ""
 msgid "Custom css"
 msgstr ""
 
-msgid "Stock status"
+msgid "Product stock status"
 msgstr ""
 
-msgid "Visibility"
+msgid "Product visibility"
 msgstr ""
 
-msgid "Price"
+msgid "Product price"
 msgstr ""
 
-msgid "Sale discount"
+msgid "Product sale discount"
 msgstr ""
 
-msgid "Quantity"
+msgid "Product quantity"
 msgstr ""
 
-msgid "Shipping class"
+msgid "Product shipping class"
 msgstr ""
 
-msgid "Rating"
+msgid "Product rating"
 msgstr ""
 
-msgid "Reviews count"
+msgid "Product reviews count"
 msgstr ""
 
-msgid "Is on sale"
+msgid "Product is on sale"
 msgstr ""
 
-msgid "Is featured"
+msgid "Product is featured"
 msgstr ""
 
-msgid "Has product image"
+msgid "Product has image"
 msgstr ""
 
-msgid "Has gallery"
+msgid "Product has gallery"
 msgstr ""
 
 msgid "Product"
@@ -560,6 +566,9 @@ msgid "Date"
 msgstr ""
 
 msgid "General"
+msgstr ""
+
+msgid "Styles"
 msgstr ""
 
 msgid "Active sources"

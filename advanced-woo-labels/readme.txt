@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 2.08
+Stable tag: 2.09
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,16 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.09 ( 30.12.2024 ) =
+* Update - Tested with WC 9.5
+* Update - Styles of label edit page
+* Update - Make the label preview box float after the user scrolls
+* Update - Pro admin block description
+* Update - Reorder label display conditions settings fields
+* Fix - Hide admin tooltips when needed
+* Fix - Styles for admin checkboxes
+* Dev - Add new labels condition operators
 
 = 2.08 ( 16.12.2024 ) =
 * Update - Automatically deactivate free version when activate pro
@@ -339,14 +349,3 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 = 1.61 ( 06.02.2023 ) =
 * Update - Admin page notices
 * Update - Support for Total theme
-
-= 1.60 ( 23.01.2023 ) =
-* Update - Tested with WC 7.3
-
-= 1.59 ( 09.01.2023 ) =
-* Update - Tested with WC 7.2
-* Update - Labels settings page
-
-= 1.58 ( 12.12.2022 ) =
-* Update - Labels settings page
-* Update - Admin settings page styles

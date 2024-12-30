@@ -68,7 +68,7 @@ if ( ! class_exists( 'AWL_Admin_Meta_Boxes' ) ) :
         static public function get_rules_meta_box( $label ) {
 
             $rules = AWL_Admin_Options::include_rules();
-            $default_rule = new AWL_Admin_Label_Rules( $rules['attributes'][0] );
+            $default_rule = new AWL_Admin_Label_Rules( $rules['product'][0] );
             $incorrect_rules = AWL_Admin_Helpers::check_for_incorrect_display_rules( $label );
 
             $html = '';
@@ -146,6 +146,9 @@ if ( ! class_exists( 'AWL_Admin_Meta_Boxes' ) ) :
             $settings_array = AWL_Admin_Options::include_label_settings();
             $settings_obg = new AWL_Admin_Label_Settings( $settings_array, $label );
             $html = '';
+
+            // Navigation tabs
+            $html .= $settings_obg->generate_nav_tabs();
 
             $html .= '<div class="awl-label-settings awl-first-init">';
 
