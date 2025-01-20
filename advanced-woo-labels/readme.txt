@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 2.09
+Stable tag: 2.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,9 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.10 ( 20.01.2025 ) =
+* Fix - Links styles inside admin tooltips
 
 = 2.09 ( 30.12.2024 ) =
 * Update - Tested with WC 9.5
@@ -345,7 +348,3 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 * Add - Support for Blocksy theme
 * Update - Tested with WC 7.4
 * Update - Support for WooCommerce Gutenberg blocks
-
-= 1.61 ( 06.02.2023 ) =
-* Update - Admin page notices
-* Update - Support for Total theme

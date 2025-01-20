@@ -1167,6 +1167,7 @@
 }
 #tiptip_content a {
     color: #fff;
+    pointer-events: auto;
 }
 
 /*.post-type-awl-labels #minor-publishing-actions,*/
