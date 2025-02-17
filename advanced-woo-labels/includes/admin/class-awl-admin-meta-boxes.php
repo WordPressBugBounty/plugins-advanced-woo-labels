@@ -252,6 +252,7 @@ if ( ! class_exists( 'AWL_Admin_Meta_Boxes' ) ) :
                         $html .= '<li>' . __( 'Styling: shadows, borders, additional shapes.', 'advanced-woo-labels' ) . '</li>';
                         $html .= '<li>' . __( 'Emojis support.', 'advanced-woo-labels' ) . '</li>';
                         $html .= '<li>' . __( 'Label custom links.', 'advanced-woo-labels' ) . '</li>';
+                        $html .= '<li>' . __( 'Labels animations.', 'advanced-woo-labels' ) . '</li>';
                         $html .= '<li>' . __( 'Math calculations for text variables.', 'advanced-woo-labels' ) . '</li>';
 
                         if ( ! empty( $integrations ) ) {

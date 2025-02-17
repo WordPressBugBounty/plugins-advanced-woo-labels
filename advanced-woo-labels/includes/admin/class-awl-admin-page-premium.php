@@ -97,6 +97,28 @@ if ( ! class_exists( 'AWL_Admin_Page_Premium' ) ) :
                     echo '</div>';
                 echo '</div>';
 
+                 echo '<div class="features-item">';
+                    echo '<div class="column">';
+                        echo '<h4 class="title">';
+                            echo __( 'Label Animation', 'advanced-woo-labels' );
+                        echo '</h4>';
+                        echo '<p class="desc">';
+                            echo __( 'Set unique animation for each label with different customizable parameters.', 'advanced-woo-labels' );
+                            echo '<br><a href="https://advanced-woo-labels.com/guide/label-animations/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
+                            echo '<ul>';
+                                echo '<li>' . __( 'Choose one of predefined animation types', 'advanced-woo-labels' ) . '</li>';
+                                echo '<li>' . __( 'Customize animation parameters', 'advanced-woo-labels' ) . '</li>';
+                                echo '<li>' . __( 'Create your own custom animations', 'advanced-woo-labels' ) . '</li>';
+                            echo '</ul>';
+                        echo '</p>';
+                    echo '</div>';
+                    echo '<div class="column">';
+                        echo '<div class="img">';
+                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-animation.gif' . '" />';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</div>';
+
                 echo '<div class="features-item">';
                     echo '<div class="column">';
                         echo '<h4 class="title">';
