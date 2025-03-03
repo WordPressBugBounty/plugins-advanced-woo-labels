@@ -3,13 +3,13 @@
 /*
 Plugin Name: Advanced Woo Labels
 Description: Advance WooCommerce product labels plugin
-Version: 2.12
+Version: 2.13
 Author: ILLID
 Author URI: https://advanced-woo-labels.com/
 Text Domain: advanced-woo-labels
 Requires Plugins: woocommerce
 WC requires at least: 3.0.0
-WC tested up to: 9.6.0
+WC tested up to: 9.7.0
 */
 
 
@@ -90,7 +90,7 @@ final class AWL_Main {
      */
     private function define_constants() {
 
-        $this->define( 'AWL_VERSION', '2.12' );
+        $this->define( 'AWL_VERSION', '2.13' );
 
         $this->define( 'AWL_DIR', plugin_dir_path( AWL_FILE ) );
         $this->define( 'AWL_URL', plugin_dir_url( AWL_FILE ) );
@@ -218,7 +218,7 @@ final class AWL_Main {
                     $content = preg_replace( "/$emoji_char/", '', $content );
                 }
             }
-            $label['settings']['text'] = AWL_Admin_Helpers::remove_tags( $content );
+            $label['settings']['text'] = urlencode( AWL_Admin_Helpers::remove_tags( $content ) );
         }
         update_post_meta( $id, '_awl_label', $label );
     }

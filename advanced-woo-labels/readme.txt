@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 2.12
+Stable tag: 2.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,10 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.13 ( 03.03.2025 ) =
+* Update - Tested with WC 9.7
+* Fix - Disable stripping of plus symbol inside label text
 
 = 2.12 ( 17.02.2025 ) =
 * Update - Description of pro version inside admin
@@ -345,6 +349,3 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 
 = 1.64 ( 20.03.2023 ) =
 * Update - Tested with WC 7.5
-
-= 1.63 ( 06.03.2023 ) =
-* Add - WP-CLI support
