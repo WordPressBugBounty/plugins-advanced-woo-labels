@@ -187,6 +187,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                 include_once( AWL_DIR . '/includes/modules/class-awl-easy-discounts.php' );
             }
 
+            // Essential Addons for Elementor
+            if ( in_array( 'essential-addons-for-elementor-lite/essential_adons_elementor.php', $this->active_plugins ) || in_array( 'essential-addons-for-elementor/essential_adons_elementor.php', $this->active_plugins ) ) {
+                include_once( AWL_DIR . '/includes/modules/class-awl-essential-addons.php' );
+            }
+
             if ( 'Avada' === $this->current_theme ) {
                 include_once( AWL_DIR . '/includes/modules/class-awl-avada.php' );
             }
