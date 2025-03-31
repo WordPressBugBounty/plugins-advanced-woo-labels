@@ -500,7 +500,7 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
 
             // Product Video Gallery for Woocommerce
             if ( defined('NICKX_PLUGIN_VERSION') ) {
-                $hooks['on_image']['single']['woocommerce_before_single_product_summary'] = array( 'priority' => 10, 'js' => array( '.images .slider', 'append' ) );
+                $hooks['on_image']['single']['woocommerce_before_single_product_summary'] = array( 'priority' => 10, 'js' => array( '.images > div', 'append' ) );
             }
 
             // Ultimate addons for Beaver Builder plugin

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 2.14
+Stable tag: 2.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,9 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.15 ( 31.03.2025 ) =
+* Update - Integration with Product Video Gallery for Woocommerce plugin
 
 = 2.14 ( 17.03.2025 ) =
 * Add - Support for Essential Addons for Elementor plugin
@@ -346,6 +349,3 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 * Update - Tested with WC 7.6
 * Update - Support for Flatsome theme
 * Fix - Flatsome theme broken products links with link labels
-
-= 1.65 ( 03.04.2023 ) =
-* Fix - Bug with awl_get_product_labels shortcode execution
