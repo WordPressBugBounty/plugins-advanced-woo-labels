@@ -148,6 +148,10 @@ jQuery(document).ready(function ($) {
             text = text.replace(new RegExp(name, "g"), value);
         });
 
+        if ( typeof DOMPurify === 'function' ) {
+            text = DOMPurify.sanitize( text );
+        }
+
         previewLabelText.html( text );
 
     });

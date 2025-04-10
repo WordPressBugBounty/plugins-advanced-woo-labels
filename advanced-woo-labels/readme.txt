@@ -3,8 +3,8 @@ Contributors: Mihail Barinov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
-Tested up to: 6.7
-Stable tag: 2.15
+Tested up to: 6.8
+Stable tag: 2.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,10 @@ There is a large variety of such conditions and more information you can find [h
 
 Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/text-variables/) to show a variety of different product parameters like price, discount value, sku, quantity, sales number, reviews, rating, attributes, etc.
 
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/advanced-woo-labels)
+
 == Screenshots ==
 
 1. Labels and labels groups
@@ -108,6 +112,10 @@ Yes, you can use plugin [text variables](https://advanced-woo-labels.com/guide/t
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.16 ( 10.04.2025 ) =
+* Update - Tested with WC 9.8
+* Fix - Strip some html from labels preview
 
 = 2.15 ( 31.03.2025 ) =
 * Update - Integration with Product Video Gallery for Woocommerce plugin

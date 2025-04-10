@@ -237,6 +237,7 @@ if ( ! class_exists( 'AWL_Admin' ) ) :
             if ( ( isset( $_GET['page'] ) && $_GET['page'] == 'awl-options' ) || ( $screen && $screen->post_type && $screen->post_type === 'awl-labels' ) ) {
 
                 wp_register_script( 'jquery-tiptip', AWL_URL . '/assets/js/jquery.tipTip.js', array( 'jquery' ), AWL_VERSION, true );
+                wp_register_script( 'awl-purify', AWL_URL . '/assets/js/purify.min.js', array( 'jquery' ), AWL_VERSION, true );
 
                 wp_enqueue_style( 'wp-color-picker' );
                 wp_enqueue_style( 'awl-select2', AWL_URL . '/assets/css/select2.min.css' );
@@ -246,9 +247,10 @@ if ( ! class_exists( 'AWL_Admin' ) ) :
                 wp_enqueue_script( 'jquery-tiptip' );
                 wp_enqueue_script( 'select2' );
                 wp_enqueue_script( 'wp-color-picker' );
+                wp_enqueue_script( 'awl-purify' );
                 //wp_enqueue_script( 'wp-color-picker-alpha', AWL_URL . '/assets/js/wp-color-picker-alpha.js', array('jquery', 'wp-color-picker' ), AWL_VERSION );
                 wp_enqueue_script( 'awl-admin-scripts', AWL_URL . '/assets/js/admin.js', array( 'jquery', 'wp-color-picker', 'select2', 'jquery-tiptip' ), AWL_VERSION );
-                wp_enqueue_script( 'awl-admin-preview', AWL_URL . '/assets/js/admin-preview.js', array('jquery', 'wp-color-picker' ), AWL_VERSION );
+                wp_enqueue_script( 'awl-admin-preview', AWL_URL . '/assets/js/admin-preview.js', array('jquery', 'wp-color-picker', 'awl-purify' ), AWL_VERSION );
                 wp_localize_script( 'awl-admin-scripts', 'awl_vars', array(
                     'ajaxurl' => admin_url( 'admin-ajax.php', 'relative' ),
                     'ajax_nonce' => wp_create_nonce( 'awl_admin_ajax_nonce' ),
