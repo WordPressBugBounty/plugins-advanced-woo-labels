@@ -225,7 +225,7 @@
     right: -30px;
     width: 20px;
     height: 20px;
-    background: url('../img/loader.gif') no-repeat 50% 50%;
+    background: url('../img/loader.svg') no-repeat 50% 50%;
 }
 
 #awl_form .awl-hooks-table tfoot th .button.generate-hook-group.awl-pending:after {
@@ -421,7 +421,7 @@
     right: -40px;
     width: 20px;
     height: 20px;
-    background: url('../img/loader.gif') no-repeat 50% 50%;
+    background: url('../img/loader.svg') no-repeat 50% 50%;
 }
 
 .awl-rules .awl-rules-table .awl-pending td.param {
@@ -655,7 +655,7 @@
     right: -30px;
     width: 20px;
     height: 20px;
-    background: url('../img/loader.gif') no-repeat 50% 50%;
+    background: url('../img/loader.svg') no-repeat 50% 50%;
 }
 
 .awl-label-settings .awl-label-settings-table [data-option-id="type"].awl-pending:before {
@@ -778,7 +778,7 @@
     right: -30px;
     width: 20px;
     height: 20px;
-    background: url('../img/loader.gif') no-repeat 50% 50%;
+    background: url('../img/loader.svg') no-repeat 50% 50%;
 }
 
 .awl-label-settings .awl-label-settings-table td .awl-template.awl-pending:before {
@@ -1271,7 +1271,7 @@
     right: 0;
     width: 20px;
     height: 20px;
-    background: url('../img/loader.gif') no-repeat 50% 50%;
+    background: url('../img/loader.svg') no-repeat 50% 50%;
 }
 .awl-column-preview .product-name {
     /*font-size: 14px;*/

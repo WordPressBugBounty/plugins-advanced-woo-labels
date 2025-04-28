@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 2.16
+Stable tag: 2.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.17 ( 28.04.2025 ) =
+* Update - Loading icons for admin pages
 
 = 2.16 ( 10.04.2025 ) =
 * Update - Tested with WC 9.8
@@ -352,8 +355,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 1.67 ( 01.05.2023 ) =
 * Fix - Strip html entities from label text value
-
-= 1.66 ( 17.04.2023 ) =
-* Update - Tested with WC 7.6
-* Update - Support for Flatsome theme
-* Fix - Flatsome theme broken products links with link labels
