@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 2.17
+Stable tag: 2.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.18 ( 12.05.2025 ) =
+* Update - New option value for Hooks option. Rewrite only specific hooks positions instead of all
 
 = 2.17 ( 28.04.2025 ) =
 * Update - Loading icons for admin pages
@@ -352,6 +355,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Dev - Add awl_label_options_get_tax_terms filter
 * Dev - Add awl_label_condition_match_rule filter
 * Dev - Add awl_label_condition_rule filter
-
-= 1.67 ( 01.05.2023 ) =
-* Fix - Strip html entities from label text value

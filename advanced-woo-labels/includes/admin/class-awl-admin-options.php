@@ -304,7 +304,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "type"  => "select",
                 'choices' => array(
                     'additional' => __( 'Add additional hooks', 'advanced-woo-labels' ),
-                    'rewrite'  => __( 'Rewrite hooks', 'advanced-woo-labels' ),
+                    'rewrite' => __( 'Rewrite hooks', 'advanced-woo-labels' ),
+                    'rewrite_specified' => __( 'Rewrite specified and leave others as is', 'advanced-woo-labels' ),
                 )
             );
 

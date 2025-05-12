@@ -180,6 +180,10 @@ class AWL_Hooks {
         if ( ! empty( $new_hooks ) ) {
             if ( $hooks_relation === 'rewrite' && ! ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'awl-showCurrentHooks' ) ) {
                 $hooks = $new_hooks;
+            } elseif (  $hooks_relation === 'rewrite_specified' && ! ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'awl-showCurrentHooks' ) ) {
+                foreach ( $new_hooks as $new_hooks_position => $new_hooks_args ) {
+                    $hooks[$new_hooks_position] = $new_hooks_args;
+                }
             } else {
                 foreach ( $new_hooks as $new_hooks_position => $new_hooks_args ) {
                     foreach( $new_hooks_args as $new_hooks_arg_name => $new_hooks_arg_val ) {

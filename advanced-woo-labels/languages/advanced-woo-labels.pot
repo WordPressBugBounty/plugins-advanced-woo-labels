@@ -286,6 +286,9 @@ msgstr ""
 msgid "Rewrite hooks"
 msgstr ""
 
+msgid "Rewrite specified and leave others as is"
+msgstr ""
+
 msgid "Disable all hooks"
 msgstr ""
 
