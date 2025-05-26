@@ -109,7 +109,7 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
 
                         $html .= '<tr valign="top" data-section="' . esc_attr( $section ) . '" data-option-id="' . esc_attr( $field['id'] ) . '" ' . $this->get_field_classes( $field ) . '>';
 
-                            $html .= '<th scope="row"><label for="' . esc_attr( AWL_Admin_Helpers::sanitize_tag( $this->field_name ) ) . '">' . esc_html( $field['name'] ) . '</label></th>';
+                            $html .= '<th scope="row"><label for="' . esc_attr( AWL_Admin_Helpers::sanitize_tag( $this->field_name ) ) . '">' . $field['name'] . '</label></th>';
 
                             $html .= '<td>';
 
@@ -243,12 +243,15 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
          */
         private function get_field_select( $field ) {
 
+            $disabled = isset( $field['disabled'] ) && $field['disabled'] ? ' disabled' : '';
+
             $html = '';
 
-            $html .= '<select id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '">';
+            $html .= '<select id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '"'. $disabled .'>';
 
             foreach ( $field['choices'] as $val => $label ) {
-                 $html .= '<option ' . selected( $this->field_value, $val, false ) . ' value="' . esc_attr( $val ) . '">' . esc_html( $label ) . '</option>';
+                $disabled = strpos( $val, '__pro' ) !== false ? ' disabled' : '';
+                $html .= '<option ' . selected( $this->field_value, $val, false ) . ' value="' . esc_attr( $val ) . '"'. $disabled .'>' . esc_html( $label ) . '</option>';
             }
 
             $html .= '</select>';
@@ -263,7 +266,9 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
          */
         private function get_field_text( $field ) {
 
-            $html = '<input id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" type="text" value="' . esc_attr( stripslashes( $this->field_value ) ) . '"/>';
+            $disabled = isset( $field['disabled'] ) && $field['disabled'] ? ' disabled' : '';
+
+            $html = '<input id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" type="text" value="' . esc_attr( stripslashes( $this->field_value ) ) . '"'. $disabled .'/>';
 
             return $html;
 
@@ -275,12 +280,14 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
         */
         private function get_field_number( $field ) {
 
+            $disabled = isset( $field['disabled'] ) && $field['disabled'] ? ' disabled' : '';
+
             $params = '';
             $params .= isset( $field['step'] ) ? ' step="' . $field['step'] . '"' : '';
             $params .= isset( $field['min'] ) ? ' min="' . $field['min'] . '"' : '';
             $params .= isset( $field['max'] ) ? ' max="' . $field['max'] . '"' : '';
 
-            $html = '<input id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" type="number" '.$params.' value="' . floatval( esc_attr( stripslashes( $this->field_value ) ) ) . '"/>';
+            $html = '<input id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" type="number" '.$params.' value="' . floatval( esc_attr( stripslashes( $this->field_value ) ) ) . '"'. $disabled .'/>';
 
             return $html;
 
@@ -292,7 +299,9 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
          */
         private function get_field_textarea( $field ) {
 
-            $html = '<textarea id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" cols="45" rows="3">' . stripslashes( $this->field_value ) . '</textarea>';
+            $disabled = isset( $field['disabled'] ) && $field['disabled'] ? ' disabled' : '';
+
+            $html = '<textarea id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" cols="45" rows="3"'. $disabled .'>' . stripslashes( $this->field_value ) . '</textarea>';
 
             return $html;
 
@@ -317,9 +326,11 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
          */
         private function get_field_checkbox( $field ) {
 
+            $disabled = isset( $field['disabled'] ) && $field['disabled'] ? ' disabled' : '';
+
             $html = '';
 
-            $html .= '<input id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" type="checkbox" name="' . esc_attr( $this->field_name ) . '" value="1" ' . checked( $this->field_value, '1', false ) . '>';
+            $html .= '<input id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" type="checkbox" name="' . esc_attr( $this->field_name ) . '" value="1" ' . checked( $this->field_value, '1', false ) . $disabled . '>';
 
             return $html;
 
@@ -388,8 +399,9 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
                                 foreach( $template_group_items as $template_val => $template_img ) {
 
                                     $is_active = ( $this->field_value === $template_val ) ? ' awl-active' : '';
+                                    $pro_only = strpos( $template_val, '-pro' ) !== false ? ' awl-pro-template' : '';
 
-                                    $html .= '<li class="option' . $is_active . '" data-val="' . $template_val . '">';
+                                    $html .= '<li class="option' . $is_active . $pro_only . '" data-val="' . $template_val . '">';
                                         $html .= '<span class="ico" style="background: url(' .  esc_url( $template_img ) . ') no-repeat 50% 50%;"></span>';
                                     $html .= '</li>';
 

@@ -430,6 +430,18 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             $options = array();
 
+            // pro only
+            $options['general'][] = array(
+                "name" => __( "Label type", "advanced-woo-labels" ),
+                "id"   => "type",
+                "value" => 'text',
+                "type"  => "select",
+                'choices' => array(
+                    'text'  => __( 'Shape with text', 'advanced-woo-labels' ),
+                    'image__pro' => __( 'Image', 'advanced-woo-labels' ) . ' ' . __( "(Pro)", "advanced-woo-labels" ),
+                ),
+            );
+
             $options['general'][] = array(
                 "name" => __( "Label text", "advanced-woo-labels" ),
                 "id"   => "text",
@@ -454,6 +466,13 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                         'round' => AWL_URL . '/assets/img/label-7.png',
                         'triangled' => AWL_URL . '/assets/img/label-3.png',
                         'angle' => AWL_URL . '/assets/img/label-4.png',
+                        'two-angles-pro' => AWL_URL . '/assets/img/label-9.png',
+                        'triangled-left-pro' => AWL_URL . '/assets/img/label-10.png',
+                        'angle-left-pro' => AWL_URL . '/assets/img/label-11.png',
+                        'triangled-reverse-pro' => AWL_URL . '/assets/img/label-6.png',
+                        'triangled-reverse-left-pro' => AWL_URL . '/assets/img/label-8.png',
+                        'arrow-pro' => AWL_URL . '/assets/img/label-5.png',
+                        'arrow-reverse-pro' => AWL_URL . '/assets/img/label-12.png',
                     ),
                 )
             );
@@ -574,6 +593,32 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "class" => "awl-for-text"
             );
 
+            // pro only
+            $options['styles'][] = array(
+                "name" => __( "Border", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "id"   => "border",
+                "value" => 'none',
+                "type"  => "select",
+                'choices' => array(
+                    'none'  => __( 'None', 'advanced-woo-labels' ),
+                ),
+                "class" => "awl-for-text",
+                "disabled" => true,
+            );
+
+            // pro only
+            $options['styles'][] = array(
+                "name" => __( "Shadow", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "id"   => "shadow",
+                "value" => 'none',
+                "type"  => "select",
+                'choices' => array(
+                    'none'  => __( 'None', 'advanced-woo-labels' ),
+                ),
+                "class" => "awl-for-text",
+                "disabled" => true,
+            );
+
             $options['styles'][] = array(
                 "name" => __( "Opacity", "advanced-woo-labels" ),
                 "id"   => "opacity",
@@ -603,6 +648,20 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "params" => array( 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0' ),
                 "tip"   => __( "Top, right, bottom, left.", "advanced-woo-labels" ),
                 "type"  => "number",
+            );
+
+            // pro only
+            $options['styles'][] = array(
+                "name" => __( "Rotation (deg)", "advanced-woo-labels" )  . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "id"   => "rotate",
+                "value" => '0',
+                "min" => "0",
+                "max" => "360",
+                "step" => "1",
+                "params" => array( 'x' => '0', 'y' => '0', 'z' => '0' ),
+                "tip"   => __( "X, Y, Z axis. Max 360 deg.", "advanced-woo-labels" ),
+                "type"  => "number",
+                "disabled" => true,
             );
 
             $options['styles'][] = array(
@@ -888,6 +947,13 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 $variables = array_merge( $variables, $custom_text_vars );
             }
 
+            /**
+             * Filter text vars descriptions
+             * @since 2.19
+             * @param array $variables Array of text variables
+             */
+            $variables = apply_filters( 'awl_labels_text_vars_description', $variables );
+
             return $variables;
 
         }
@@ -901,6 +967,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
             $tabs = array(
                 'general' =>  __( "General", "advanced-woo-labels" ),
                 'styles' =>  __( "Styles", "advanced-woo-labels" ),
+                'animation' => __( "Animation", "advanced-woo-labels" ),
+                'link' => __( "Link", "advanced-woo-labels" ),
             );
 
             /**

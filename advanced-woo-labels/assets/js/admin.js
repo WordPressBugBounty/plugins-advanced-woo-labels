@@ -58,14 +58,24 @@ jQuery(document).ready(function ($) {
 
 
     $( '.awl-content-var-item' ).on('click', function(e) {
-        if (navigator.clipboard) {
-            var text = $(this).find('span').text();
-            navigator.clipboard.writeText(text).then(function() {
-                $( '#tiptip_content' ).text( awl_vars.copy_text );
-            }, function(err) {
-                console.error('Unable to copy text: ', err);
-            });
+
+        if ( $(this).hasClass('awl-pro-text-var') ) {
+
+            $( '#tiptip_content' ).html( '<span class="awl-text-var-pro-tip">'+ awl_vars.copy_pro_text +'</span>' );
+
+        } else {
+
+            if (navigator.clipboard) {
+                var text = $(this).find('span').text();
+                navigator.clipboard.writeText(text).then(function() {
+                    $( '#tiptip_content' ).text( awl_vars.copy_text );
+                }, function(err) {
+                    console.error('Unable to copy text: ', err);
+                });
+            }
+
         }
+
     });
 
 
@@ -451,7 +461,9 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', '[data-template-select] .option', function(evt, params) {
-        awl_set_template( $(this) );
+        if ( ! $(this).hasClass('awl-pro-template')) {
+            awl_set_template( $(this) );
+        }
     });
 
     // Image upload

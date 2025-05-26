@@ -123,7 +123,8 @@ if ( ! class_exists( 'AWL_Admin_Label_Rules' ) ) :
                 $rules_html .= '<optgroup label="' . esc_html( $section_label ) . '">';
 
                 foreach ( $section_rules as $section_rule ) {
-                    $rules_html .= '<option ' . selected( $val, $section_rule['id'], false ) . ' value="'. esc_attr( $section_rule['id'] ) .'">'. esc_html( $section_rule['name'] ) .'</option>';
+                    $disabled = isset( $section_rule['disabled'] ) && $section_rule['disabled'] ? ' disabled' : '';
+                    $rules_html .= '<option ' . selected( $val, $section_rule['id'], false ) . ' value="'. esc_attr( $section_rule['id'] ) .'"'. $disabled .'>'. esc_html( $section_rule['name'] ) .'</option>';
                 }
 
                 $rules_html .= '</optgroup>';

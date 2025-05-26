@@ -133,9 +133,6 @@ msgstr ""
 msgid "Hook"
 msgstr ""
 
-msgid "Priority"
-msgstr ""
-
 msgid "Add hook"
 msgstr ""
 
@@ -695,4 +692,409 @@ msgid "This action will generate the currently used display hooks. Please only c
 msgstr ""
 
 msgid "Breakdance: Is Breakdance block"
+msgstr ""
+
+msgid "Pro version only!"
+msgstr ""
+
+msgid "Label type"
+msgstr ""
+
+msgid "Shape with text"
+msgstr ""
+
+msgid "Image"
+msgstr ""
+
+msgid "(Pro)"
+msgstr ""
+
+msgid "Border"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Shadow"
+msgstr ""
+
+msgid "Rotation (deg)"
+msgstr ""
+
+msgid "X, Y, Z axis. Max 360 deg."
+msgstr ""
+
+msgid "ACF field value, e.g {ACF:my_field}"
+msgstr ""
+
+msgid "ACF fields"
+msgstr ""
+
+msgid "Attribute values list, e.g {ATTR:color}."
+msgstr ""
+
+msgid "Average product rating."
+msgstr ""
+
+msgid "Current user can purchase"
+msgstr ""
+
+msgid "Current user can view"
+msgstr ""
+
+msgid "Current user has discount"
+msgstr ""
+
+msgid "Current user membership"
+msgstr ""
+
+msgid "Custom field value, e.g {META:sales}."
+msgstr ""
+
+msgid "Day of week"
+msgstr ""
+
+msgid "Dokan product views number"
+msgstr ""
+
+msgid "Dokan shop 'Sold by' badge"
+msgstr ""
+
+msgid "Dokan shop avarage rating"
+msgstr ""
+
+msgid "Dokan shop link for current product"
+msgstr ""
+
+msgid "Dokan shop logo for current product"
+msgstr ""
+
+msgid "Dokan shop name for current product"
+msgstr ""
+
+msgid "Dokan shop reviews number"
+msgstr ""
+
+msgid "EAN for WooCommerce: Has EAN"
+msgstr ""
+
+msgid "EAN product number ( EAN for WooCommerce )"
+msgstr ""
+
+msgid "Format numbers from text variables, e.g {FORMAT:10000} or {FORMAT:{CALC:{PRICE}*2}}."
+msgstr ""
+
+msgid "Is product sold by"
+msgstr ""
+
+msgid "Is product sold by any vendor"
+msgstr ""
+
+msgid "Is sold by trusted vendor"
+msgstr ""
+
+msgid "Is sold by verified vendor"
+msgstr ""
+
+msgid "Is store featured"
+msgstr ""
+
+msgid "Is store page"
+msgstr ""
+
+msgid "Math calculations, e.g {CALC:{PRICE}*2}."
+msgstr ""
+
+msgid "MultiVendorX shop 'Sold by' badge"
+msgstr ""
+
+msgid "MultiVendorX shop avarage rating"
+msgstr ""
+
+msgid "MultiVendorX shop items sold"
+msgstr ""
+
+msgid "MultiVendorX shop link for current product"
+msgstr ""
+
+msgid "MultiVendorX shop logo for current product"
+msgstr ""
+
+msgid "MultiVendorX shop name for current product"
+msgstr ""
+
+msgid "MultiVendorX shop net sales"
+msgstr ""
+
+msgid "MultiVendorX shop products number"
+msgstr ""
+
+msgid "MultiVendorX shop reviews number"
+msgstr ""
+
+msgid "Number of product reviews for the last X days ( or all time )."
+msgstr ""
+
+msgid "Page URL"
+msgstr ""
+
+msgid "Page archives"
+msgstr ""
+
+msgid "Page template"
+msgstr ""
+
+msgid "Page type"
+msgstr ""
+
+msgid "Perfect Brands brand banner image"
+msgstr ""
+
+msgid "Perfect Brands brand banner link"
+msgstr ""
+
+msgid "Perfect Brands brand link to archive page"
+msgstr ""
+
+msgid "Perfect Brands brand logo image"
+msgstr ""
+
+msgid "Perfect Brands brand name"
+msgstr ""
+
+msgid "Product GTIN, UPC, EAN, or ISBN"
+msgstr ""
+
+msgid "Product Table: Is inside specific table"
+msgstr ""
+
+msgid "Product Table: Is inside table"
+msgstr ""
+
+msgid "Product add to cart link."
+msgstr ""
+
+msgid "Product age"
+msgstr ""
+
+msgid "Product attributes"
+msgstr ""
+
+msgid "Product custom attributes"
+msgstr ""
+
+msgid "Product custom fields"
+msgstr ""
+
+msgid "Product grant access to"
+msgstr ""
+
+msgid "Product has discount for"
+msgstr ""
+
+msgid "Product height."
+msgstr ""
+
+msgid "Product is in cart"
+msgstr ""
+
+msgid "Product length."
+msgstr ""
+
+msgid "Product permalink."
+msgstr ""
+
+msgid "Product sale date"
+msgstr ""
+
+msgid "Product sales number"
+msgstr ""
+
+msgid "Product sales number for the last X days ( or all time )."
+msgstr ""
+
+msgid "Product shipping class."
+msgstr ""
+
+msgid "Product shipping parameters"
+msgstr ""
+
+msgid "Product sku"
+msgstr ""
+
+msgid "Product sold by"
+msgstr ""
+
+msgid "Product taxonomies list, e.g {TAX:product_cat}."
+msgstr ""
+
+msgid "Product taxonomy"
+msgstr ""
+
+msgid "Product type"
+msgstr ""
+
+msgid "Product views"
+msgstr ""
+
+msgid "Product weight."
+msgstr ""
+
+msgid "Product width."
+msgstr ""
+
+msgid "Store items sold"
+msgstr ""
+
+msgid "Store net sales"
+msgstr ""
+
+msgid "Store products count"
+msgstr ""
+
+msgid "Store rating"
+msgstr ""
+
+msgid "Store reviews count"
+msgstr ""
+
+msgid "Store total sales count"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Total number of wishlists that contain current product"
+msgstr ""
+
+msgid "User cart"
+msgstr ""
+
+msgid "User country"
+msgstr ""
+
+msgid "User device"
+msgstr ""
+
+msgid "User language"
+msgstr ""
+
+msgid "User shop stats"
+msgstr ""
+
+msgid "Vendor store products number"
+msgstr ""
+
+msgid "Vendor store rating"
+msgstr ""
+
+msgid "Vendor store reviews count"
+msgstr ""
+
+msgid "Vendor store total sales count"
+msgstr ""
+
+msgid "WC Vendors shop 'Sold by' badge"
+msgstr ""
+
+msgid "WC Vendors shop avarage rating"
+msgstr ""
+
+msgid "WC Vendors shop link for current product"
+msgstr ""
+
+msgid "WC Vendors shop logo for current product"
+msgstr ""
+
+msgid "WC Vendors shop name for current product"
+msgstr ""
+
+msgid "WC Vendors shop products number"
+msgstr ""
+
+msgid "WC Vendors shop reviews number"
+msgstr ""
+
+msgid "WC Vendors shop sales number"
+msgstr ""
+
+msgid "WCFM shop 'Sold by' badge"
+msgstr ""
+
+msgid "WCFM shop avarage rating"
+msgstr ""
+
+msgid "WCFM shop link for current product"
+msgstr ""
+
+msgid "WCFM shop logo for current product"
+msgstr ""
+
+msgid "WCFM shop name for current product"
+msgstr ""
+
+msgid "WCFM shop reviews number"
+msgstr ""
+
+msgid "Who can purchase product"
+msgstr ""
+
+msgid "Who can view product"
+msgstr ""
+
+msgid "WooCommerce Memberships: Current member product discount amount"
+msgstr ""
+
+msgid "WooCommerce Memberships: Current member product discount percentage"
+msgstr ""
+
+msgid "WooCommerce Memberships: Current user membership plan"
+msgstr ""
+
+msgid "WooCommerce Memberships: List of memberships that current product purchase grant access to"
+msgstr ""
+
+msgid "WooCommerce Memberships: List of memberships to which the current product is restricted"
+msgstr ""
+
+msgid "WooCommerce Memberships: List of memberships with access to purchase current product"
+msgstr ""
+
+msgid "YITH Wishlist: Is product in current user wishlist"
+msgstr ""
+
+msgid "YITH Wishlist: Is wishlist page"
+msgstr ""
+
+msgid "YITH Wishlist: Product number of wishlists"
+msgstr ""
+
+msgid "Animation"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Apply to"
+msgstr ""
+
+msgid "Label block"
+msgstr ""
+
+msgid "Duration (ms)"
+msgstr ""
+
+msgid "Repeats number"
+msgstr ""
+
+msgid "Infinite"
+msgstr ""
+
+msgid "Delay (ms)"
+msgstr ""
+
+msgid "Label link"
+msgstr ""
+
+msgid "Open in new window"
 msgstr ""

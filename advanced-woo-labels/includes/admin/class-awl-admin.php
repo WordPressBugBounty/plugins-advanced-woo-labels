@@ -256,6 +256,7 @@ if ( ! class_exists( 'AWL_Admin' ) ) :
                     'ajax_nonce' => wp_create_nonce( 'awl_admin_ajax_nonce' ),
                     'img_url' => AWL_IMG,
                     'copy_text' => __( 'Copied', 'advanced-woo-labels' ),
+                    'copy_pro_text' => __( 'Pro version only!', 'advanced-woo-labels' ),
                     'confirm_hooks' => __( 'This action will generate the currently used display hooks. Please only confirm the action if you are sure of what you are doing. In most cases, this action is not required as these hooks are already in use.', 'advanced-woo-labels' ),
                 ) );
 

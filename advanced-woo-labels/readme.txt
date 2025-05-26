@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 2.18
+Stable tag: 2.19
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.19 ( 26.05.2025 ) =
+* Update - Labels settings page text. Add pro only options descriptions
+* Update - Integration with WooCommerce Product Bundles plugin. Fix stock status conditions for bundles
 
 = 2.18 ( 12.05.2025 ) =
 * Update - New option value for Hooks option. Rewrite only specific hooks positions instead of all
@@ -345,13 +349,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Support for Flatsome theme. Fix single product page labels display
 * Dev - Add label_js_selector parameter for labels js placement
 * Dev - Add awl_labels_single_type_hooks filter
-
-= 1.68 ( 15.05.2023 ) =
-* Add - Support for WooCommerce custom orders tables
-* Update - Tested with WC 7.7
-* Update - Support for WPML plugin. Fix label display conditions related to translated terms
-* Update - Flatsome theme support. Fix labels display for quick view pop-up
-* Fix - Duplicated labels for WPML plugin
-* Dev - Add awl_label_options_get_tax_terms filter
-* Dev - Add awl_label_condition_match_rule filter
-* Dev - Add awl_label_condition_rule filter

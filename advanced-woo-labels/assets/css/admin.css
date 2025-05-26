@@ -606,6 +606,10 @@
     content: "\f103";
 }
 
+.awl-label-settings-tabs .inner ul li a.tab-animation:before {
+    content: "\f177";
+}
+
 /* Label Settings box*/
 .awl-label-settings,
 .awl-label-settings * {
@@ -617,6 +621,7 @@
 .awl-label-settings {
     display: flex;
     margin-top: 12px;
+    margin-bottom: 20px;
 }
 
 .awl-label-settings.awl-disable-all * {
@@ -703,6 +708,15 @@
 .awl-label-settings .awl-label-settings-table td input[type="text"],
 .awl-label-settings .awl-label-settings-table td input[type="number"] {
     resize: none;
+}
+
+.awl-label-settings .awl-label-settings-table td select:disabled,
+.awl-label-settings .awl-label-settings-table td input[type="text"]:disabled,
+.awl-label-settings .awl-label-settings-table td input[type="number"]:disabled {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(220, 220, 222, 0.75);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    color: rgba(44, 51, 56, 0.5);
 }
 
 .awl-label-settings .awl-label-settings-table td .fields-columns {
@@ -837,6 +851,11 @@
     background: #e1e1e1;
 }
 
+.awl-content-vars .awl-content-var-item.awl-pro-text-var {
+    border-color: #aaa;
+    color: #aaa;
+}
+
 .awl-content-vars .awl-content-var-item span {
     padding: 2px 9px 3px;
     display: block;
@@ -860,7 +879,7 @@
     width: 500px;
     border: 1px solid #7e8993;
     border-radius: 3px;
-    height: 100px;
+    height: 190px;
     overflow-y: scroll;
     background: #fff;
     cursor: default;
@@ -887,6 +906,50 @@
     width: 80px;
 }
 
+.awl-label-settings .awl-label-settings-table td .img-select .option.awl-pro-template {
+
+}
+.awl-label-settings .awl-label-settings-table td .img-select .option.awl-pro-template:hover {
+}
+.awl-label-settings .awl-label-settings-table td .img-select .option.awl-pro-template:hover:before {
+    content: "Pro";
+    position: absolute;
+    background: rgba(44, 51, 56, 0.8);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 3px;
+    font-size: 14px;
+    color: rgba(255, 255, 91, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.awl-label-settings .awl-label-settings-table td .img-select .option.awl-pro-template:after {
+    font-family: Dashicons;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    vertical-align: middle;
+    margin: 0;
+    content: "\f160";
+    display: block;
+    font-size: 25px;
+    line-height: 25px;
+    color: #b97fd3;
+    top: 2px;
+    right: 0px;
+    position: absolute;
+    z-index: 2;
+}
+
+.awl-label-settings .awl-label-settings-table td .img-select .option.awl-pro-template .ico {
+    opacity: 0.65;
+}
+
 .awl-label-settings .awl-label-settings-table td .img-select .option .ico {
     display: block;
     width: 100%;
@@ -896,6 +959,9 @@
     border-radius: 3px;
     cursor: pointer;
     /*background-size: 75% !important;*/
+}
+.awl-label-settings .awl-label-settings-table td .img-select .option .ico:hover {
+    border-color: #aaaaaa;
 }
 
 .awl-label-settings .awl-label-settings-table td .img-select [data-templates="image"] .option .ico {
@@ -1023,6 +1089,12 @@
     display: block;
 }
 .awl-label-settings .awl-label-settings-table[data-currect-section="styles"] [data-section="styles"]{
+    display: block;
+}
+.awl-label-settings .awl-label-settings-table[data-currect-section="link"] [data-section="link"]{
+    display: block;
+}
+.awl-label-settings .awl-label-settings-table[data-currect-section="animation"] [data-section="animation"]{
     display: block;
 }
 
@@ -1168,6 +1240,10 @@
 #tiptip_content a {
     color: #fff;
     pointer-events: auto;
+}
+
+#tiptip_content .awl-text-var-pro-tip {
+    color: rgba(255, 255, 91, 0.8);
 }
 
 /*.post-type-awl-labels #minor-publishing-actions,*/

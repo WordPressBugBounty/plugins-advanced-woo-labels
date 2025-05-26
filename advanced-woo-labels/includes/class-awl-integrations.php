@@ -192,6 +192,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                 include_once( AWL_DIR . '/includes/modules/class-awl-essential-addons.php' );
             }
 
+            //  WooCommerce Product Bundles
+            if ( in_array( 'woocommerce-product-bundles/woocommerce-product-bundles.php', $this->active_plugins ) ) {
+                include_once( AWL_DIR . '/includes/modules/class-awl-product-bundles.php' );
+            }
+
             if ( 'Avada' === $this->current_theme ) {
                 include_once( AWL_DIR . '/includes/modules/class-awl-avada.php' );
             }

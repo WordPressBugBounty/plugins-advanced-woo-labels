@@ -411,9 +411,18 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $info .= "<div class='awl-content-vars'>";
 
                 foreach ( $variables as $variabl_name => $variabl_desc ) {
-                    $info .= "<div class='awl-content-var-item' data-text-var-tip='" . esc_attr( $variabl_desc ) . "'>";
-                    $info .= "<span>" . $variabl_name . "</span>";
+
+                    if ( strpos( $variabl_name, '{PRO}' ) !== false ) {
+                        $disabled = ' awl-pro-text-var';
+                        $variabl_name = str_replace( '{PRO}', '', $variabl_name );
+                    } else {
+                        $disabled = '';
+                    }
+
+                    $info .= "<div class='awl-content-var-item" . $disabled . "' data-text-var-tip='" . esc_attr( $variabl_desc ) . "'>";
+                        $info .= "<span>" . $variabl_name . "</span>";
                     $info .= "</div>";
+
                 }
 
                 $info .= "</div>";
