@@ -731,7 +731,7 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
         public function awl_label_admin_options( $options ) {
 
             $options['animation'][] = array(
-                "name" => __( "Animation", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Animation", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=animation">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "animation",
                 "value" => 'none',
                 "type"  => "select",
@@ -742,7 +742,7 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             );
 
             $options['animation'][] = array(
-                "name" => __( "Apply to", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Apply to", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=animation_apply_to">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "animation_apply_to",
                 "value" => 'label',
                 "type"  => "select",
@@ -754,7 +754,7 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             );
 
             $options['animation'][] = array(
-                "name" => __( "Duration (ms)", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Duration (ms)", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=animation_duration">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "animation_duration",
                 "min" => "0",
                 "step" => "1",
@@ -764,7 +764,7 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             );
 
             $options['animation'][] = array(
-                "name" => __( "Repeats number", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Repeats number", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=animation_repeats">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "animation_repeats",
                 "min" => "1",
                 "step" => "1",
@@ -774,7 +774,7 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             );
 
             $options['animation'][] = array(
-                "name" => __( "Infinite", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Infinite", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=animation_infinite">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "animation_infinite",
                 "value" => 'false',
                 "type"  => "checkbox",
@@ -782,7 +782,7 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             );
 
             $options['animation'][] = array(
-                "name" => __( "Delay (ms)", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Delay (ms)", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=animation_delay">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "animation_delay",
                 "min" => "0",
                 "step" => "1",
@@ -792,7 +792,7 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             );
 
             $options['link'][] = array(
-                "name" => __( "Label link", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Label link", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=link_url">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "link_url",
                 "value" => '',
                 "spoiler" => array(
@@ -804,7 +804,7 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             );
 
             $options['link'][] = array(
-                "name" => __( "Open in new window", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Open in new window", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=link_window">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "link_window",
                 "value" => 'false',
                 "type"  => "checkbox",

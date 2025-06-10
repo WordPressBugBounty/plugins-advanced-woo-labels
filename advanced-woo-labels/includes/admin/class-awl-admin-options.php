@@ -595,7 +595,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             // pro only
             $options['styles'][] = array(
-                "name" => __( "Border", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Border", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=border">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "border",
                 "value" => 'none',
                 "type"  => "select",
@@ -608,7 +608,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             // pro only
             $options['styles'][] = array(
-                "name" => __( "Shadow", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Shadow", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=shadow">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "shadow",
                 "value" => 'none',
                 "type"  => "select",
@@ -652,7 +652,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             // pro only
             $options['styles'][] = array(
-                "name" => __( "Rotation (deg)", "advanced-woo-labels" )  . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Rotation (deg)", "advanced-woo-labels" )  . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=rotate">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "rotate",
                 "value" => '0',
                 "min" => "0",
