@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.20
+Stable tag: 2.21
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -228,6 +228,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.21 ( 23.06.2025 ) =
+* Update - Label settings page styles
+* Update - Add new disabled parameters for label edit page
 
 = 2.20 ( 10.06.2025 ) =
 * Update - Tested with WC 9.9
@@ -460,6 +464,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 = 1.71 ( 26.06.2023 ) =
 * Add - Support for Bricks Builder theme
 * Update - Tested with WC 7.8
-
-= 1.70 ( 12.06.2023 ) =
-* Add - Admin page error notices for incorrect label display rules

@@ -1235,7 +1235,7 @@
     border-radius: 3px;
     padding: .618em 1em;
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
-    width: 120px;
+    width: 150px;
 }
 #tiptip_content a {
     color: #fff;
@@ -1330,7 +1330,7 @@
     margin: 10px 0;
 }
 
-.awl-column-preview img {
+.awl-column-preview .image-wrapper img {
     display: block;
 }
 

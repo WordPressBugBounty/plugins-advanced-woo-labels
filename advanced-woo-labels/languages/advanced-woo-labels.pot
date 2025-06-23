@@ -202,6 +202,9 @@ msgstr ""
 msgid "Product name"
 msgstr ""
 
+msgid "Product brand"
+msgstr ""
+
 msgid "Main Settings"
 msgstr ""
 
@@ -892,6 +895,15 @@ msgstr ""
 msgid "Product has discount for"
 msgstr ""
 
+msgid "Product brands list. Use with parameter to set max number of brands to display, e.g {BRAND | 1}."
+msgstr ""
+
+msgid "Product categories list. Use with parameter to set max number of categories to display, e.g {CATEGORY | 1}."
+msgstr ""
+
+msgid "Product tags list. Use with parameter to set max number of tags to display, e.g {TAG | 1}."
+msgstr ""
+
 msgid "Product height."
 msgstr ""
 
@@ -926,6 +938,15 @@ msgid "Product sold by"
 msgstr ""
 
 msgid "Product taxonomies list, e.g {TAX:product_cat}."
+msgstr ""
+
+msgid "Link to product taxonomy page, e.g {TAX_LINK:product_cat}. Will display a link only to the first found product taxonomy."
+msgstr ""
+
+msgid "Link to product attribute page, e.g {ATTR_LINK:color}. Will display a link only to the first found product attribute."
+msgstr ""
+
+msgid "Show product taxonomy image, e.g {TAX_IMAGE:product_cat}. Will display an image of the first found product taxonomy. Use with parameter to set max image size, e.g {TAX_IMAGE:product_cat | 50}."
 msgstr ""
 
 msgid "Product taxonomy"

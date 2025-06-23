@@ -78,8 +78,14 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
                 '{LENGTH}{PRO}' => __( "Product length.", "advanced-woo-labels" ) . ' ' . $pro_text,
                 '{WIDTH}{PRO}' => __( "Product width.", "advanced-woo-labels" ) . ' ' . $pro_text,
                 '{HEIGHT}{PRO}' => __( "Product height.", "advanced-woo-labels" ) . ' ' . $pro_text,
-                '{ATTR:slug}{PRO}' => __( "Attribute values list, e.g {ATTR:color}.", "advanced-woo-labels" ) . ' ' . $pro_text,
+                '{BRAND}{PRO}' => __( "Product brands list. Use with parameter to set max number of brands to display, e.g {BRAND | 1}.", "advanced-woo-labels" ) . ' ' . $pro_text,
+                '{CATEGORY}{PRO}' => __( "Product categories list. Use with parameter to set max number of categories to display, e.g {CATEGORY | 1}.", "advanced-woo-labels" ) . ' ' . $pro_text,
+                '{TAG}{PRO}' => __( "Product tags list. Use with parameter to set max number of tags to display, e.g {TAG | 1}.", "advanced-woo-labels" ) . ' ' . $pro_text,
                 '{TAX:slug}{PRO}' => __( "Product taxonomies list, e.g {TAX:product_cat}.", "advanced-woo-labels" ) . ' ' . $pro_text,
+                '{TAX_LINK:slug}{PRO}' => __( "Link to product taxonomy page, e.g {TAX_LINK:product_cat}. Will display a link only to the first found product taxonomy.", "advanced-woo-labels" ) . $pro_text,
+                '{TAX_IMAGE:slug}{PRO}' => __( "Show product taxonomy image, e.g {TAX_IMAGE:product_cat}. Will display an image of the first found product taxonomy. Use with parameter to set max image size, e.g {TAX_IMAGE:product_cat | 50}.", "advanced-woo-labels" ) . $pro_text,
+                '{ATTR:slug}{PRO}' => __( "Attribute values list, e.g {ATTR:color}.", "advanced-woo-labels" ) . ' ' . $pro_text,
+                '{ATTR_LINK:slug}{PRO}' => __( "Link to product attribute page, e.g {ATTR_LINK:color}. Will display a link only to the first found product attribute.", "advanced-woo-labels" ) . $pro_text,
                 '{META:name}{PRO}' => __( "Custom field value, e.g {META:sales}.", "advanced-woo-labels" ) . ' ' . $pro_text,
                 '{CALC:expression}{PRO}' => __( "Math calculations, e.g {CALC:{PRICE}*2}.", "advanced-woo-labels" ) . ' ' . $pro_text,
                 '{FORMAT:expression}{PRO}' => __( "Format numbers from text variables, e.g {FORMAT:10000} or {FORMAT:{CALC:{PRICE}*2}}.", "advanced-woo-labels" ) . ' ' . $pro_text,
@@ -177,6 +183,14 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
         public function awl_premium_label_rules( $options ) {
 
             $pro_text = ' ' . __( "(Pro)", "advanced-woo-labels" );
+
+            $options['product'][] = array(
+                "name" => __( "Product brand", "advanced-woo-labels" ) . $pro_text,
+                "id"   => "product_brand",
+                "type" => "bool",
+                "disabled" => true,
+                "operators" => "equals",
+            );
 
             $options['product'][] = array(
                 "name" => __( "Product shipping parameters", "advanced-woo-labels" ) . $pro_text,
