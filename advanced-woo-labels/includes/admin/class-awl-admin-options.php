@@ -185,6 +185,11 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
          */
         static public function include_options() {
 
+            $disable_hooks_relations_field = AWL()->get_settings( 'display_hooks' ) === 'false';
+            if ( isset( $_REQUEST['display_hooks'] ) ) {
+                $disable_hooks_relations_field = $_REQUEST['display_hooks'] === 'false';
+            }
+
             $options = array();
 
             $options['general'][] = array(
@@ -298,14 +303,16 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             $options['general'][] = array(
                 "name" => __( "Hooks relation", "advanced-woo-labels" ),
-                "desc"  => __( "Rewrite existing hooks to new hooks, or simply add additional hooks to existing hooks.", "advanced-woo-labels" ),
+                "desc"  => __( "Set relations between new specified hook and default built-in plugin hooks.", "advanced-woo-labels" ),
                 "id"   => "hooks_relation",
-                "value" => 'true',
+                "value" => 'default',
+                "disabled" => $disable_hooks_relations_field,
                 "type"  => "select",
                 'choices' => array(
-                    'additional' => __( 'Add additional hooks', 'advanced-woo-labels' ),
-                    'rewrite' => __( 'Rewrite hooks', 'advanced-woo-labels' ),
-                    'rewrite_specified' => __( 'Rewrite specified and leave others as is', 'advanced-woo-labels' ),
+                    'default' => __( 'Use only built-in default hooks', 'advanced-woo-labels' ),
+                    'additional' => __( 'Add additional hooks. Default hooks will be unchanged', 'advanced-woo-labels' ),
+                    'rewrite' => __( 'Rewrite hooks. Use only specified hooks and disable default', 'advanced-woo-labels' ),
+                    'rewrite_specified' => __( 'Rewrite specified hooks and leave default as is', 'advanced-woo-labels' ),
                 )
             );
 

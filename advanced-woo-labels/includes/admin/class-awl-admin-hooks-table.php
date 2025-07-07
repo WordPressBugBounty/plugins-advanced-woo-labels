@@ -46,6 +46,12 @@ if ( ! class_exists( 'AWL_Admin_Hooks_Table' ) ) :
                 $table_class = $_REQUEST['display_hooks'] === 'true' ? '' : 'awl-disabled';
             }
 
+            $use_default_hooks_class = AWL()->get_settings( 'hooks_relation' ) !== 'default' ? '' : ' awl-use-default';
+            if ( isset( $_REQUEST['hooks_relation'] ) ) {
+                $use_default_hooks_class = $_REQUEST['hooks_relation'] !== 'default' ? '' : ' awl-use-default';
+            }
+            $table_class .= $use_default_hooks_class;
+
             if ( $this->hooks && ! empty( $this->hooks ) ) {
                 $table_class .= ' awl-has-hooks';
             }

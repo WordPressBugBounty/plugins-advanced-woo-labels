@@ -277,16 +277,19 @@ msgstr ""
 msgid "Hooks relation"
 msgstr ""
 
-msgid "Rewrite existing hooks to new hooks, or simply add additional hooks to existing hooks."
+msgid "Set relations between new specified hook and default built-in plugin hooks."
 msgstr ""
 
-msgid "Add additional hooks"
+msgid "Use only built-in default hooks"
 msgstr ""
 
-msgid "Rewrite hooks"
+msgid "Add additional hooks. Default hooks will be unchanged"
 msgstr ""
 
-msgid "Rewrite specified and leave others as is"
+msgid "Rewrite hooks. Use only specified hooks and disable default"
+msgstr ""
+
+msgid "Rewrite specified hooks and leave default as is"
 msgstr ""
 
 msgid "Disable all hooks"

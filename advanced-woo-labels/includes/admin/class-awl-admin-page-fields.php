@@ -49,6 +49,8 @@ if ( ! class_exists( 'AWL_Admin_Page_Fields' ) ) :
 
             foreach ( $this->options_array as $k => $value ) {
 
+                $disabled_class = isset( $value['disabled'] ) && $value['disabled'] ? ' awl-disabled' : '';
+
                 switch ( $value['type'] ) {
 
                     case 'text': ?>
@@ -142,7 +144,7 @@ if ( ! class_exists( 'AWL_Admin_Page_Fields' ) ) :
                         <tr valign="top">
                             <th scope="row"><?php echo esc_html( $value['name'] ); ?></th>
                             <td>
-                                <select name="<?php echo esc_attr( $value['id'] ); ?>">
+                                <select class="<?php echo $disabled_class; ?>" name="<?php echo esc_attr( $value['id'] ); ?>">
                                     <?php foreach ( $value['choices'] as $val => $label ) { ?>
                                         <option value="<?php echo esc_attr( $val ); ?>" <?php selected( $plugin_options[ $value['id'] ], $val ); ?>><?php echo esc_html( $label ); ?></option>
                                     <?php } ?>

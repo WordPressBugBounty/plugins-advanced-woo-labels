@@ -609,6 +609,20 @@ jQuery(document).ready(function ($) {
 
     });
 
+    $(document).on( 'change', 'select[name="hooks_relation"]', function(e) {
+        e.preventDefault();
+
+        var val = this.value;
+        var $hooksTable = $('.awl-hooks-table');
+
+        if ( val === 'default' ) {
+            $hooksTable.addClass('awl-use-default');
+        } else {
+            $hooksTable.removeClass('awl-use-default');
+        }
+
+    });
+
     $(document).on( 'change', '.awl-hooks-table .advanced-val-js-pos', function(e) {
         e.preventDefault();
         $(this).removeClass('advanced-val-empty');

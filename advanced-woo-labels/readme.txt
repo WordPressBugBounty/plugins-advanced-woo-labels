@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.21
+Stable tag: 2.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,7 +80,7 @@ Simple yet powerful way to create WooCommerce product labels and badges.
 Set any data inside product labels - use plain text, images, emojis or product-related data via text variables.
 
 * Write any **custom text inside product labels**.
-* Use special text variables to display product-specific information inside labels: **product price**, **product sale price**, **product discount amount**, **product discount percentage**, **product stock status**, **product reviews number** ( pro ), **product rating** ( pro ), **product shipping class** ( pro ), **product url** ( pro ), **product sizes** ( pro ), **product attributes** ( pro ), **product custom fields** ( pro ), etc.
+* Use special text variables to display product-specific information inside labels: **product price**, **product sale price**, **product discount amount**, **product discount percentage**, **product stock status**, **product reviews number** ( pro ), **product rating** ( pro ), **product shipping class** ( pro ), **product url** ( pro ), **product sizes** ( pro ), **product taxonomies** ( pro ), **product attributes** ( pro ), **product custom fields** ( pro ), etc.
 * Add **emojis** inside labels along with plain text.
 * Special text variable to make **math calculations** ( pro ).
 
@@ -228,6 +228,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.22 ( 07.07.2025 ) =
+* Update - Admin page options styles
+* Update - Add new value for Hooks Relation option. Feature to use only default hooks and disable all custom ones
 
 = 2.21 ( 23.06.2025 ) =
 * Update - Label settings page styles
@@ -460,7 +464,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 1.72 ( 10.07.2023 ) =
 * Update - Support for Elementor plugin. Enable labels for image, featured image elements
-
-= 1.71 ( 26.06.2023 ) =
-* Add - Support for Bricks Builder theme
-* Update - Tested with WC 7.8

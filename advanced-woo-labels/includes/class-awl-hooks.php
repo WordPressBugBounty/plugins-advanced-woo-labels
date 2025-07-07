@@ -124,6 +124,10 @@ class AWL_Hooks {
         $hooks_relation = AWL()->get_settings( 'hooks_relation' );
         $new_hooks = array();
 
+        if ( $hooks_relation === 'default' ) {
+            return $hooks;
+        }
+
         if ( $hooks_options && is_array( $hooks_options ) && ! empty( $hooks_options ) ) {
             foreach( $hooks_options as $hook ) {
 
