@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.22
+Stable tag: 2.23
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -213,21 +213,24 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Screenshots ==
 
-1. Labels and labels groups
-2. Create unlimited number of labels and display theme everywhere
-3. Show labels on product details page
-4. Labels styling options
-5. Labels styling options. Admin page
-6. Labels positions
-7. Change labels text and use special text variables
-8. Labels edit page. Text option
-9. Labels conditions options
-10. Labels conditions. Admin page
-11. Admin labels page
+1. Create unlimited number of labels and display them everywhere
+2. Labels positions
+3. Labels styling options
+4. Labels conditions options
+5. Change labels text and use special text variables
+6. Labels and labels groups
+7. Images as product labels
+8. Labels animations
+9. Links for labels
 
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.23 ( 22.07.2025 ) =
+* Add - Integration with WooCommerce Gallery for Breakdance plugin
+* Update - Tested with WC 10.0
+* Fix - Remove redundant chars from labels styles
 
 = 2.22 ( 07.07.2025 ) =
 * Update - Admin page options styles
@@ -461,6 +464,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Add - Remove default sale badge for WooCommerce image block
 * Add - Support for ShopEngine plugin
 * Update - Tested with WC 7.9
-
-= 1.72 ( 10.07.2023 ) =
-* Update - Support for Elementor plugin. Enable labels for image, featured image elements

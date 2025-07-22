@@ -317,7 +317,7 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
             if ( $this->custom_styles && $this->label_type !== 'image' ) {
 
                 if ( isset( $this->settings['font_size'] ) ) {
-                    $styles['font-size'] = $this->settings['font_size'] . 'px;';
+                    $styles['font-size'] = $this->settings['font_size'] . 'px';
                 }
 
                 if ( isset( $this->settings['font_weight'] ) ) {
@@ -329,7 +329,7 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
                 }
 
                 if ( isset( $this->settings['letter_spacing'] ) ) {
-                    $styles['letter-spacing'] = $this->settings['letter_spacing'] . 'px;';
+                    $styles['letter-spacing'] = $this->settings['letter_spacing'] . 'px';
                 }
 
                 if ( isset( $this->settings['font_style'] ) ) {

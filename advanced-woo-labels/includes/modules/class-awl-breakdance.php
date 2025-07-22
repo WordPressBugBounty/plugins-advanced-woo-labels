@@ -64,11 +64,25 @@ if (!class_exists('AWL_Breakdance')) :
          * Show labels for product title on single page
          */
         function breakdance_render_element_html( $elementHtml, $node ) {
+
             if ( is_singular('product') && $node && isset( $node['data'] ) && isset( $node['data']['type']  ) && $node['data']['type'] === 'EssentialElements\\WooProductTitle' ) {
                 $elementHtml = AWL_Label_Display::instance()->show_label( 'before_title' ) . $elementHtml;
             }
+
+            // Integration for WooCommerce Gallery for Breakdance plugin
+            if ( is_singular('product') && $node && isset( $node['data'] ) && isset( $node['data']['type']  ) && $node['data']['type'] === 'WPSix\\WooGallery' ) {
+                $on_image_label = AWL_Label_Display::instance()->show_label( 'on_image' ) ;
+                if ( strpos( $elementHtml, 'woo-gallery-main-swiper' ) !== false ) {
+                    $elementHtml = preg_replace( '/<div class="[\S\s]*?woo-gallery-main-swiper[\S\s]*?>[\S\s]*?<div[\S\s]*?>/i', '${0}' . $on_image_label, $elementHtml );
+                } else {
+                    $elementHtml = $on_image_label . $elementHtml;
+                }
+            }
+            
             $this->data['is_breakdance'] = false;
+
             return $elementHtml;
+
         }
 
         /*
