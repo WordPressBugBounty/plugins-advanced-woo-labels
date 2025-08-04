@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.23
+Stable tag: 2.24
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -226,6 +226,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.24 ( 04.08.2025 ) =
+* Update - Admin page styles. Fix margins for settings tabs
 
 = 2.23 ( 22.07.2025 ) =
 * Add - Integration with WooCommerce Gallery for Breakdance plugin
@@ -459,8 +462,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 1.74 ( 07.08.2023 ) =
 * Update - Integration with ShopLentor plugin
-
-= 1.73 ( 24.07.2023 ) =
-* Add - Remove default sale badge for WooCommerce image block
-* Add - Support for ShopEngine plugin
-* Update - Tested with WC 7.9

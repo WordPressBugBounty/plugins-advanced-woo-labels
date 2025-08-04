@@ -556,9 +556,13 @@
 }
 
 /* Label Settings tabs */
+#awl_label_settings .inside {
+    margin-top: 0;
+}
+
 .awl-label-settings-tabs {
     border-bottom: 1px solid #ccd0d4;
-    margin: -6px -12px 0;
+    margin: 0 -12px 0;
     background: #fafafa;
 }
 

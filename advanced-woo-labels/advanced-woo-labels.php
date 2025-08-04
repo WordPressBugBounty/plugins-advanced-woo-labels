@@ -3,7 +3,7 @@
 /*
 Plugin Name: Advanced Woo Labels
 Description: Advance WooCommerce product labels plugin
-Version: 2.23
+Version: 2.24
 Author: ILLID
 Author URI: https://advanced-woo-labels.com/
 Text Domain: advanced-woo-labels
@@ -90,7 +90,7 @@ final class AWL_Main {
      */
     private function define_constants() {
 
-        $this->define( 'AWL_VERSION', '2.23' );
+        $this->define( 'AWL_VERSION', '2.24' );
 
         $this->define( 'AWL_DIR', plugin_dir_path( AWL_FILE ) );
         $this->define( 'AWL_URL', plugin_dir_url( AWL_FILE ) );
