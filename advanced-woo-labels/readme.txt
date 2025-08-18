@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.24
+Stable tag: 2.25
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -226,6 +226,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.25 ( 18.08.2025 ) =
+* Add - Integration for TechStore theme
 
 = 2.24 ( 04.08.2025 ) =
 * Update - Admin page styles. Fix margins for settings tabs
@@ -459,6 +462,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Options for label stylings. Add descriptions for some options
 * Update - Admin pages notices
 * Fix - Strip special tags from label text option
-
-= 1.74 ( 07.08.2023 ) =
-* Update - Integration with ShopLentor plugin

@@ -318,6 +318,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                     $hooks['on_image']['archive'] = array( 'post_thumbnail_html' => array( 'priority' => 10, 'type' => 'filter', 'callback' => 'AWL_Integrations_Callbacks::post_thumbnail_html', 'args' => 4 ) );
                     break;
 
+                case 'TechStore':
+                    $hooks['on_image']['archive'] = array( 'woocommerce_before_shop_loop_item_title' => array( 'priority' => 9, 'js' => array( '.hw-thumb', 'append' ) ) );
+                    $hooks['before_title']['archive'] = array( 'woocommerce_before_shop_loop_item_title' => array( 'priority' => 10 ) );
+                    break;
+
                 case 'Kallyas':
                     $hooks['on_image']['archive'] = array( 'woocommerce_before_shop_loop_item' => array( 'priority' => 10, 'js' => array( '.kw-prodimage', 'append' ) ) );
                     break;
