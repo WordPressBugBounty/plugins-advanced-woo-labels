@@ -380,6 +380,15 @@ if ( ! class_exists( 'AWL_Conditions_Check' ) ) :
             $value = has_term( $this->rule['value'], 'product_cat', $product_id );
             $operator = $this->rule['operator'];
 
+            if ( ! $value && apply_filters( 'awl_labels_condition_include_descendants', false ) ) {
+                $assigned = wc_get_product_term_ids( $product_id, 'product_cat' );
+                foreach ( $assigned as $term_id ) {
+                    if ( term_is_ancestor_of( $this->rule['value'], (int) $term_id, 'product_cat' ) ) {
+                        $value = true;
+                    }
+                }
+            }
+
             if ( 'equal' == $operator ) {
                 return $value;
             } else {

@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.25
+Stable tag: 2.26
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -226,6 +226,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.26 ( 08.09.2025 ) =
+* Update - Add option to include descendants for products categories conditions
+* Update - Tested with WC 10.1
 
 = 2.25 ( 18.08.2025 ) =
 * Add - Integration for TechStore theme
@@ -452,13 +456,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Support for OceanWP theme. Add labels inside product quick view box
 * Update - ShopLentor plugin support. Fix labels display for product title block
 * Fix - Issue with third-party scripts modifying labels query to order by stock status
-
-= 1.75 ( 21.08.2023 ) =
-* Add - Advanced Hooks options. Use JS replacements and custom callbacks
-* Add - Support for Kadence blocks plugin
-* Add - Integration for Jet Smart Filters plugin
-* Update - Tested with WC 8.0
-* Update - Support for Astra theme
-* Update - Options for label stylings. Add descriptions for some options
-* Update - Admin pages notices
-* Fix - Strip special tags from label text option
