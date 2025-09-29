@@ -66,6 +66,9 @@ if (!class_exists('AWL_Xstore')) :
         public function awl_labels_hooks( $hooks ) {
 
             $hooks['on_image']['single']['woocommerce_single_product_image_thumbnail_html'] = array( 'priority' => 10, 'type' => 'filter', 'callback' => array( $this, 'xstore_single_image' ), 'args' => 1 );
+            $hooks['on_image']['archive']['etheme_product_grid_list_product_element_image'] = array( 'priority' => 10, 'type' => 'filter' );
+
+            $hooks['before_title']['archive']['before_etheme_product_grid_list_product_element_title'] = array( 'priority' => 10 );
             $hooks['before_title']['archive']['woocommerce_before_shop_loop_item_title'] = array( 'priority' => 20, 'callback' => array( $this, 'xstore_title_centered' ) );
             if ( get_option( 'etheme_single_product_builder', false ) ) {
                 $hooks['before_title']['single']['woocommerce_single_product_image_thumbnail_html'] = array( 'priority' => 11, 'type' => 'filter', 'callback' => array( $this, 'xstore_single_image_title' ), 'args' => 1, 'js' => array( '.product_title.entry-title', 'before' ) );

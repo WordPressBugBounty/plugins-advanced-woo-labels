@@ -315,6 +315,7 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                     break;
 
                 case 'MetroStore':
+                case 'Enfold':
                     $hooks['on_image']['archive'] = array( 'post_thumbnail_html' => array( 'priority' => 10, 'type' => 'filter', 'callback' => 'AWL_Integrations_Callbacks::post_thumbnail_html', 'args' => 4 ) );
                     break;
 

@@ -348,7 +348,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             $operators = array();
 
-            $operators['equals'] = array(
+            $equals = array(
                 array(
                     "name" => __( "equal to", "advanced-woo-labels" ),
                     "id"   => "equal",
@@ -359,15 +359,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
-            $operators['equals_compare'] = array(
-                array(
-                    "name" => __( "equal to", "advanced-woo-labels" ),
-                    "id"   => "equal",
-                ),
-                array(
-                    "name" => __( "not equal to", "advanced-woo-labels" ),
-                    "id"   => "not_equal",
-                ),
+            $compare = array(
                 array(
                     "name" => __( "greater or equal to", "advanced-woo-labels" ),
                     "id"   => "greater",
@@ -378,15 +370,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
-            $operators['equals_contains'] = array(
-                array(
-                    "name" => __( "equal to", "advanced-woo-labels" ),
-                    "id"   => "equal",
-                ),
-                array(
-                    "name" => __( "not equal to", "advanced-woo-labels" ),
-                    "id"   => "not_equal",
-                ),
+            $contains = array(
                 array(
                     "name" => __( "contains", "advanced-woo-labels" ),
                     "id"   => "contains",
@@ -396,6 +380,11 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                     "id"   => "not_contains",
                 ),
             );
+
+            $operators['equals'] = $equals;
+            $operators['equals_compare'] = array_merge( $equals, $compare );
+            $operators['equals_contains'] = array_merge( $equals, $contains );
+            $operators['equals_contains_compare'] = array_merge( $equals, $compare, $contains );
 
             return $operators[$name];
 
