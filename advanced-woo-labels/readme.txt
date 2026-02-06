@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.35
+Stable tag: 2.36
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.36 ( 06.02.2026 ) =
+* Update - Tested with WC 10.5
+* Update - Plugin header details. Add homepage link
+
 = 2.35 ( 02.02.2026 ) =
 * Update - Change styles for dashboard settings page
 
@@ -445,6 +449,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 = 1.87 ( 12.02.2024 ) =
 * Update - Description for text variables
 * Fix - Bug with products grid block integration callback
-
-= 1.86 ( 05.02.2024 ) =
-* Add - Support for Elessi theme
