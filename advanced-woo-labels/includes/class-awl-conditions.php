@@ -64,7 +64,7 @@ if ( ! class_exists( 'AWL_Conditions_Check' ) ) :
 
                         $this->rule = $condition_rule;
 
-                        $condition_name = $condition_rule['param'];
+                        $condition_name = isset( $condition_rule['param'] ) ? $condition_rule['param'] : '';
 
                         if ( isset( $custom_match_functions[$condition_name] ) ) {
                             $match_rule = call_user_func( $custom_match_functions[$condition_name], $condition_rule );

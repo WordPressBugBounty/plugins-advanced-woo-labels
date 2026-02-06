@@ -315,8 +315,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                     break;
 
                 case 'MetroStore':
-                case 'Enfold':
                     $hooks['on_image']['archive'] = array( 'post_thumbnail_html' => array( 'priority' => 10, 'type' => 'filter', 'callback' => 'AWL_Integrations_Callbacks::post_thumbnail_html', 'args' => 4 ) );
+                    break;
+
+                case 'Enfold':
+                    $hooks['on_image']['archive']['post_thumbnail_html'] = array( 'priority' => 10, 'type' => 'filter', 'callback' => 'AWL_Integrations_Callbacks::post_thumbnail_html', 'args' => 4 );
                     break;
 
                 case 'TechStore':
@@ -389,6 +392,9 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                 case 'Uncode':
                     $hooks['on_image']['archive'] = array( 'uncode_entry_visual_after_image' => array( 'priority' => 10 ) );
                     $hooks['before_title']['archive']= array( 'uncode_inner_entry_after_title' => array( 'priority' => 10 ) );
+                    if ( defined( 'UNCODE_IS_CUSTOM_WPB_VC' ) ) {
+                        $hooks['on_image']['single']['woocommerce_single_product_image_thumbnail_html'] = array( 'priority' => 10, 'type' => 'filter', 'callback' => 'AWL_Integrations_Callbacks::uncode_woocommerce_single_product_image_thumbnail_html', 'args' => 1 );
+                    }
                     break;
 
                 case 'Total':
@@ -449,6 +455,10 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                         $hooks['on_image']['archives']['shopical_woocommerce_after_shop_loop_item_title'] = array( 'priority' => 1, 'js' => array( '.product-image-wrapper', 'append' ) );
                     }
                     $hooks['before_title']['archives']['shopical_woocommerce_after_shop_loop_item_title'] = array( 'priority' => 2, 'js' => array( '.product-title a', 'before' ) );
+                    break;
+
+                case 'Shoptimizer';
+                    $hooks['on_image']['archives']['woocommerce_before_shop_loop_item_title'] = array( 'priority' => 4 );
                     break;
 
             }
@@ -523,6 +533,11 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
             // Variation Images Gallery for WooCommerce
             if ( in_array( 'woo-product-variation-gallery/woo-product-variation-gallery.php', $this->active_plugins ) ) {
                 $hooks['on_image']['single']['rtwpvg_product_badge'] = array( 'priority' => 10 );
+            }
+
+            // Chamevo Product Customization plugin
+            if ( in_array( 'chamevo/chamevo.php', $this->active_plugins ) ) {
+                $hooks['on_image']['single']['chamevo_before_product_designer'] = array( 'priority' => 10, 'js' => array( '.cha-product-designer-wrapper fpd-main-wrapper', 'append' ) );
             }
 
             return $hooks;

@@ -109,11 +109,38 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
 
                         $html .= '<tr valign="top" data-section="' . esc_attr( $section ) . '" data-option-id="' . esc_attr( $field['id'] ) . '" ' . $this->get_field_classes( $field ) . '>';
 
-                            $html .= '<th scope="row"><label for="' . esc_attr( AWL_Admin_Helpers::sanitize_tag( $this->field_name ) ) . '">' . $field['name'] . '</label></th>';
+                            $html .= '<th scope="row">';
+
+                                $html .= '<label for="' . esc_attr( AWL_Admin_Helpers::sanitize_tag( $this->field_name ) ) . '">';
+                                    $html .= $field['name'];
+                                $html .= '</label>';
+
+                                if ( isset( $field['multi_device'] ) && $field['multi_device'] ) {
+                                    $html .= AWL_Admin_Helpers::add_device_switcher();
+                                }
+
+                            $html .= '</th>';
 
                             $html .= '<td>';
 
-                                $html .= $this->get_field( $field );
+                                if ( isset( $field['multi_device'] ) && $field['multi_device'] ) {
+
+                                    $html .= '<div data-device-opt="desktop" class="awl-device-opt awl-device-desktop">';
+                                        $html .= $this->get_field( $field );
+                                    $html .= '</div>';
+
+                                    foreach ( array( 'tablet', 'phone'  ) as $device ) {
+                                        $device_field = $this->get_device_field( $field, $device );
+                                        $html .= '<div data-device-opt="'. $device .'" class="awl-device-opt awl-device-'. $device .'">';
+                                            $html .= $this->get_field( $device_field );
+                                        $html .= '</div>';
+                                    }
+
+                                } else {
+
+                                    $html .= $this->get_field( $field );
+
+                                }
 
                                 if ( isset( $field['tip'] ) && $field['tip'] ) {
                                     $html .= '<span class="awl-help-tip" data-tip="'. esc_attr( $field['tip'] ) .'"></span>';
@@ -163,7 +190,9 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
             $field_value = false;
 
             if ( $this->values && ! empty( $this->values ) && isset( $this->values['settings'] ) ) {
+
                 $field_id = $field['id'];
+
                 if ( isset( $this->values['settings'][$field_id] ) ) {
                     $field_value = $this->values['settings'][$field_id];
                     $suboption = isset( $field['suboption'] ) ? $field['suboption'] : '';
@@ -171,6 +200,17 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
                         $field_value = $field_value[$suboption];
                     }
                 }
+
+                // get parent value for multi device options if child value is missing
+                if ( ! is_string( $field_value ) && ! $field_value &&
+                    ( strpos( $field_id, '_tablet' ) !== false || strpos( $field_id, '_phone' ) !== false )
+                ) {
+                    $field_id = str_replace( array( '_tablet', '_phone' ), '', $field_id );
+                    if ( isset( $this->values['settings'][$field_id] ) ) {
+                        $field_value = $this->values['settings'][$field_id];
+                    }
+                }
+
             }
 
             if ( is_string( $field_value ) ) {
@@ -223,6 +263,34 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
                 $field_html .= $this->call_field( $field );
             }
 
+            // Add subfields if exists
+            if ( isset( $field['suboptions'] ) && is_array( $field['suboptions'] ) ) {
+
+                $new_field_html = '';
+
+                $new_field_html .= '<div class="fields-columns">';
+
+                $new_field_html .= '<div class="fields-column-item field-suboption-item-main">';
+                    $new_field_html .= $field_html;
+                $new_field_html .= '</div>';
+
+                foreach( $field['suboptions'] as $suboption_id => $suboption_params ) {
+
+                    $this->field_name = $this->get_field_name( $suboption_params );
+                    $suboptions_width = isset( $suboption_params['width'] ) ? ' style="width:' . esc_attr( $suboption_params['width'] ) . ';flex: 0 0 ' . esc_attr( $suboption_params['width'] ) . ';"' : '';
+
+                    $new_field_html .= '<div data-parent-opt="'. esc_attr( $this->get_field_name( $field ) ) .'" class="field-suboption-item"'.$suboptions_width.'>';
+                        $new_field_html .= $this->call_field( $suboption_params );
+                    $new_field_html .= '</div>';
+
+                }
+
+                $new_field_html .= '</div>';
+
+                $field_html = $new_field_html;
+
+            }
+
             return $field_html;
 
         }
@@ -235,6 +303,27 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
         private function call_field( $field ) {
             $this->field_value = $this->get_field_value( $field );
             return call_user_func_array( array( $this, 'get_field_' . $field['type'] ), array( $field ) );
+        }
+
+        /*
+         * Get specific device subfield
+         * @param $parent_field array Main field
+         * @param $device string Device name
+         * @return array
+         */
+        private function get_device_field( $parent_field, $device ) {
+
+            $device_field = $parent_field;
+            $device_field['id'] = $parent_field['id'] . '_' . $device;
+            if ( isset( $device_field['suboptions'] ) ) {
+                foreach ( $device_field['suboptions'] as $suboption_key => $suboption ) {
+                    $device_field['suboptions'][$suboption_key]['id'] = $suboption['id'] . '_' . $device;
+                }
+            }
+            $this->field_name = $this->get_field_name( $device_field );
+
+            return $device_field;
+
         }
 
         /*
@@ -251,7 +340,8 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
 
             foreach ( $field['choices'] as $val => $label ) {
                 $disabled = strpos( $val, '__pro' ) !== false ? ' disabled' : '';
-                $html .= '<option ' . selected( $this->field_value, $val, false ) . ' value="' . esc_attr( $val ) . '"'. $disabled .'>' . esc_html( $label ) . '</option>';
+                $data_default = isset( $field['defaults'] ) && isset( $field['defaults'][$val] ) ? ' data-default="'. esc_attr( $field['defaults'][$val] ) .'"' : '';
+                $html .= '<option ' . selected( $this->field_value, $val, false ) . ' value="' . esc_attr( $val ) . '"'. $disabled . $data_default . '>' . esc_html( $label ) . '</option>';
             }
 
             $html .= '</select>';

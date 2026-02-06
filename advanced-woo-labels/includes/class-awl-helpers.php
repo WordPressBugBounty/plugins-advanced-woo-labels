@@ -321,6 +321,44 @@ if ( ! class_exists( 'AWL_Helpers' ) ) :
 
         }
 
+        /*
+         * Check if any active label has responsive options enabled
+         *
+         * @return bool
+         */
+        static function is_responsive_opts_enabled() {
+
+            $enabled = false;
+
+            $labels = wp_cache_get( 'awl_all_labels' );
+            if ( false === $labels ) {
+                $labels = AWL_Helpers::get_awl_labels();
+                wp_cache_set( 'awl_all_labels', $labels, '', 60 );
+            }
+
+            foreach ( $labels as $label_id ) {
+
+                $label_options = AWL()->get_label_settings( $label_id );
+                $label_settings = isset( $label_options['settings'] ) ? $label_options['settings'] : false;
+
+                $size_option_name = 'font_size';
+
+                if ( isset( $label_settings['custom_styles'] ) && $label_settings['custom_styles'] === 'true' ) {
+                    $size_option_value = $label_settings[$size_option_name];
+                    foreach ( array( 'tablet', 'phone' ) as $device ) {
+                        if ( isset( $label_settings[$size_option_name.'_'.$device] ) && $label_settings[$size_option_name.'_'.$device] !== $size_option_value ) {
+                            $enabled = true;
+                            break 2;
+                        }
+                    }
+                }
+
+            }
+
+            return $enabled;
+
+        }
+
     }
 
 endif;

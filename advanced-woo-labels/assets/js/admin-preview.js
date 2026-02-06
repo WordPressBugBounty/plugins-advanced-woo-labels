@@ -6,6 +6,7 @@ jQuery(document).ready(function ($) {
     var settingsTable = $('.awl-label-settings');
     var previewBox = $('#awl-preview');
     var previewLabelContainer = $('#awl-preview .advanced-woo-labels');
+    var previewLabelWrap = previewLabelContainer.find('.awl-label-wrap');
     var previewLabel = previewLabelContainer.find('.awl-product-label');
     var previewLabelBefore = previewLabel.find('.awl-label-before');
     var previewLabelAfter = previewLabel.find('.awl-label-after');
@@ -26,9 +27,15 @@ jQuery(document).ready(function ($) {
     var inputLabelBgColor = $('#awl-label-params-settings-bg-color');
     var inputLabelTextColor = $('#awl-label-params-settings-text-color');
     var inputLabelFontSize = $('#awl-label-params-settings-font-size');
+    var inputLabelFontSizeUnit = $('#awl-label-params-settings-font-size-unit');
+    var inputLabelFontSizeTablet = $('#awl-label-params-settings-font-size-tablet');
+    var inputLabelFontSizeTabletUnit = $('#awl-label-params-settings-font-size-unit-tablet');
+    var inputLabelFontSizePhone = $('#awl-label-params-settings-font-size-phone');
+    var inputLabelFontSizePhoneUnit = $('#awl-label-params-settings-font-size-unit-phone');
     var inputLabelFontStyle = $('#awl-label-params-settings-font-style');
     var inputLabelFontWeight = $('#awl-label-params-settings-font-weight');
     var inputLabelLetterSpacing = $('#awl-label-params-settings-letter-spacing');
+    var inputLabelLetterSpacingUnit = $('#awl-label-params-settings-letter-spacing-unit');
     var inputLabelOpacity = $('#awl-label-params-settings-opacity');
     var inputLabelPaddingTop = $('#awl-label-params-settings-padding-top');
     var inputLabelPaddingRight = $('#awl-label-params-settings-padding-right');
@@ -63,6 +70,12 @@ jQuery(document).ready(function ($) {
         '{BR}' : '<br>'
     };
 
+    var currentDevice = 'desktop';
+
+    $(document).on('aws:deviceChange', function (e, device) {
+        currentDevice = device;
+        $('[data-device-opt="' + device + '"]').find('input, select').trigger('change');
+    });
 
     // on load
     // on label type change
@@ -79,6 +92,7 @@ jQuery(document).ready(function ($) {
         labelSvg.removeAttr( 'style' );
         labelSvgLine.removeAttr( 'style' );
         previewBox.find('#awl-css').remove();
+        previewBox.removeClass('awl-custom-styles-enabled');
 
         var isCustomStylesEnabled = customStylesCheckbox.is(':checked');
 
@@ -92,6 +106,7 @@ jQuery(document).ready(function ($) {
             }
             if ( isCustomStylesEnabled ) {
                 $('#awl_label_settings [data-section="styles"]').find('input:not(#awl-label-params-settings-custom-styles), select, textarea').trigger('change').trigger('keyup');
+                previewBox.addClass('awl-custom-styles-enabled');
             }
             previewBox.removeClass('awl-rebuild');
             firstInit = false;
@@ -213,6 +228,9 @@ jQuery(document).ready(function ($) {
 
         if ( label === 'awl-type-image' ) {
 
+            previewLabelWrap.removeClass('awl-text-label-wrap');
+            previewLabelWrap.addClass('awl-image-label-wrap');
+
             var imageUrl = $(this).val();
             // not uploaded image
             if ( imageUrl.indexOf("image-") === 0 ) {
@@ -222,6 +240,9 @@ jQuery(document).ready(function ($) {
             previewLabel.find('.awl-label-image img').attr( 'src', imageUrl );
 
         } else {
+
+            previewLabelWrap.addClass('awl-text-label-wrap');
+            previewLabelWrap.removeClass('awl-image-label-wrap');
 
             inputLabelText.trigger('keyup');
 
@@ -295,11 +316,59 @@ jQuery(document).ready(function ($) {
     });
 
     inputLabelFontSize.on( 'keyup input', function(e) {
-        previewLabel.css( 'font-size', $(this).val() + 'px' );
+        if ( currentDevice === 'desktop' ) {
+            var unitSize = inputLabelFontSizeUnit.val();
+            previewLabel.css( 'font-size', $(this).val() + unitSize );
+        }
+    });
+
+    inputLabelFontSizeUnit.on( 'change', function(e) {
+        if ( currentDevice === 'desktop' ) {
+            var size = inputLabelFontSize.val();
+            var unit = $(this).val();
+            previewLabel.css( 'font-size', size + unit );
+        }
+    });
+
+    inputLabelFontSizeTablet.on( 'keyup input', function(e) {
+        if ( currentDevice === 'tablet' ) {
+            var unitSize = inputLabelFontSizeTabletUnit.val();
+            previewLabel.css( 'font-size', $(this).val() + unitSize );
+        }
+    });
+
+    inputLabelFontSizeTabletUnit.on( 'change', function(e) {
+        if ( currentDevice === 'tablet' ) {
+            var size = inputLabelFontSizeTablet.val();
+            var unit = $(this).val();
+            previewLabel.css( 'font-size', size + unit );
+        }
+    });
+
+    inputLabelFontSizePhone.on( 'keyup input', function(e) {
+        if ( currentDevice === 'phone' ) {
+            var unitSize = inputLabelFontSizePhoneUnit.val();
+            previewLabel.css( 'font-size', $(this).val() + unitSize );
+        }
+    });
+
+    inputLabelFontSizePhoneUnit.on( 'change', function(e) {
+        if ( currentDevice === 'phone' ) {
+            var size = inputLabelFontSizePhone.val();
+            var unit = $(this).val();
+            previewLabel.css( 'font-size', size + unit );
+        }
     });
 
     inputLabelLetterSpacing.on( 'keyup input', function(e) {
-        previewLabel.css( 'letter-spacing', $(this).val() + 'px' );
+        var unitLetterSpacing = inputLabelLetterSpacingUnit.val();
+        previewLabel.css( 'letter-spacing', $(this).val() + unitLetterSpacing );
+    });
+
+    inputLabelLetterSpacingUnit.on( 'change', function(e) {
+        var size = inputLabelLetterSpacing.val();
+        var unit = $(this).val();
+        previewLabel.css( 'letter-spacing', size + unit );
     });
 
     inputLabelFontWeight.on( 'change', function(e) {

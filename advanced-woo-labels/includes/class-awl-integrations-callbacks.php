@@ -110,6 +110,13 @@ if ( ! class_exists( 'AWL_Integrations_Callbacks' ) ) :
             return $html;
         }
 
+        public static function uncode_woocommerce_single_product_image_thumbnail_html( $html ) {
+            if ( strpos( $html, 'woocommerce-product-gallery__image-first' ) !== false ) {
+                $html = str_replace( '<img', AWL_Label_Display::instance()->show_label( 'on_image' ) . '<img', $html );
+            }
+            return $html;
+        }
+
     }
 
 endif;

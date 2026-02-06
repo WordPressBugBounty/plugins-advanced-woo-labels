@@ -541,9 +541,26 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
             );
 
             $options['styles'][] = array(
-                "name" => __( "Font size (px)", "advanced-woo-labels" ),
+                "name" => __( "Font size", "advanced-woo-labels" ),
                 "id"   => "font_size",
                 "value" => '14',
+                "min" => "0",
+                "step" => "1",
+                'suboptions' => array(
+                    'font_size_unit' => array(
+                        "id"      => "font_size_unit",
+                        "value"   => "px",
+                        "type"    => "select",
+                        "defaults" => array( 'px' => '14', 'em' => '1', 'rem' => '1', 'vw' => '1' ),
+                        'choices' => array(
+                            'px'  => 'px',
+                            'em'  => 'em',
+                            'rem' => 'rem',
+                            'vw'  => 'vw',
+                        ),
+                    ),
+                ),
+                "multi_device" => true,
                 "type"  => "number",
                 "class" => "awl-for-text"
             );
@@ -582,9 +599,24 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
             );
 
             $options['styles'][] = array(
-                "name" => __( "Letter spacing (px)", "advanced-woo-labels" ),
+                "name" => __( "Letter spacing", "advanced-woo-labels" ),
                 "id"   => "letter_spacing",
                 "value" => '0',
+                "min" => "0",
+                "step" => "1",
+                'suboptions' => array(
+                    'letter_spacing_unit' => array(
+                        "id"      => "letter_spacing_unit",
+                        "value"   => "px",
+                        "type"    => "select",
+                        "defaults" => array( 'px' => '0', 'em' => '0', 'rem' => '0' ),
+                        'choices' => array(
+                            'px'  => 'px',
+                            'em'  => 'em',
+                            'rem' => 'rem',
+                        ),
+                    ),
+                ),
                 "type"  => "number",
                 "class" => "awl-for-text"
             );
@@ -802,13 +834,17 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
             $options['product'][] = array(
                 "name" => __( "Product name", "advanced-woo-labels" ),
                 "id"   => "product",
-                "type" => "callback_ajax",
-                "ajax" => "awl-searchForProducts",
-                "placeholder" => __( "Search for a product...", "advanced-woo-labels" ),
+                "type" => "callback",
                 "operators" => "equals",
                 "choices" => array(
-                    'callback' => 'AWL_Admin_Helpers::get_product',
-                    'params'   => array()
+                    "callback" => "AWL_Admin_Helpers::search_for_products",
+                    'params' => array(),
+                    'ajax' => array(
+                        "action" => "awl-getSelectOptionValues",
+                        "input" => 3,
+                        "placeholder" => __( "Search for a product...", "advanced-woo-labels" ),
+                        "value_callback"  => "AWL_Admin_Helpers::get_product",
+                    ),
                 ),
             );
 
@@ -840,8 +876,14 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "type" => "callback",
                 "operators" => "equals",
                 "choices" => array(
-                    'callback' => 'AWL_Admin_Helpers::get_users',
-                    'params'   => array()
+                    "callback" => "AWL_Admin_Helpers::get_users",
+                    'params' => array(),
+                    'ajax' => array(
+                        "action" => "awl-getSelectOptionValues",
+                        "value_callback"  => "AWL_Admin_Helpers::get_user_by_id",
+                        "placeholder" => __( "User name", "advanced-woo-labels" ),
+                        "input" => 3,
+                    ),
                 ),
             );
 
@@ -862,8 +904,14 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "type" => "callback",
                 "operators" => "equals",
                 "choices" => array(
-                    'callback' => 'AWL_Admin_Helpers::get_pages',
-                    'params'   => array()
+                    "callback" => "AWL_Admin_Helpers::get_pages",
+                    'params' => array(),
+                    'ajax' => array(
+                        "action" => "awl-getSelectOptionValues",
+                        "value_callback"  => "AWL_Admin_Helpers::get_page_by_id",
+                        "placeholder" => __( "Page name", "advanced-woo-labels" ),
+                        "input" => 3,
+                    ),
                 ),
             );
 

@@ -146,15 +146,39 @@ if ( ! class_exists( 'AWL_Admin_Label_Rules' ) ) :
             $val = ( $this->value && is_array( $this->value ) && isset( $this->value['suboption'] ) ) ? $this->value['suboption'] : '';
             $rules_html = '';
 
-            if ( isset( $this->rule['suboption'] ) && isset( $this->rule['suboption']['callback'] ) && isset( $this->rule['suboption']['params'] ) ) {
-                $values_callback = self::get_rule_callback_options( $this->rule['suboption']['callback'], $this->rule['suboption']['params'], $val );
+            if ( isset( $this->rule['suboption'] ) ) {
 
-                if ( $values_callback ) {
-                    $options_number = substr_count( $values_callback, '</option>' );
-                    $val_class = $options_number > 15 ? ' awl-select2' : '';
-                    $rules_html = '<select name="' . esc_attr( $this->field_name ) . '" class="suboption-val' . $val_class . '" data-awl-suboption>' . $values_callback . '</select>';
+                if ( isset( $this->rule['suboption']['ajax'] ) && isset( $this->rule['suboption']['ajax']['action'] )
+                    && ! ( is_ajax() && isset( $_REQUEST['action'] ) && ( $_REQUEST['action'] === 'awl-getRuleGroup' || $_REQUEST['action'] === 'awl-getSuboptionValues' ) && isset( $this->rule['choices']['ajax']['input'] ) && $this->rule['choices']['ajax']['input'] === 0  )
+                ) {
+
+                    $ajax_callback = $this->rule['suboption']['callback'];
+                    $action = $this->rule['suboption']['ajax']['action'];
+                    $value_callback = isset( $this->rule['suboption']['ajax']['value_callback'] ) ? $this->rule['suboption']['ajax']['value_callback'] : '';
+                    $min_ajax_input = isset( $this->rule['suboption']['ajax']['input'] ) ? intval( $this->rule['suboption']['ajax']['input'] ) : 0;
+                    $placeholder = isset( $this->rule['suboption']['ajax']['placeholder'] ) ? $this->rule['suboption']['ajax']['placeholder'] : '';
+
+                    $displayed_val = $val;
+                    if ( $val && $value_callback ) {
+                        $displayed_val = call_user_func_array( $value_callback, array( $val ) );
+                    }
+
+                    $rules_html = '<select data-ajax="'. esc_attr( $action ) .'" data-ajax-callback="'. esc_attr( $ajax_callback ) .'" data-input="'. esc_attr( $min_ajax_input ) .'" data-placeholder="'. esc_attr( $placeholder ) .'" name="' . esc_attr( $this->field_name ) . '" class="suboption-val awl-select2-ajax" data-awl-suboption><option value="' . esc_attr( $val ) . '">' . esc_attr( $displayed_val ) . '</option></select>';
+
+                } elseif ( isset( $this->rule['suboption']['callback'] ) && isset( $this->rule['suboption']['params'] ) ) {
+
+                    $values_callback = self::get_rule_callback_options( $this->rule['suboption']['callback'], $this->rule['suboption']['params'], $val );
+
+                    if ( $values_callback ) {
+                        $options_number = substr_count( $values_callback, '</option>' );
+                        $val_class = $options_number > 15 ? ' awl-select2' : '';
+                        $rules_html = '<select name="' . esc_attr( $this->field_name ) . '" class="suboption-val' . $val_class . '" data-awl-suboption>' . $values_callback . '</select>';
+                    }
+
                 } else {
+
                     $rules_html = '<select name="' . esc_attr( $this->field_name ) . '" class="suboption-val" data-awl-suboption><option value=""></option></select>';
+
                 }
 
             }
@@ -184,8 +208,8 @@ if ( ! class_exists( 'AWL_Admin_Label_Rules' ) ) :
                         $values_suboption = call_user_func_array( $this->rule['suboption']['callback'], $this->rule['suboption']['params'] );
                         if ( $values_suboption && is_array( $values_suboption ) && ! empty( $values_suboption ) ) {
                             foreach ( $values_suboption as $values_val => $values_name ) {
-                                if ( is_array( $values_name ) && isset( $values_name['value'] ) ) {
-                                    $values_val = $values_name['value'];
+                                if ( is_array( $values_name ) && isset( $values_name['id'] ) ) {
+                                    $values_val = $values_name['id'];
                                 }
                                 $callback_params = array( $values_val );
                                 break;
@@ -193,30 +217,42 @@ if ( ! class_exists( 'AWL_Admin_Label_Rules' ) ) :
                         }
                     }
 
-                    $values_callback = $this->get_rule_callback_options( $callback_function, $callback_params, $val );
+                    if ( isset( $this->rule['choices']['ajax'] ) && isset( $this->rule['choices']['ajax']['action'] )
+                        && ! ( is_ajax() && isset( $_REQUEST['action'] ) && ( $_REQUEST['action'] === 'awl-getRuleGroup' || $_REQUEST['action'] === 'awl-getSuboptionValues' ) && isset( $this->rule['choices']['ajax']['input'] ) && $this->rule['choices']['ajax']['input'] === 0  )
+                    ) {
 
-                    if ( $values_callback ) {
-                        $options_number = substr_count( $values_callback, '</option>' );
-                        $val_class = $options_number > 15 ? ' awl-select2' : '';
-                        if ( isset( $this->rule['suboption'] ) ) {
-                            $values_callback = '<option value="awl_any">' . __( "Any", "advanced-woo-labels" ) . '</option>' . $values_callback;
+                        $action = $this->rule['choices']['ajax']['action'];
+                        $value_callback = isset( $this->rule['choices']['ajax']['value_callback'] ) ? $this->rule['choices']['ajax']['value_callback'] : '';
+                        $min_ajax_input = isset( $this->rule['choices']['ajax']['input'] ) ? intval( $this->rule['choices']['ajax']['input'] ) : 0;
+                        $placeholder = isset( $this->rule['choices']['ajax']['placeholder'] ) ? $this->rule['choices']['ajax']['placeholder'] : '';
+
+                        $displayed_val = $val;
+                        if ( $val && $value_callback ) {
+                            $callback_params[] = $val;
+                            $displayed_val = call_user_func_array( $value_callback, $callback_params );
+                            if ( $displayed_val === 'awl_any' ) {
+                                $displayed_val = __( 'Any', 'advanced-woo-labels' );
+                            }
                         }
-                        $values = '<select name="' . esc_attr( $this->field_name ) . '" class="value-val' . $val_class . '">' . $values_callback . '</select>';
+
+                        $values = '<select data-ajax="'. esc_attr( $action ) .'" data-ajax-callback="'. esc_attr( $callback_function ) .'" data-ajax-callback-param="' . esc_attr( json_encode( $callback_params ) ) . '" data-input="'. esc_attr( $min_ajax_input ) .'" data-placeholder="'. esc_attr( $placeholder ) .'" name="' . esc_attr( $this->field_name ) . '" class="value-val awl-select2-ajax"><option value="' . esc_attr( $val ) . '">' . esc_attr( $displayed_val ) . '</option></select>';
+
                     } else {
-                        $values = '<select name="' . esc_attr( $this->field_name ) . '" class="value-val"><option value=""></option></select>';
+
+                        $values_callback = $this->get_rule_callback_options( $callback_function, $callback_params, $val );
+
+                        if ( $values_callback ) {
+                            $options_number = substr_count( $values_callback, '</option>' );
+                            $val_class = $options_number > 15 ? ' awl-select2' : '';
+                            if ( isset( $this->rule['suboption'] ) ) {
+                                $values_callback = '<option value="awl_any">' . __( "Any", "advanced-woo-labels" ) . '</option>' . $values_callback;
+                            }
+                            $values = '<select name="' . esc_attr( $this->field_name ) . '" class="value-val' . $val_class . '">' . $values_callback . '</select>';
+                        } else {
+                            $values = '<select name="' . esc_attr( $this->field_name ) . '" class="value-val"><option value=""></option></select>';
+                        }
+
                     }
-
-                    break;
-
-                case 'callback_ajax';
-
-                    $values_callback = '';
-                    if ( $val ) {
-                        $callback_function = $this->rule['choices']['callback'];
-                        $values_callback = $this->get_rule_callback_options( $callback_function, array( $val ), $val );
-                    }
-
-                    $values = '<select data-ajax="' . esc_attr( $this->rule['ajax'] ) . '" data-placeholder="' . esc_attr( $this->rule['placeholder'] ) . '" name="' . esc_attr( $this->field_name ) . '" class="value-val awl-select2-ajax">'. $values_callback .'</select>';
 
                     break;
 
@@ -239,6 +275,7 @@ if ( ! class_exists( 'AWL_Admin_Label_Rules' ) ) :
                 case 'text';
 
                     $placeholder = $this->rule['placeholder'] ? $this->rule['placeholder'] : '';
+                    $val = $val === 'awl_any' ? '' : $val;
                     $values .= '<input type="text" name="' . esc_attr( $this->field_name ) . '" value="' . esc_attr( $val ) . '" class="value-val" placeholder="' . esc_html( $placeholder ) . '">';
 
                     break;
@@ -274,6 +311,7 @@ if ( ! class_exists( 'AWL_Admin_Label_Rules' ) ) :
          * Rules callback options
          * @param $callback string Function name
          * @param $params array Function parameters
+         * @param $value mixed Current option value
          * @return string
          */
         private function get_rule_callback_options( $callback, $params, $value = false ) {
@@ -283,10 +321,18 @@ if ( ! class_exists( 'AWL_Admin_Label_Rules' ) ) :
 
             if ( $values_arr && is_array( $values_arr ) && ! empty( $values_arr ) ) {
                 foreach ( $values_arr as $values_val => $values_name ) {
+
+                    if ( is_array( $values_name ) && isset( $values_name['text'] ) && isset( $values_name['id'] ) ) {
+                        $values_val = $values_name['id'];
+                        $values_name = $values_name['text'];
+                    }
+
+                    // depricated
                     if ( is_array( $values_name ) && isset( $values_name['name'] ) && isset( $values_name['value'] ) ) {
                         $values_val = $values_name['value'];
                         $values_name = $values_name['name'];
                     }
+
                     $values .= '<option ' . selected( $value, $values_val, false ) . '  value="' . esc_attr( $values_val ) . '">' . esc_html( $values_name ) . '</option>';
                 }
             }

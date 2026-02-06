@@ -22,7 +22,7 @@ if ( ! class_exists( 'AWL_Admin_Ajax' ) ) :
 
             add_action( 'wp_ajax_awl-changeLabelStatus', array( $this, 'change_label_status' ) );
 
-            add_action( 'wp_ajax_awl-searchForProducts', array( $this, 'search_for_products' ) );
+            add_action( 'wp_ajax_awl-getSelectOptionValues', array( $this, 'get_select_option_values' ) );
 
             add_action( 'wp_ajax_awl-showCurrentHooks', array( $this, 'show_current_hooks' ) );
 
@@ -129,42 +129,23 @@ if ( ! class_exists( 'AWL_Admin_Ajax' ) ) :
         /*
          * Ajax hook to search for products
          */
-        public function search_for_products() {
+        public function get_select_option_values() {
 
             check_ajax_referer( 'awl_admin_ajax_nonce' );
 
-            $term = sanitize_text_field( $_POST['search'] );
+            $callback = sanitize_text_field( $_POST['callback'] );
+            $callback_params = isset( $_POST['param'] ) ? (array) $_POST['param'] : array();
+
+            $term = isset( $_POST['search'] ) ? sanitize_text_field( $_POST['search'] ) : '';
             $term = (string) wc_clean( wp_unslash( $term ) );
 
-            $products = array();
-
-            $include_variations = false;
-            $limit = 30;
-
-            if ( class_exists('WC_Data_Store') ) {
-
-                $data_store = WC_Data_Store::load( 'product' );
-                $ids        = $data_store->search_products( $term, '', (bool) $include_variations, false, $limit, array(), array() );
-
-                foreach ( $ids as $id ) {
-
-                    $product_object = wc_get_product( $id );
-
-                    if ( ! wc_products_array_filter_readable( $product_object ) ) {
-                        continue;
-                    }
-
-                    $formatted_name = $product_object->get_formatted_name();
-                    $products[] = array(
-                        'id' => $product_object->get_id(),
-                        'text' => rawurldecode( wp_strip_all_tags( $formatted_name ) )
-                    );
-
-                }
-
+            if ( $term ) {
+                $callback_params = array( $term );
             }
 
-            wp_send_json( array( 'results' => $products ) );
+            $values_arr = call_user_func_array( $callback, $callback_params );
+
+            wp_send_json( array( 'results' => $values_arr ) );
 
         }
 

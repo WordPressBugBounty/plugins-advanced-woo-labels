@@ -118,6 +118,7 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
          */
         private function label_wrap_classes() {
             $class = '';
+            $class .= ( $this->label_type === 'image' ) ? ' awl-image-label-wrap' : ' awl-text-label-wrap';
             $class .= ' awl-label-id-' . strval( $this->label_id );
             return str_replace( '_', '-', $class );
         }
@@ -308,6 +309,8 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
                 'white-space' => 'nowrap',
                 'vertical-align' => 'baseline',
                 'font-size' => '14px',
+                '--awl-font-size-tablet' => '14px',
+                '--awl-font-size-phone' => '14px',
                 'font-weight' => '400',
                 'font-style' => 'normal',
                 'letter-spacing' => '0',
@@ -317,7 +320,28 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
             if ( $this->custom_styles && $this->label_type !== 'image' ) {
 
                 if ( isset( $this->settings['font_size'] ) ) {
-                    $styles['font-size'] = $this->settings['font_size'] . 'px';
+
+                    $font_size = $this->settings['font_size'] !== '' ? $this->settings['font_size'] : 0;
+                    $font_size_unit = 'px';
+                    if ( isset( $this->settings['font_size_unit'] ) && $this->settings['font_size_unit'] ) {
+                        $font_size_unit = $this->settings['font_size_unit'];
+                    }
+                    $styles['font-size'] = $font_size . $font_size_unit;
+
+                    // responsive font size options
+                    foreach ( array( 'tablet', 'phone'  ) as $device ) {
+                        if ( isset( $this->settings['font_size_'.$device] ) ) {
+                            $responsive_font_size = $this->settings['font_size_'.$device] !== '' ? $this->settings['font_size_'.$device] : 0;
+                            $responsive_font_size_unit = 'px';
+                            if ( isset( $this->settings['font_size_unit_'.$device] ) && $this->settings['font_size_unit_'.$device] ) {
+                                $responsive_font_size_unit = $this->settings['font_size_unit_'.$device];
+                            }
+                            $styles['--awl-font-size-'.$device] = $responsive_font_size . $responsive_font_size_unit;
+                        } else {
+                            $styles['--awl-font-size-'.$device] = $font_size . $font_size_unit;
+                        }
+                    }
+
                 }
 
                 if ( isset( $this->settings['font_weight'] ) ) {
@@ -329,7 +353,11 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
                 }
 
                 if ( isset( $this->settings['letter_spacing'] ) ) {
-                    $styles['letter-spacing'] = $this->settings['letter_spacing'] . 'px';
+                    $letter_spacing_unit = 'px';
+                    if ( isset( $this->settings['letter_spacing_unit'] ) && $this->settings['letter_spacing_unit'] ) {
+                        $letter_spacing_unit = $this->settings['letter_spacing_unit'];
+                    }
+                    $styles['letter-spacing'] = $this->settings['letter_spacing'] . $letter_spacing_unit;
                 }
 
                 if ( isset( $this->settings['font_style'] ) ) {

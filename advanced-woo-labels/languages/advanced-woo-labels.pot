@@ -433,7 +433,7 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-msgid "Font size (px)"
+msgid "Font size"
 msgstr ""
 
 msgid "Font style"
@@ -481,7 +481,7 @@ msgstr ""
 msgid "Extra Black"
 msgstr ""
 
-msgid "Letter spacing (px)"
+msgid "Letter spacing"
 msgstr ""
 
 msgid "Opacity"
@@ -910,9 +910,6 @@ msgstr ""
 msgid "Product height."
 msgstr ""
 
-msgid "Product is in cart"
-msgstr ""
-
 msgid "Product length."
 msgstr ""
 
@@ -1121,4 +1118,19 @@ msgid "Label link"
 msgstr ""
 
 msgid "Open in new window"
+msgstr ""
+
+msgid "User name"
+msgstr ""
+
+msgid "Page name"
+msgstr ""
+
+msgid "Tablet"
+msgstr ""
+
+msgid "User has product in cart"
+msgstr ""
+
+msgid "User purchased product"
 msgstr ""

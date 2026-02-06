@@ -101,17 +101,55 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
          */
         static public function get_product( $id = 0 ) {
 
-            $options = array();
+            $value = $id;
 
             if ( $id ) {
                 $product_object = wc_get_product( $id );
                 if ( $product_object ) {
                     $formatted_name = $product_object->get_formatted_name();
-                    $options[$id] = rawurldecode( wp_strip_all_tags( $formatted_name ) );
+                    $value = rawurldecode( wp_strip_all_tags( $formatted_name ) );
                 }
             }
 
-            return $options;
+            return $value;
+
+        }
+
+        /*
+         * Search for products via product name
+         * @param string $name Search string
+         * @return array
+         */
+        static public function search_for_products( $name = '' ) {
+
+            $products = array();
+            $include_variations = false;
+            $limit = 30;
+
+            if ( class_exists('WC_Data_Store') ) {
+
+                $data_store = WC_Data_Store::load( 'product' );
+                $ids        = $data_store->search_products( $name, '', (bool) $include_variations, false, $limit, array(), array() );
+
+                foreach ( $ids as $id ) {
+
+                    $product_object = wc_get_product( $id );
+
+                    if ( ! wc_products_array_filter_readable( $product_object ) ) {
+                        continue;
+                    }
+
+                    $formatted_name = $product_object->get_formatted_name();
+                    $products[] = array(
+                        'id' => $product_object->get_id(),
+                        'text' => rawurldecode( wp_strip_all_tags( $formatted_name ) )
+                    );
+
+                }
+
+            }
+
+            return $products;
 
         }
 
@@ -180,9 +218,23 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
          * Get all available pages
          * @return array
          */
-        static public function get_pages() {
+        static public function get_pages( $name = '' ) {
 
-            $pages = get_pages( array( 'parent' => 0, 'hierarchical' => 0 ) );
+            if ( $name ) {
+
+                $pages_query = new WP_Query( array(
+                    'post_type' => 'page',
+                    's' => $name,
+                ) );
+
+                $pages = $pages_query->posts;
+
+            } else {
+
+                $pages = get_pages( array( 'parent' => 0, 'hierarchical' => 0 ) );
+
+            }
+
             $options = array();
 
             if ( $pages && ! empty( $pages ) ) {
@@ -191,7 +243,10 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
 
                     $title = $page->post_title ? $page->post_title :  __( "(no title)", "advanced-woo-labels" );
 
-                    $options[$page->ID] = $title;
+                    $options[] = array(
+                        'id'  => $page->ID,
+                        'text' => $title
+                    );
 
                     $child_pages = get_pages( array( 'child_of' => $page->ID ) );
 
@@ -209,7 +264,10 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                             $title = $child_page->post_title ? $child_page->post_title :  __( "(no title)", "advanced-woo-labels" );
                             $title = $page_prefix . $title;
 
-                            $options[$child_page->ID] = $title;
+                            $options[] = array(
+                                'id'  => $child_page->ID,
+                                'text' => $title
+                            );
 
                         }
 
@@ -224,21 +282,76 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
         }
 
         /*
+         * Get specific page name by page id
+         * $param int $page_id Specific page id
+         * @return string
+         */
+        static public function get_page_by_id( $page_id ) {
+
+            $value = get_the_title( $page_id );
+
+            if ( ! $value ) {
+                $value  = __( "(no title)", "advanced-woo-labels" );
+            }
+
+            return $value;
+
+        }
+
+        /*
          * Get all available users
          * @return array
          */
-        static public function get_users() {
+        static public function get_users( $name = '' ) {
 
-            $users = get_users();
+            if ( $name ) {
+
+                $users = get_users(array(
+                    'search' => '*' . $name . '*',
+                    'search_columns' => array(
+                        'user_login',
+                        'user_nicename',
+                        'display_name',
+                    ),
+                ));
+
+            } else {
+
+                $users = get_users();
+
+            }
+
             $options = array();
 
             if ( $users && ! empty( $users ) ) {
                 foreach( $users as $user ) {
-                    $options[$user->ID] = $user->display_name . ' (' . $user->user_nicename . ')';
+                    $options[] = array(
+                        'id'  => $user->ID,
+                        'text' => $user->display_name . ' (' . $user->user_nicename . ')'
+                    );
                 }
             }
 
             return $options;
+
+        }
+
+        /*
+         * Get specific username by users id
+         * $param int $user_id Specific user id
+         * @return string
+         */
+        static public function get_user_by_id( $user_id ) {
+
+            $value = $user_id;
+
+            $user = get_userdata( $user_id );
+
+            if ( $user ) {
+                $value = $user->display_name . ' (' . $user->user_nicename . ')';
+            }
+
+            return $value;
 
         }
 
@@ -435,6 +548,32 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
 
         }
 
+        /**
+         * Get settings page device switcher option html
+         * @return string
+         */
+        static public function add_device_switcher() {
+
+            $html = '';
+
+            $html .= '<span data-current-device="desktop" class="awl-multi-device">';
+
+            $html .= '<span class="awl-current-device dashicons awl-right-tip" data-tip="'. esc_attr( __( 'Desktop', 'advanced-woo-labels' ) ) .'"></span>';
+
+            $html .= '<span class="awl-multi-device-holder">';
+                $html .= '<span class="awl-multi-device-btns">';
+                    $html .= '<span data-device="desktop" class="dashicons dashicons-desktop awl-right-tip" data-tip-text="'. esc_attr( __( 'Desktop', 'advanced-woo-labels' ) ) .'" data-tip="'. esc_attr( __( 'Desktop', 'advanced-woo-labels' ) ) .'"></span>';
+                    $html .= '<span data-device="tablet" class="dashicons dashicons-tablet awl-right-tip" data-tip-text="'. esc_attr( __( 'Tablet', 'advanced-woo-labels' ) ) .'" data-tip="'. esc_attr( __( 'Tablet', 'advanced-woo-labels' ) ) .'"></span>';
+                    $html .= '<span data-device="phone" class="dashicons dashicons-smartphone awl-right-tip" data-tip-text="'. esc_attr( __( 'Mobile', 'advanced-woo-labels' ) ) .'" data-tip="'. esc_attr( __( 'Mobile', 'advanced-woo-labels' ) ) .'"></span>';
+                $html .= '</span>';
+            $html .= '</span>';
+
+            $html .= '</span>';
+
+            return $html;
+
+        }
+
         /*
          * Get custom text variables description
          * @return string
@@ -474,7 +613,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                     $maybe_wrong_rules = array();
 
                     foreach ( $cond_group as $cond_rule ) {
-                        $rule_name = $cond_rule['param'];
+                        $rule_name = isset( $cond_rule['param'] ) ? $cond_rule['param'] : '';
                         if ( array_search( $rule_name, $check_rules ) !== false && $cond_rule['operator'] === 'equal' ) {
                             $maybe_wrong_rules[$rule_name][] = $cond_rule;
                         }

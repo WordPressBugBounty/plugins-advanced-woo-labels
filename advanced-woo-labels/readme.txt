@@ -3,9 +3,9 @@ Contributors: Mihail Barinov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.27
+Stable tag: 2.35
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,37 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.35 ( 02.02.2026 ) =
+* Update - Change styles for dashboard settings page
+
+= 2.34 ( 20.01.2026 ) =
+* Add - Integration with Chamevo plugin
+* Update - Integration with Uncode theme
+
+= 2.33 ( 05.01.2026 ) =
+* Add - Responsive label size options
+* Update - Pro plugin version display conditions list
+
+= 2.32 ( 15.12.2025 ) =
+* Add - Letter spacing dimensions option
+* Add - Font size dimensions option
+* Update - Tested with WC 10.4
+* Fix - Set max sizes for labels in preview mode
+* Dev - Add additional check for label display conditions
+
+= 2.31 ( 02.12.2025 ) =
+* Dev - Fix custom styles toggler inside label options page
+
+= 2.30 ( 17.11.2025 ) =
+* Update - Admin page display conditions. Add ajax loading for some large options
+
+= 2.29 ( 27.10.2025 ) =
+* Update - Tested with WC 10.3
+* Update - Integration with Shoptimizer theme
+
+= 2.28 ( 13.10.2025 ) =
+* Update - Integration with Enfold theme
+
 = 2.27 ( 29.09.2025 ) =
 * Add - Integration with Enfold theme
 * Update - Tested with WC 10.2
@@ -417,41 +448,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 1.86 ( 05.02.2024 ) =
 * Add - Support for Elessi theme
-
-= 1.85 ( 22.01.2024 ) =
-* Update - Tested with WC 8.5
-* Fix - Integration for XStore theme
-
-= 1.84 ( 08.01.2024 ) =
-* Update - Add new integration admin notice
-* Update - Admin settings page view. New layout for label text variables
-* Update - Fix integration with Woodmart theme. Hide default sale badges
-
-= 1.83 ( 18.12.2023 ) =
-* Update - Support for The7 theme
-* Update - Tested with WC 8.4
-
-= 1.82 ( 27.11.2023 ) =
-* Update - Avada theme support. Hide default sale badge
-* Update - Tested with WC 8.3
-
-= 1.81 ( 14.11.2023 ) =
-* Add - Support for Woostify theme
-
-= 1.80 ( 30.10.2023 ) =
-* Update - Support for Neve theme
-
-= 1.79 ( 16.10.2023 ) =
-* Add - Support for WooPack plugin
-* Update - Tested with WC 8.2
-* Fix - Integration with WPML plugin. Fix bug with conditions rules empty array
-* Fix - Bug with empty value for label display conditions
-
-= 1.78 ( 29.09.2023 ) =
-* Add - Support for Premium Addons for Elementor plugin
-* Add - Support for Virtue theme
-* Add - Support for TeeSpace theme
-
-= 1.77 ( 18.09.2023 ) =
-* Add - Support for Kapee theme
-* Update - Tested with WC 8.1

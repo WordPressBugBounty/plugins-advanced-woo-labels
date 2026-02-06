@@ -1,0 +1,10 @@
+@media (max-width: 1024px) {
+    .awl-product-label.awl-type-label {
+        font-size: var(--awl-font-size-tablet) !important;
+    }
+}
+@media (max-width: 767px) {
+    .awl-product-label.awl-type-label {
+        font-size: var(--awl-font-size-phone) !important;
+    }
+}

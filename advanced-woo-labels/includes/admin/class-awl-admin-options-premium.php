@@ -249,14 +249,6 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             );
 
             $options['product'][] = array(
-                "name" => __( "Product is in cart", "advanced-woo-labels" ) . $pro_text,
-                "id"   => "in_cart",
-                "type" => "bool",
-                "disabled" => true,
-                "operators" => "equals",
-            );
-
-            $options['product'][] = array(
                 "name" => __( "Product taxonomy", "advanced-woo-labels" ) . $pro_text,
                 "id"   => "product_taxonomy",
                 "type" => "bool",
@@ -323,6 +315,22 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             $options['user'][] = array(
                 "name" => __( "User shop stats", "advanced-woo-labels" ) . $pro_text,
                 "id"   => "user_shop_stats",
+                "type" => "bool",
+                "disabled" => true,
+                "operators" => "equals",
+            );
+
+            $options['user'][] = array(
+                "name" => __( "User has product in cart", "advanced-woo-labels" ) . $pro_text,
+                "id"   => "in_cart",
+                "type" => "bool",
+                "disabled" => true,
+                "operators" => "equals",
+            );
+
+            $options['user'][] = array(
+                "name" => __( "User purchased product", "advanced-woo-labels" ) . $pro_text,
+                "id"   => "is_purchased",
                 "type" => "bool",
                 "disabled" => true,
                 "operators" => "equals",

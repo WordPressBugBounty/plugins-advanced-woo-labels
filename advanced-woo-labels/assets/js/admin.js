@@ -4,6 +4,16 @@ jQuery(document).ready(function ($) {
     var $settingsTable = $('.awl-label-settings-table');
     var $settingsTabs = $('.awl-label-settings-tabs');
 
+
+    // Device options toggle
+    var currentDevice = 'desktop';
+    $(document).on('aws:deviceChange', function (e, device) {
+        $('[data-device-opt]').hide();
+        $('[data-device-opt="'+ device +'"]').show();
+        currentDevice = device;
+    });
+
+
     // Quick edit panel
     $( '#the-list' ).on( 'click', '.editinline', function() {
         var row = $(this).closest( '.type-awl-labels.hentry' );
@@ -16,6 +26,150 @@ jQuery(document).ready(function ($) {
                 }
             }
         }
+    });
+
+
+    // size units options extend
+    var $sizeUnitsOpts = $('[data-parent-opt]');
+    if ( $sizeUnitsOpts.length > 0 ) {
+
+        // first init
+        $sizeUnitsOpts.each(function( index ) {
+            var parentOpt = $(this).data('parent-opt');
+            var currentUnitVal = $(this).find('select').val();
+            $(this).find('select').attr( 'data-prev-unit-val', currentUnitVal );
+            awsChangeInputAttributes( parentOpt, currentUnitVal );
+        });
+
+        // on change
+        $sizeUnitsOpts.find('select').on( 'change', function(e) {
+            var parentOpt = $(this).closest('[data-parent-opt]').data('parent-opt');
+            var currentUnitVal = $(this).val();
+
+            if ( currentUnitVal !== $(this).attr( 'data-prev-unit-va' ) ) {
+
+                $(this).attr( 'data-prev-unit-va', currentUnitVal );
+
+                awsChangeInputAttributes( parentOpt, currentUnitVal );
+                // change default size value on units change
+                var currentUnitOpt = $(this).find('option:selected');
+                if ( currentUnitOpt.is('[data-default]') && $('#awl-preview').length > 0 && ! $('#awl-preview').hasClass('awl-rebuild') ) {
+                    var defaultVal = currentUnitOpt.data('default');
+                    $('[name="' + parentOpt + '"]').val( defaultVal ).trigger('change');
+                }
+
+            }
+
+        });
+
+        function awsChangeInputAttributes( parentOpt, currentUnitVal ) {
+
+            var $parantOptSelector = $('[name="' + parentOpt + '"]');
+
+            if ( currentUnitVal === 'em' || currentUnitVal === 'rem' || currentUnitVal === 'vw' ) {
+                $parantOptSelector.attr('step', '0.1');
+                $parantOptSelector.attr('min', '0');
+            }
+
+            if ( currentUnitVal === 'px' || currentUnitVal === '%' ) {
+                $parantOptSelector.attr('step', '1');
+                $parantOptSelector.attr('min', '0');
+            }
+
+        }
+
+    }
+
+
+    // Responsive settings
+    var $responsiveSettings = $('.awl-multi-device');
+    var $responsiveToggler = $responsiveSettings.find('.awl-current-device');
+    var $responsiveBtn = $responsiveSettings.find('[data-device]');
+    var $responsiveBtnsHolder = $responsiveSettings.find('.awl-multi-device-holder');
+
+    $responsiveToggler.on( 'click', function(e) {
+        $(this).closest('.awl-multi-device').find('.awl-multi-device-holder').show();
+    });
+
+    $responsiveBtn.on( 'click', function(e) {
+
+        var newDevice = $(this).attr('data-device');
+        var currentDevice = $responsiveSettings.attr('data-current-device');
+
+        if ( newDevice !== currentDevice ) {
+            $responsiveSettings.attr('data-current-device', newDevice);
+
+            var newTip = $(this).attr('data-tip-text');
+            $responsiveToggler.attr('data-tip', newTip ).attr('title', newTip ).tipTip('destroy');
+            awlInitTipTip();
+
+            $(document).trigger( 'aws:deviceChange', [ newDevice ] );
+
+        }
+        $responsiveBtnsHolder.hide();
+    });
+
+    $(document).on('click', function(e) {
+        if ( ! $(e.target).closest('.awl-multi-device').length && $responsiveBtnsHolder.is(":visible") ) {
+            $responsiveBtnsHolder.hide();
+        }
+    });
+
+
+    // Responsive settings - change tablet/phone values when desktop value changed
+    var $desktopOptsContainer = $('[data-device-opt]');
+    var responsiveOptsChanged = false;
+
+    $('[data-device-opt="desktop"]').each(function( index ) {
+
+        var hasSameValues = true;
+
+        $(this).find('input, select').each(function( index ) {
+
+            var parentOptId = $(this).attr('id');
+            var parentOptVal = $(this).val();
+
+            var optTablet = $('#' + parentOptId + '-tablet');
+            var optPhone = $('#' + parentOptId + '-phone');
+
+            if ( optTablet.length > 0 && optTablet.val() !== parentOptVal ) {
+                hasSameValues = false;
+            }
+
+            if ( optPhone.length > 0 && optPhone.val() !== parentOptVal ) {
+                hasSameValues = false;
+            }
+
+        });
+
+        if ( hasSameValues ) {
+            $(this).attr('data-responsive-synced', 'true');
+        }
+
+    });
+
+    $desktopOptsContainer.find('input, select').on('change', function(e, params) {
+
+        if ( e.isTrigger ) {
+            return;
+        }
+
+        if ( currentDevice === 'desktop' && ! responsiveOptsChanged ) {
+
+            var newVal = this.value;
+
+            var hasSameValues = $(this).closest('[data-device-opt]').data('responsive-synced') === true;
+
+            if ( hasSameValues ) {
+                var parentOptId = $(this).attr('id');
+                $('#' + parentOptId + '-tablet').val( newVal ).trigger('change');
+                $('#' + parentOptId + '-phone').val( newVal ).trigger('change');
+            }
+
+        } else {
+            responsiveOptsChanged = true;
+        }
+
     });
 
 
@@ -33,21 +187,44 @@ jQuery(document).ready(function ($) {
     } );
 
 
-    $( '.awl-help-tip' ).tipTip( {
-        'attribute': 'data-tip',
-        'fadeIn': 50,
-        'fadeOut': 50,
-        'delay': 200,
-        'keepAlive': true
-    } );
+    function awlInitTipTip() {
 
+        $( '.awl-help-tip' ).tipTip( {
+            'attribute': 'data-tip',
+            'fadeIn': 50,
+            'fadeOut': 50,
+            'delay': 200,
+            'keepAlive': true,
+            enter: function () {
+                $('#tiptip_content').css('width', 'auto');
+            },
+        } );
 
-    $( '.awl-content-var-item' ).tipTip( {
-        'attribute': 'data-text-var-tip',
-        'fadeIn': 50,
-        'fadeOut': 50,
-        'delay': 50,
-    } );
+        $( '.awl-content-var-item' ).tipTip( {
+            'attribute': 'data-text-var-tip',
+            'fadeIn': 50,
+            'fadeOut': 50,
+            'delay': 50,
+            enter: function () {
+                $('#tiptip_content').css('width', '150px');
+            },
+        } );
+
+        $( '.awl-right-tip' ).tipTip( {
+            'attribute': 'data-tip',
+            'fadeIn': 50,
+            'fadeOut': 50,
+            'delay': 50,
+            'defaultPosition': 'right',
+            'edgeOffset': 10,
+            enter: function () {
+                $('#tiptip_content').css('width', 'auto');
+            },
+        } );
+
+    }
+
+    awlInitTipTip();
 
 
     $(document).on('click', function(e) {
@@ -124,6 +301,25 @@ jQuery(document).ready(function ($) {
     }
 
 
+    // Select2 cached data
+    var select2CachedData = {};
+
+    function awlGetSelect2Id( $select ) {
+
+        let selectId = $select.attr('id');
+        if (!selectId) {
+            selectId = $select.attr('name') || $select.data('instance-id');
+        }
+        if ( ! selectId ) {
+            // Generate unique ID if none exists
+            selectId = 'select2_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            $select.attr('data-instance-id', selectId);
+        }
+
+        return selectId;
+
+    }
+
     // Select2 init
     function awl_init_select2() {
 
@@ -132,30 +328,137 @@ jQuery(document).ready(function ($) {
         });
 
         var awlSelect2Ajax = $('#awl_label_conditions select.awl-select2-ajax');
+
         if ( awlSelect2Ajax.length > 0 ) {
 
             awlSelect2Ajax.each(function( index ) {
 
                 var ajaxAction = $(this).data('ajax');
-                var placeholder = $(this).data('placeholder');
+                var ajaxCallback = $(this).data('ajax-callback') || '';
+                var ajaxCallbackParam = $(this).data('ajax-callback-param') || '';
+                var placeholder = $(this).data('placeholder') || '';
+                var minimumInputLength = $(this).data('input') || 0;
 
-                $(this).select2({
-                    ajax: {
-                        type: 'POST',
-                        delay: 250,
-                        url: awl_vars.ajaxurl,
-                        dataType: "json",
-                        data: function (params) {
-                            return {
-                                search: params.term,
-                                action: ajaxAction,
-                                _ajax_nonce: awl_vars.ajax_nonce
-                            };
+                if ( minimumInputLength === 0 ) {
+
+                    let select2Id = awlGetSelect2Id( $(this) );
+
+                    // Initialize select2CachedData for this instance
+                    if ( typeof select2CachedData[select2Id] === "undefined" ) {
+                        select2CachedData[select2Id] = {
+                            isDataLoaded: false,
+                            cachedData: null
+                        };
+                    }
+
+                    $(this).select2({
+                        ajax: {
+                            type: 'POST',
+                            delay: 250,
+                            url: awl_vars.ajaxurl,
+                            dataType: "json",
+                            data: function(params) {
+                                // Only make AJAX request if data is not loaded yet
+                                if ( ! select2CachedData[select2Id].isDataLoaded ) {
+                                    return {
+                                        search: params.term,
+                                        action: ajaxAction,
+                                        callback: ajaxCallback,
+                                        param: ajaxCallbackParam,
+                                        _ajax_nonce: awl_vars.ajax_nonce
+                                    };
+                                }
+                                // Return null to prevent AJAX call when data is already cached
+                                return null;
+                            },
+                            processResults: function(data, params) {
+                                // If this is the initial load, cache the data
+                                if (!select2CachedData[select2Id].isDataLoaded && data) {
+                                    select2CachedData[select2Id].cachedData = data;
+                                    select2CachedData[select2Id].isDataLoaded = true;
+                                }
+
+                                // Use cached data for all subsequent requests
+                                const cachedData = select2CachedData[select2Id].cachedData;
+                                if (!cachedData || !cachedData.results) {
+                                    return { results: [] };
+                                }
+
+                                // Filter results based on search term
+                                let filteredResults = cachedData.results;
+                                if (params.term && params.term.trim() !== '') {
+                                    const searchTerm = params.term.toLowerCase();
+                                    filteredResults = cachedData.results.filter(item =>
+                                        item.text && item.text.toLowerCase().includes(searchTerm)
+                                    );
+                                }
+
+                                return {
+                                    results: filteredResults,
+                                    pagination: {
+                                        more: false // No pagination needed for cached data
+                                    }
+                                };
+
+                            },
+                            transport: function(params, success, failure) {
+                                // If data is already loaded, use cached data with search filtering
+                                if (select2CachedData[select2Id].isDataLoaded && select2CachedData[select2Id].cachedData) {
+                                    // Extract search term from params
+                                    const searchTerm = params.data && params.data.search ? params.data.search.toLowerCase() : '';
+
+                                    let filteredResults = select2CachedData[select2Id].cachedData.results;
+
+                                    // Apply search filter if search term exists
+                                    if (searchTerm && searchTerm.trim() !== '') {
+                                        filteredResults = select2CachedData[select2Id].cachedData.results.filter(item =>
+                                            item.text && item.text.toLowerCase().includes(searchTerm)
+                                        );
+                                    }
+
+                                    const processedData = {
+                                        ...select2CachedData[select2Id].cachedData,
+                                        results: filteredResults
+                                    };
+
+                                    success(processedData);
+                                    return;
+                                }
+
+                                // Only make AJAX call for initial data load
+                                return $.ajax(params).done(success).fail(failure);
+                            }
                         },
-                    },
-                    placeholder: placeholder,
-                    minimumInputLength: 3,
-                });
+                        placeholder: placeholder,
+                        minimumResultsForSearch: 15,
+                        minimumInputLength: parseInt( minimumInputLength ),
+                    });
+
+                } else {
+
+                    $(this).select2({
+                        ajax: {
+                            type: 'POST',
+                            delay: 250,
+                            url: awl_vars.ajaxurl,
+                            dataType: "json",
+                            data: function (params) {
+                                return {
+                                    search: params.term,
+                                    action: ajaxAction,
+                                    callback: ajaxCallback,
+                                    param: ajaxCallbackParam,
+                                    _ajax_nonce: awl_vars.ajax_nonce
+                                };
+                            },
+                        },
+                        placeholder: placeholder,
+                        minimumInputLength: parseInt( minimumInputLength ),
+                    });
+
+                }
+
+
             });
         }
 
@@ -353,7 +656,11 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('change', '#awl-label-params-settings-custom-styles', function(e, params) {
-        $settingsTable.toggleClass('awl-disabled-styles');
+        if ( $(this).is(':checked') ) {
+            $settingsTable.removeClass('awl-disabled-styles');
+        } else {
+            $settingsTable.addClass('awl-disabled-styles');
+        }
     });
 
     $(document).on('click', '.awl-label-settings-tabs a', function(e, params) {

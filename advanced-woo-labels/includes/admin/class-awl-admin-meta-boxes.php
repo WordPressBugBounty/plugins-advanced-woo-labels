@@ -162,7 +162,13 @@ if ( ! class_exists( 'AWL_Admin_Meta_Boxes' ) ) :
 
                     $html .= '<div id="awl-preview">';
 
-                        $html .= '<h5 class="title">' . __( "Preview", "advanced-woo-labels" ) . '</h5>';
+                        $html .= '<div class="awl-preview-header">';
+
+                            $html .= '<h5 class="title">' . __( "Preview", "advanced-woo-labels" ) . '</h5>';
+
+                            $html .= AWL_Admin_Helpers::add_device_switcher();
+
+                        $html .= '</div>';
 
                         $html .= '<div class="awl-preview-container">';
 
