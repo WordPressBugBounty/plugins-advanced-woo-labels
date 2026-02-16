@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.36
+Stable tag: 2.37
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.37 ( 16.02.2026 ) =
+* Update - Admin page styles for integration notices
+* Fix - Add additional checks for admin page ajax calls
+
 = 2.36 ( 06.02.2026 ) =
 * Update - Tested with WC 10.5
 * Update - Plugin header details. Add homepage link
@@ -445,7 +449,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Add support for WooCommerce blocks
 * Fix - Integration with Product Slider for WooCommerce plugin
 * Dev - Add awl_enable_discounts_cache filter
-
-= 1.87 ( 12.02.2024 ) =
-* Update - Description for text variables
-* Fix - Bug with products grid block integration callback

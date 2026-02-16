@@ -127,14 +127,38 @@ if ( ! class_exists( 'AWL_Admin_Ajax' ) ) :
         }
 
         /*
-         * Ajax hook to search for products
+         * Ajax hook to get values by calling callback function
          */
         public function get_select_option_values() {
 
             check_ajax_referer( 'awl_admin_ajax_nonce' );
 
+            if ( ! current_user_can( 'manage_options' ) ) {
+                wp_send_json_error( 'Insufficient permissions.' );
+            }
+
             $callback = sanitize_text_field( $_POST['callback'] );
+
+            // make sure that the callback is legit
+            $legit = false;
+            $rules = AWL_Admin_Options::include_rules();
+            foreach ( $rules as $rule_section => $section_rules ) {
+                foreach ( $section_rules as $rule ) {
+                    if ( ( isset( $rule['choices'] ) && isset( $rule['choices']['callback'] ) && $rule['choices']['callback'] === $callback ) ||
+                        ( isset( $rule['suboption'] ) && isset( $rule['suboption']['callback'] ) && $rule['suboption']['callback'] === $callback )
+                    ) {
+                        $legit = true;
+                        break 2;
+                    }
+                }
+            }
+
+            if ( ! $legit ) {
+                wp_send_json_error( 'Invalid callback.' );
+            }
+
             $callback_params = isset( $_POST['param'] ) ? (array) $_POST['param'] : array();
+            $callback_params = array_map( 'sanitize_text_field', $callback_params );
 
             $term = isset( $_POST['search'] ) ? sanitize_text_field( $_POST['search'] ) : '';
             $term = (string) wc_clean( wp_unslash( $term ) );

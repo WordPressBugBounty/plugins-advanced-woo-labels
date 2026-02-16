@@ -91,7 +91,7 @@ if ( ! class_exists( 'AWL_Admin_Notices' ) ) :
 
                 $html .= '<div class="awl-integration-notice notice notice-success" style="position:relative;display:flex;">';
                     $html .= '<div style="margin: 20px 20px 0 0;" class="awl-integration-notice--logo">';
-                        $html .= '<img style="max-width:70px;border-radius:3px;" src="' . AWL_URL . 'assets/img/logo.jpeg' . '">';
+                        $html .= '<img style="max-width:70px;border-radius:3px;" src="' . AWL_URL . 'assets/img/square-logo.png' . '">';
                     $html .= '</div>';
                     $html .= '<div class="awl-integration-notice--content">';
                         $html .= '<h2>Advanced Woo Labels: ' . __( 'Integrations for your plugins', 'advanced-woo-labels' ) . '</h2>';
