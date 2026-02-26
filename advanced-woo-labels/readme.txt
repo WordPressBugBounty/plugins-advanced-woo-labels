@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.37
+Stable tag: 2.38
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -226,6 +226,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.38 ( 26.02.2026 ) =
+* Add - Support for Yith WooCommerce Quick View plugin
 
 = 2.37 ( 16.02.2026 ) =
 * Update - Admin page styles for integration notices

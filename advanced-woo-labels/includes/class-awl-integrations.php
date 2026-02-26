@@ -540,6 +540,12 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                 $hooks['on_image']['single']['chamevo_before_product_designer'] = array( 'priority' => 10, 'js' => array( '.cha-product-designer-wrapper fpd-main-wrapper', 'append' ) );
             }
 
+            // Yith WooCommerce Quick View plugin
+            if ( defined('YITH_WCQV_VERSION') ) {
+                $hooks['on_image']['single']['yith_wcqv_product_image'] = array( 'priority' => 10 );
+                $hooks['before_title']['single']['yith_wcqv_product_summary'] = array( 'priority' => 4 );
+            }
+
             return $hooks;
 
         }
@@ -687,6 +693,10 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
 
             if ( in_array( 'bb-ultimate-addon/bb-ultimate-addon.php', $this->active_plugins ) ) {
                 add_filter( 'uabb_woo_products_sale_flash', function ( $image ) { return ''; }, 100 );
+            }
+
+            if ( defined('YITH_WCQV_VERSION') ) {
+                remove_action( 'yith_wcqv_product_image', 'woocommerce_show_product_sale_flash', 10 );
             }
 
             add_filter( 'woocommerce_blocks_product_grid_item_html', 'AWL_Integrations_Callbacks::woocommerce_blocks_product_grid_item_html_hide_bagge', 10, 3 );
