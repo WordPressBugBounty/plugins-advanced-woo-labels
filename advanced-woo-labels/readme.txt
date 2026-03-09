@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.38
+Stable tag: 2.39
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.39 ( 26.03.2026 ) =
+* Dev - Add awl_new_plugin_version_released hook
+
 = 2.38 ( 26.02.2026 ) =
 * Add - Support for Yith WooCommerce Quick View plugin
 
@@ -441,14 +444,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 1.89 ( 12.03.2024 ) =
 * Add - STOCK_STATUS text variable
-
-= 1.88 ( 26.02.2024 ) =
-* Add - New option to hide labels for all loop blocks
-* Update - Tested with WC 8.6
-* Update - Integration with YITH WooCommerce Dynamic Pricing and Discounts plugin
-* Update - Integration for Woo Discount Rules plugin
-* Update - Support for Xstore theme
-* Update - Plugin settings page text
-* Update - Add support for WooCommerce blocks
-* Fix - Integration with Product Slider for WooCommerce plugin
-* Dev - Add awl_enable_discounts_cache filter

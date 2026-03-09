@@ -88,6 +88,10 @@ if ( ! class_exists( 'AWL_Versions' ) ) :
                 }
                 
             }
+
+            if ( $current_version && $current_version !== AWL_VERSION ) {
+                do_action( 'awl_new_plugin_version_released', AWL_VERSION );
+            }
             
             update_option( 'awl_plugin_ver', AWL_VERSION );
 
