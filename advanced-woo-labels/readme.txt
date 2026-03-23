@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.39
+Stable tag: 2.40
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,7 +227,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
-= 2.39 ( 26.03.2026 ) =
+= 2.40 ( 23.03.2026 ) =
+* Update - Tested with WC 10.6
+
+= 2.39 ( 09.03.2026 ) =
 * Dev - Add awl_new_plugin_version_released hook
 
 = 2.38 ( 26.02.2026 ) =
@@ -441,6 +444,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Support for Xstore theme
 * Update - Add confirm window for hooks option inside plugin settings page
 * Update - Support for Woodmart theme
-
-= 1.89 ( 12.03.2024 ) =
-* Add - STOCK_STATUS text variable
