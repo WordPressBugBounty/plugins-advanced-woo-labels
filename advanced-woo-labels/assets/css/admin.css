@@ -859,6 +859,49 @@
     min-width: 105px;
 }
 
+/* Emogis selector field */
+.awl-label-settings .awl-label-settings-table td .awl-emoji-field {
+    position: relative;
+}
+
+.awl-label-settings .awl-label-settings-table td .awl-emoji-field input[type="text"] {
+    padding-right: 42px;
+}
+
+.awl-label-settings .awl-label-settings-table td .awl-emoji-toggle {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 34px;
+    min-width: 34px;
+    height: calc(100% - 2px);
+    min-height: auto;
+    vertical-align: top;
+    padding: 0;
+    border: 0;
+    border-left: 1px solid #ccd0d4;
+    border-radius: 0 3px 3px 0;
+    background: #f6f7f7;
+    box-shadow: none;
+    z-index: 2;
+}
+
+.awl-label-settings .awl-label-settings-table td .awl-emoji-toggle:hover,
+.awl-label-settings .awl-label-settings-table td .awl-emoji-toggle:focus {
+    background: transparent;
+    box-shadow: none;
+}
+
+.awl-label-settings .awl-label-settings-table td .awl-emoji-toggle .dashicons {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 1;
+    position: relative;
+    top: 50%;
+    margin-top: -11px;
+}
+
 /* Responsive settings */
 .awl-label-settings .awl-multi-device {
     padding-left: 6px;

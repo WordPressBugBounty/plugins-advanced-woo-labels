@@ -1134,3 +1134,6 @@ msgstr ""
 
 msgid "User purchased product"
 msgstr ""
+
+msgid "Insert emoji"
+msgstr ""

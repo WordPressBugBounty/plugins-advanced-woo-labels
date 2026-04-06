@@ -148,8 +148,6 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
 
                                 if ( isset( $field['spoiler'] ) && $field['spoiler'] ) {
 
-                                    $html .= '<br>';
-
                                     $html .= '<span class="additional-info">';
                                         $html .= '<a href="#">' . $field['spoiler']['title'] . '</a>';
                                         $html .= '<span class="info-spoiler">' . stripslashes( $field['spoiler']['text'] ) . '</span>';
@@ -358,7 +356,18 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
 
             $disabled = isset( $field['disabled'] ) && $field['disabled'] ? ' disabled' : '';
 
-            $html = '<input id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" type="text" value="' . esc_attr( stripslashes( $this->field_value ) ) . '"'. $disabled .'/>';
+            $input_html = '<input id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" type="text" value="' . esc_attr( stripslashes( $this->field_value ) ) . '"'. $disabled .'/>';
+
+            if ( isset( $field['emojis'] ) && is_array( $field['emojis'] ) ) {
+                $html = '<div class="awl-emoji-field">';
+                    $html .= $input_html;
+                    $html .= '<button type="button" class="button awl-emoji-toggle awl-right-tip" aria-label="' . esc_attr( $field['emojis']['tip'] ) . '" data-tip="' . esc_attr( $field['emojis']['tip'] ) . '">';
+                        $html .= '<span class="dashicons dashicons-smiley" aria-hidden="true"></span>';
+                    $html .= '</button>';
+                $html .= '</div>';
+            } else {
+                $html = $input_html;
+            }
 
             return $html;
 

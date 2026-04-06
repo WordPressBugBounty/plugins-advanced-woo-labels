@@ -228,7 +228,7 @@ jQuery(document).ready(function ($) {
 
 
     $(document).on('click', function(e) {
-        if ( ! $(e.target).closest('.awl-content-vars').length && $('#tiptip_holder').is(":visible") ) {
+        if ( ! $(e.target).closest('.awl-content-vars, .awl-emoji-field, #tiptip_holder').length && $('#tiptip_holder').is(":visible") ) {
             $('#tiptip_holder').hide();
         }
     });
@@ -253,6 +253,19 @@ jQuery(document).ready(function ($) {
 
         }
 
+    });
+
+
+    // Emoji selector
+    $( '.awl-emoji-toggle' ).on('click', function(e) {
+        e.preventDefault();
+
+        if ( ! $('#tiptip_holder').is(":visible") ) {
+            $(this).trigger('mouseenter');
+        }
+
+        $( '#tiptip_content' ).html( '<span class="awl-text-var-pro-tip">'+ awl_vars.copy_pro_text +'</span>' );
+        $('#tiptip_holder').stop(true, true).fadeIn(50);
     });
 
 

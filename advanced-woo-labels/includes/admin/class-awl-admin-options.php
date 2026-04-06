@@ -446,6 +446,9 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                     "title" => '* ' . __( "supports variables", "advanced-woo-labels" ),
                     "text"  => AWL_Admin_Helpers::get_text_variables_info()
                 ),
+                "emojis" => array(
+                    'tip' => __( 'Insert emoji', 'advanced-woo-labels' ) . " <span class='awl-text-var-pro-tip'>" . __( "(Pro)", "advanced-woo-labels" ) . "</span>",
+                ),
                 "type"  => "text",
                 "class" => "awl-for-text"
             );

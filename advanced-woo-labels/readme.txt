@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.40
+Stable tag: 2.41
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.41 ( 06.04.2026 ) =
+* Update - Mention for emojis selector inside label settings page
+
 = 2.40 ( 23.03.2026 ) =
 * Update - Tested with WC 10.6
 
@@ -437,10 +440,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 = 1.91 ( 08.04.2024 ) =
 * Update - Support for Avada theme. Fix label display for shop pages
 * Fix - Price text variable when tax needs to be applied
-
-= 1.90 ( 25.03.2024 ) =
-* Add - Support for WPBakery plugin
-* Update - Tested with WC 8.7
-* Update - Support for Xstore theme
-* Update - Add confirm window for hooks option inside plugin settings page
-* Update - Support for Woodmart theme
