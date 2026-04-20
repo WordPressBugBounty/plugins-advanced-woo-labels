@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.41
+Stable tag: 2.42
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.42 ( 20.04.2026 ) =
+* Add - Allow to select multiple values for label display rules
+* Update - Tested with WC 10.7
+
 = 2.41 ( 06.04.2026 ) =
 * Update - Mention for emojis selector inside label settings page
 
@@ -436,7 +440,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Add - Support for Open Shop theme
 * Update - Tested with WC 8.8
 * Fix - Bug with product quantity when variable product is empty
-
-= 1.91 ( 08.04.2024 ) =
-* Update - Support for Avada theme. Fix label display for shop pages
-* Fix - Price text variable when tax needs to be applied

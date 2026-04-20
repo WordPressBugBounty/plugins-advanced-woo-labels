@@ -121,6 +121,10 @@ if ( ! class_exists( 'AWL_Admin' ) ) :
             $label = $_POST['awl_label_params'];
             //$label['conditions'] = wpc_sanitize_conditions( $_POST['conditions'] );
 
+            if ( isset( $label['conditions'] ) ) {
+                $label['conditions'] = AWL_Admin_Helpers::sanitize_label_conditions( $label['conditions'] );
+            }
+
             if ( isset( $label['awl_label_priority'] ) ) {
                 update_post_meta( $post_id, '_awl_label_priority', sanitize_text_field( $label['awl_label_priority']['priority'] ) );
             }

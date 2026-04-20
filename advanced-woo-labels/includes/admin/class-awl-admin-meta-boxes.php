@@ -73,7 +73,7 @@ if ( ! class_exists( 'AWL_Admin_Meta_Boxes' ) ) :
 
             $html = '';
 
-            $html .= '<div class="awl-rules">';
+            $html .= '<div class="awl-rules awl-select2-pending">';
 
                 $html .= '<script id="awlRulesTemplate" type="text/html">';
 

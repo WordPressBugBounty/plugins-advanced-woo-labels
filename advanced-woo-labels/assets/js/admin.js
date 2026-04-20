@@ -333,11 +333,27 @@ jQuery(document).ready(function ($) {
 
     }
 
+    function awlToggleRulesSelect2Loading( isPending ) {
+        var $rulesBox = $('#awl_label_conditions .awl-rules');
+
+        if ( ! $rulesBox.length ) {
+            return;
+        }
+
+        $rulesBox.toggleClass('awl-select2-pending', !! isPending );
+    }
+
     // Select2 init
     function awl_init_select2() {
 
-        $('#awl_label_conditions select.awl-select2').select2({
-            minimumResultsForSearch: 15
+        awlToggleRulesSelect2Loading( true );
+
+        $('#awl_label_conditions select.awl-select2').each(function() {
+            var isMultiselect = $(this).prop('multiple') || $(this).data('multiselect') || false;
+            $(this).select2({
+                minimumResultsForSearch: 15,
+                dropdownCssClass: isMultiselect ? 'awl-select2-dropdown-multiple' : ''
+            });
         });
 
         var awlSelect2Ajax = $('#awl_label_conditions select.awl-select2-ajax');
@@ -351,6 +367,7 @@ jQuery(document).ready(function ($) {
                 var ajaxCallbackParam = $(this).data('ajax-callback-param') || '';
                 var placeholder = $(this).data('placeholder') || '';
                 var minimumInputLength = $(this).data('input') || 0;
+                var isMultiselect = $(this).prop('multiple') || $(this).data('multiselect') || false;
 
                 if ( minimumInputLength === 0 ) {
 
@@ -445,6 +462,7 @@ jQuery(document).ready(function ($) {
                         placeholder: placeholder,
                         minimumResultsForSearch: 15,
                         minimumInputLength: parseInt( minimumInputLength ),
+                        dropdownCssClass: isMultiselect ? 'awl-select2-dropdown-multiple' : ''
                     });
 
                 } else {
@@ -467,6 +485,7 @@ jQuery(document).ready(function ($) {
                         },
                         placeholder: placeholder,
                         minimumInputLength: parseInt( minimumInputLength ),
+                        dropdownCssClass: isMultiselect ? 'awl-select2-dropdown-multiple' : ''
                     });
 
                 }
@@ -474,6 +493,10 @@ jQuery(document).ready(function ($) {
 
             });
         }
+
+        window.requestAnimationFrame(function() {
+            awlToggleRulesSelect2Loading( false );
+        });
 
     }
 

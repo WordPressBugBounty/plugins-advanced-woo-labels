@@ -1137,3 +1137,12 @@ msgstr ""
 
 msgid "Insert emoji"
 msgstr ""
+
+msgid "Select..."
+msgstr ""
+
+msgid "in list"
+msgstr ""
+
+msgid "not in list"
+msgstr ""

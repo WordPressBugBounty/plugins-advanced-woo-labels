@@ -86,6 +86,10 @@ if ( ! class_exists( 'AWL_Versions' ) ) :
                         update_option( 'awl_settings', $settings );
                     }
                 }
+
+                if ( version_compare( $current_version, '2.42', '<' ) ) {
+                    $this->update_multiselect_condition_rules();
+                }
                 
             }
 
@@ -147,6 +151,80 @@ if ( ! class_exists( 'AWL_Versions' ) ) :
             }
 
             return $field;
+
+        }
+
+        /*
+         * Since version 2.42 - update multiselect condition values
+         */
+        private function update_multiselect_condition_rules() {
+
+            $labels = get_posts( array(
+                'post_type'              => 'awl-labels',
+                'post_status'            => 'publish',
+                'posts_per_page'         => -1,
+                'update_post_term_cache' => false,
+                'fields'                 => 'ids',
+                'no_found_rows'          => 1,
+                'ignore_sticky_posts'    => true,
+                'suppress_filters'       => true,
+                'lang'                   => '',
+                '_is_awl_query'          => true,
+            ) );
+
+            if ( ! $labels ) {
+                return;
+            }
+
+            foreach ( $labels as $label_id ) {
+                $label_options = get_post_meta( $label_id, '_awl_label', true );
+
+                if ( ! $label_options || ! isset( $label_options['conditions'] ) || ! is_array( $label_options['conditions'] ) ) {
+                    continue;
+                }
+
+                $updated = false;
+
+                foreach ( $label_options['conditions'] as $group_id => $group_rules ) {
+                    if ( ! is_array( $group_rules ) ) {
+                        continue;
+                    }
+
+                    foreach ( $group_rules as $rule_id => $rule_values ) {
+                        if ( ! isset( $rule_values['param'] ) ) {
+                            continue;
+                        }
+
+                        $rule = AWL_Admin_Options::include_rule_by_id( $rule_values['param'] );
+                        $is_multiple = isset( $rule['multiple'] ) && $rule['multiple'];
+
+                        if ( ! $is_multiple ) {
+                            continue;
+                        }
+
+                        if ( isset( $rule_values['operator'] ) ) {
+                            $is_any = isset( $rule_values['value'] ) && 'awl_any' === $rule_values['value'];
+                            if ( 'equal' === $rule_values['operator'] ) {
+                                $label_options['conditions'][ $group_id ][ $rule_id ]['operator'] = $is_any ? 'not_in_list' : 'in_list';
+                                $updated = true;
+                            } elseif ( 'not_equal' === $rule_values['operator'] ) {
+                                $label_options['conditions'][ $group_id ][ $rule_id ]['operator'] = $is_any ? 'in_list' : 'not_in_list';
+                                $updated = true;
+                            }
+                        }
+
+                        if ( isset( $rule_values['value'] ) && ! is_array( $rule_values['value'] ) ) {
+                            $value = sanitize_text_field( $rule_values['value'] );
+                            $label_options['conditions'][ $group_id ][ $rule_id ]['value'] = ( '' !== $value && 'awl_any' !== $value ) ? array( $value ) : array();
+                            $updated = true;
+                        }
+                    }
+                }
+
+                if ( $updated ) {
+                    update_post_meta( $label_id, '_awl_label', $label_options );
+                }
+            }
 
         }
 

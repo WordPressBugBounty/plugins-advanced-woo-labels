@@ -127,14 +127,22 @@ if ( ! class_exists( 'AWL_Conditions_Check' ) ) :
             $value = isset( $this->rule['value'] ) ? $this->rule['value'] : '';
             $operator = $this->rule['operator'];
 
+            $compare_values = is_array( $compare_value ) ? array_map( 'strval', $compare_value ) : array( (string) $compare_value );
+            $rule_values = is_array( $value ) ? array_map( 'strval', $value ) : array( (string) $value );
+
             if ( is_bool( $compare_value )  ) {
                 $compare_value = $compare_value ? 'true' : 'false';
+                $compare_values = array( $compare_value );
             }
 
             if ( 'equal' == $operator ) {
                 $match = ($compare_value == $value);
             } elseif ( 'not_equal' == $operator ) {
                 $match = ($compare_value != $value);
+            } elseif ( 'in_list' == $operator ) {
+                $match = count( array_intersect( $compare_values, $rule_values ) ) > 0;
+            } elseif ( 'not_in_list' == $operator ) {
+                $match = count( array_intersect( $compare_values, $rule_values ) ) < 1;
             } elseif ( 'greater' == $operator ) {
                 $match = ($compare_value >= $value);
             } elseif ( 'less' == $operator ) {
@@ -377,13 +385,37 @@ if ( ! class_exists( 'AWL_Conditions_Check' ) ) :
             global $product;
 
             $product_id = $product->is_type( 'variation' ) && method_exists( $product, 'get_parent_id' ) ? $product->get_parent_id() : $product->get_id();
-            $value = has_term( $this->rule['value'], 'product_cat', $product_id );
             $operator = $this->rule['operator'];
+            $rule_value = isset( $this->rule['value'] ) ? $this->rule['value'] : '';
+
+            if ( is_array( $rule_value ) || 'in_list' === $operator || 'not_in_list' === $operator ) {
+                $categories = wp_get_post_terms( $product_id, 'product_cat', array( 'fields' => 'ids' ) );
+                $categories = is_wp_error( $categories ) ? array() : $categories;
+
+                if ( apply_filters( 'awl_labels_condition_include_descendants', false ) ) {
+                    $categories_tree = $categories;
+
+                    foreach ( $categories as $category_id ) {
+                        $ancestors = get_ancestors( $category_id, 'product_cat', 'taxonomy' );
+
+                        if ( ! empty( $ancestors ) ) {
+                            $categories_tree = array_merge( $categories_tree, $ancestors );
+                        }
+                    }
+
+                    $categories = array_unique( array_map( 'intval', $categories_tree ) );
+                }
+
+                return call_user_func_array( array( $this, 'compare_values' ), array( $categories ) );
+            }
+
+            // depricated since 2.42
+            $value = has_term( $rule_value, 'product_cat', $product_id );
 
             if ( ! $value && apply_filters( 'awl_labels_condition_include_descendants', false ) ) {
                 $assigned = wc_get_product_term_ids( $product_id, 'product_cat' );
                 foreach ( $assigned as $term_id ) {
-                    if ( term_is_ancestor_of( $this->rule['value'], (int) $term_id, 'product_cat' ) ) {
+                    if ( term_is_ancestor_of( $rule_value, (int) $term_id, 'product_cat' ) ) {
                         $value = true;
                     }
                 }
@@ -405,8 +437,17 @@ if ( ! class_exists( 'AWL_Conditions_Check' ) ) :
             global $product;
 
             $product_id = $product->is_type( 'variation' ) && method_exists( $product, 'get_parent_id' ) ? $product->get_parent_id() : $product->get_id();
-            $value = has_term( $this->rule['value'], 'product_tag', $product_id );
             $operator = $this->rule['operator'];
+            $rule_value = isset( $this->rule['value'] ) ? $this->rule['value'] : '';
+
+            if ( is_array( $rule_value ) || 'in_list' === $operator || 'not_in_list' === $operator ) {
+                $tags = wp_get_post_terms( $product_id, 'product_tag', array( 'fields' => 'ids' ) );
+                $tags = is_wp_error( $tags ) ? array() : $tags;
+                return call_user_func_array( array( $this, 'compare_values' ), array( $tags ) );
+            }
+
+            // depricated since 2.42
+            $value = has_term( $rule_value, 'product_tag', $product_id );
 
             if ( 'equal' == $operator ) {
                 return $value;
@@ -438,8 +479,6 @@ if ( ! class_exists( 'AWL_Conditions_Check' ) ) :
          */
         public function match_user_role() {
 
-            $role = $this->rule['value'];
-
             if ( is_user_logged_in() ) {
                 global $current_user;
                 $roles = (array) $current_user->roles;
@@ -447,6 +486,12 @@ if ( ! class_exists( 'AWL_Conditions_Check' ) ) :
                 $roles = array( 'non-logged' );
             }
 
+            if ( isset( $this->rule['value'] ) && is_array( $this->rule['value'] ) ) {
+                return call_user_func_array( array( $this, 'compare_values' ), array( $roles ) );
+            }
+
+            // depricated since 2.42
+            $role = $this->rule['value'];
             $value = array_search( $role, $roles ) !== false;
 
             if ( 'equal' == $this->rule['operator'] ) {

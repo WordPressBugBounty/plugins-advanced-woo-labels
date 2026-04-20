@@ -12,6 +12,73 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
     class AWL_Admin_Helpers {
 
         /*
+         * Sanitize label conditions
+         * @param array $conditions Conditions list
+         * @return array
+         */
+        static public function sanitize_label_conditions( $conditions ) {
+
+            if ( ! is_array( $conditions ) ) {
+                return array();
+            }
+
+            foreach ( $conditions as $group_id => $group_rules ) {
+                if ( ! is_array( $group_rules ) ) {
+                    unset( $conditions[ $group_id ] );
+                    continue;
+                }
+
+                foreach ( $group_rules as $rule_id => $rule_values ) {
+                    if ( ! is_array( $rule_values ) ) {
+                        unset( $conditions[ $group_id ][ $rule_id ] );
+                        continue;
+                    }
+
+                    $param = isset( $rule_values['param'] ) ? sanitize_text_field( $rule_values['param'] ) : '';
+                    $operator = isset( $rule_values['operator'] ) ? sanitize_text_field( $rule_values['operator'] ) : '';
+                    $suboption = isset( $rule_values['suboption'] ) ? $rule_values['suboption'] : '';
+                    $value = isset( $rule_values['value'] ) ? $rule_values['value'] : '';
+                    $rule = $param ? AWL_Admin_Options::include_rule_by_id( $param ) : array();
+
+                    $conditions[ $group_id ][ $rule_id ] = array(
+                        'param' => $param,
+                        'operator' => $operator,
+                        'suboption' => is_array( $suboption ) ? array_map( 'sanitize_text_field', $suboption ) : sanitize_text_field( $suboption ),
+                        'value' => self::sanitize_rule_value( $value, $rule ),
+                    );
+                }
+            }
+
+            return $conditions;
+
+        }
+
+        /*
+         * Sanitize condition rule value
+         * @param mixed $value Rule value
+         * @param array $rule  Rule config
+         * @return mixed
+         */
+        static public function sanitize_rule_value( $value, $rule ) {
+
+            $is_multiple = isset( $rule['multiple'] ) && $rule['multiple'];
+
+            if ( $is_multiple ) {
+                $values = is_array( $value ) ? $value : array( $value );
+                $values = array_map( 'sanitize_text_field', $values );
+                $values = array_filter( $values, 'strlen' );
+                return array_values( $values );
+            }
+
+            if ( is_array( $value ) ) {
+                $value = reset( $value );
+            }
+
+            return sanitize_text_field( $value );
+
+        }
+
+        /*
          * Get available stock statuses
          * @return array
          */

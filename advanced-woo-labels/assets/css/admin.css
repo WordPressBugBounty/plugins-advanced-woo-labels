@@ -372,23 +372,71 @@
     margin: 5px 0;
 }
 
+.awl-rules {
+    position: relative;
+}
+
+.awl-rules.awl-select2-pending {
+    min-height: 140px;
+}
+
+.awl-rules.awl-select2-pending:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    background: url('../img/loader.svg') no-repeat 50% 50%;
+    z-index: 2;
+}
+
+.awl-rules.awl-select2-pending .awl-rules-notices,
+.awl-rules.awl-select2-pending .awl-rules-desc,
+.awl-rules.awl-select2-pending .awl-rules-table,
+.awl-rules.awl-select2-pending .add-rule-group {
+    visibility: hidden;
+}
+
 .awl-rules .awl-rules-table {
     background: #fff;
     border-spacing: 0;
     border-radius: 0;
     table-layout: auto;
-    padding: 0 60px 0 0;
-    margin: 0;
+    padding: 0;
+    margin: 0 0 15px;
     width: 100%;
     clear: both;
     border: 0 none;
+    position: relative;
+}
+
+.awl-rules .awl-rules-table:not(:last-of-type) {
+    border-bottom: 1px solid #dcdcde;
+    padding-bottom: 18px;
 }
 
 .awl-rules .awl-rules-table:after {
-    content: 'or';
+    content: 'OR';
     display: block;
-    font-weight: 600;
-    padding: 10px 4px;
+    background: #fff;
+    color: #50575e;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    bottom: -11px;
+    margin-left: -30px;
+    width: 30px;
+    text-align: center;
+}
+
+.awl-rules .awl-rules-table:last-of-type:after {
+    display: none;
 }
 
 .awl-rules .awl-rules-table tr {
@@ -462,7 +510,7 @@
 
 .awl-rules .awl-rules-table td.remove {
     width: 28px;
-    vertical-align: middle;
+    vertical-align: text-top;
 }
 
 .awl-rules .awl-rules-table td.remove a.remove-rule {
@@ -532,11 +580,41 @@
 }
 .wp-admin .select2-results__option {
     margin: 0;
-    padding: 3px 6px;
+    padding: 5px 6px;
+    font-size: 14px;
 }
 .wp-admin .select2-container--default .select2-results > .select2-results__options {
     overflow-x: hidden;
     word-break: break-word;
+}
+
+.awl-rules .select2-container--default .select2-selection {
+    box-shadow: 0 0 0 transparent;
+    border: 1px solid #8c8f94;
+    color: #2c3338;
+    box-shadow: none;
+    border-radius: 3px;
+    font-size: 14px;
+    min-height: 30px;
+    background: #fff url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55%;
+    background-size: 16px 16px;
+}
+
+.select2-container--default .awl-select2-dropdown-multiple .select2-results__option {
+    padding-left: 24px;
+}
+.select2-container--default .awl-select2-dropdown-multiple .select2-results__option[aria-selected=true] {
+    position: relative;
+}
+.select2-container--default .awl-select2-dropdown-multiple .select2-results__option[aria-selected=true]:before {
+    content: "\2713";
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    font-size: 13px;
+    line-height: 1;
+    font-weight: bold;
 }
 
 .awl-rules .select2-container--default .select2-selection--single {
@@ -553,6 +631,75 @@
 }
 .awl-rules .select2-container--default .select2-selection--single .select2-selection__arrow {
     display: none;
+}
+
+.awl-rules .select2-container--default .select2-selection--multiple {
+    border-color: #8c8e95;
+    box-shadow: none;
+    border-radius: 3px;
+    font-size: 14px;
+    min-height: 30px;
+    height: auto;
+    padding: 0 24px 0 3px;
+    background: #fff url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55%;
+    background-size: 16px 16px;
+}
+.awl-rules .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 0 2px;
+}
+.awl-rules .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    max-width: calc(100% - 8px);
+    border: none;
+    background-color: #ececec;
+    border-radius: 50px;
+    color: #444;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 3px 2px 1px 2px;
+    padding: 2px 8px 2px 4px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    white-space: nowrap;
+    font-size: 13px;
+}
+.awl-rules .select2-container--default .select2-selection--multiple .select2-search--inline {
+    margin: 0;
+    line-height: 0;
+}
+.awl-rules .select2-container--default .select2-search--inline .select2-search__field {
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-bottom: 0;
+    height: 22px;
+    line-height: 22px;
+    min-height: auto;
+}
+.awl-rules .select2-container--default .select2-search--inline .select2-search__field::placeholder {
+    color: #999;
+    padding-left: 4px;
+}
+.awl-rules .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    border-right: none;
+    color: #5d5d5d;
+    cursor: pointer;
+    font-size: 1em;
+    background: 0 0;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    position: relative;
+}
+.awl-rules .select2-empty {
+    height:  30px !important;
 }
 
 /* Label Settings tabs */

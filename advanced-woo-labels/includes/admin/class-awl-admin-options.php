@@ -381,10 +381,23 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 ),
             );
 
+            $lists = array(
+                array(
+                    "name" => __( "in list", "advanced-woo-labels" ),
+                    "id"   => "in_list",
+                ),
+                array(
+                    "name" => __( "not in list", "advanced-woo-labels" ),
+                    "id"   => "not_in_list",
+                ),
+            );
+
             $operators['equals'] = $equals;
             $operators['equals_compare'] = array_merge( $equals, $compare );
             $operators['equals_contains'] = array_merge( $equals, $contains );
             $operators['equals_contains_compare'] = array_merge( $equals, $compare, $contains );
+
+            $operators['lists'] = $lists;
 
             return $operators[$name];
 
@@ -724,10 +737,18 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
             $options = array();
 
             $options['product'][] = array(
+                "name" => __( "Product quantity", "advanced-woo-labels" ),
+                "id"   => "quantity",
+                "type" => "number",
+                "operators" => "equals_compare",
+            );
+
+            $options['product'][] = array(
                 "name" => __( "Product stock status", "advanced-woo-labels" ),
                 "id"   => "stock_status",
                 "type" => "callback",
-                "operators" => "equals",
+                "operators" => "lists",
+                "multiple" => true,
                 "choices" => array(
                     'callback' => 'AWL_Admin_Helpers::get_stock_statuses',
                     'params'   => array()
@@ -738,7 +759,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "name" => __( "Product visibility", "advanced-woo-labels" ),
                 "id"   => "visibility",
                 "type" => "callback",
-                "operators" => "equals",
+                "operators" => "lists",
+                "multiple" => true,
                 "choices" => array(
                     'callback' => 'AWL_Admin_Helpers::get_visibilities',
                     'params'   => array()
@@ -770,17 +792,11 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
             );
 
             $options['product'][] = array(
-                "name" => __( "Product quantity", "advanced-woo-labels" ),
-                "id"   => "quantity",
-                "type" => "number",
-                "operators" => "equals_compare",
-            );
-
-            $options['product'][] = array(
                 "name" => __( "Product shipping class", "advanced-woo-labels" ),
                 "id"   => "shipping_class",
                 "type" => "callback",
-                "operators" => "equals",
+                "operators" => "lists",
+                "multiple" => true,
                 "choices" => array(
                     'callback' => 'AWL_Admin_Helpers::get_tax_terms',
                     'params'   => array( 'product_shipping_class' )
@@ -838,7 +854,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "name" => __( "Product name", "advanced-woo-labels" ),
                 "id"   => "product",
                 "type" => "callback",
-                "operators" => "equals",
+                "operators" => "lists",
+                "multiple" => true,
                 "choices" => array(
                     "callback" => "AWL_Admin_Helpers::search_for_products",
                     'params' => array(),
@@ -855,7 +872,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "name" => __( "Product category", "advanced-woo-labels" ),
                 "id"   => "product_category",
                 "type" => "callback",
-                "operators" => "equals",
+                "operators" => "lists",
+                "multiple" => true,
                 "choices" => array(
                     'callback' => 'AWL_Admin_Helpers::get_tax_terms',
                     'params'   => array( 'product_cat' )
@@ -866,7 +884,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "name" => __( "Product tag", "advanced-woo-labels" ),
                 "id"   => "product_tag",
                 "type" => "callback",
-                "operators" => "equals",
+                "operators" => "lists",
+                "multiple" => true,
                 "choices" => array(
                     'callback' => 'AWL_Admin_Helpers::get_tax_terms',
                     'params'   => array( 'product_tag' )
@@ -877,7 +896,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "name" => __( "User", "advanced-woo-labels" ),
                 "id"   => "user",
                 "type" => "callback",
-                "operators" => "equals",
+                "operators" => "lists",
+                "multiple" => true,
                 "choices" => array(
                     "callback" => "AWL_Admin_Helpers::get_users",
                     'params' => array(),
@@ -894,7 +914,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "name" => __( "User role", "advanced-woo-labels" ),
                 "id"   => "user_role",
                 "type" => "callback",
-                "operators" => "equals",
+                "operators" => "lists",
+                "multiple" => true,
                 "choices" => array(
                     'callback' => 'AWL_Admin_Helpers::get_user_roles',
                     'params'   => array()
@@ -905,7 +926,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "name" => __( "Page", "advanced-woo-labels" ),
                 "id"   => "page",
                 "type" => "callback",
-                "operators" => "equals",
+                "operators" => "lists",
+                "multiple" => true,
                 "choices" => array(
                     "callback" => "AWL_Admin_Helpers::get_pages",
                     'params' => array(),
@@ -924,7 +946,8 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                     "name" => __( "Page language", "advanced-woo-labels" ),
                     "id"   => "page_language",
                     "type" => "callback",
-                    "operators" => "equals",
+                    "operators" => "lists",
+                    "multiple" => true,
                     "choices" => array(
                         'callback' => 'AWL_Admin_Helpers::get_languages',
                         'params'   => array()
