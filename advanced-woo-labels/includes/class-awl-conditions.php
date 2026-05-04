@@ -140,9 +140,21 @@ if ( ! class_exists( 'AWL_Conditions_Check' ) ) :
             } elseif ( 'not_equal' == $operator ) {
                 $match = ($compare_value != $value);
             } elseif ( 'in_list' == $operator ) {
-                $match = count( array_intersect( $compare_values, $rule_values ) ) > 0;
+                if ( empty( $rule_values ) ) {
+                    $match = false;
+                } elseif ( in_array( 'awl_any', $rule_values, true ) ) {
+                    $match = true;
+                } else {
+                    $match = count( array_intersect( $compare_values, $rule_values ) ) > 0;
+                }
             } elseif ( 'not_in_list' == $operator ) {
-                $match = count( array_intersect( $compare_values, $rule_values ) ) < 1;
+                if ( empty( $rule_values ) ) {
+                    $match = true;
+                } elseif ( in_array( 'awl_any', $rule_values, true ) ) {
+                    $match = false;
+                } else {
+                    $match = count( array_intersect( $compare_values, $rule_values ) ) < 1;
+                }
             } elseif ( 'greater' == $operator ) {
                 $match = ($compare_value >= $value);
             } elseif ( 'less' == $operator ) {

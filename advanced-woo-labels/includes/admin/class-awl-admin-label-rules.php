@@ -247,9 +247,9 @@ if ( ! class_exists( 'AWL_Admin_Label_Rules' ) ) :
                             if ( ! $placeholder && $is_multiple ) {
                                 $placeholder = __( 'Select...', 'advanced-woo-labels' );
                             }
-//                            if ( isset( $this->rule['suboption'] ) ) {
-//                                $values_callback = '<option value="awl_any">' . __( "Any", "advanced-woo-labels" ) . '</option>' . $values_callback;
-//                            }
+                            if ( isset( $this->rule['suboption'] ) ) {
+                                $values_callback = '<option value="awl_any">' . __( "Any", "advanced-woo-labels" ) . '</option>' . $values_callback;
+                            }
                             $values = '<select name="' . esc_attr( $field_name ) . '" class="value-val' . $val_class . '"'. $multiple_attr .' data-placeholder="' . esc_html( $placeholder ) . '">' . $values_callback . '</select>';
                         } else {
                             $values = '<select name="' . esc_attr( $field_name ) . '" class="value-val select2-empty"'. $multiple_attr .'><option value=""></option></select>';

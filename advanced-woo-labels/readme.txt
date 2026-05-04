@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.42
+Stable tag: 2.43
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ Customize label styles with build-in options to change **color**, **size**, **st
 
 Attract users attention by displaying inside WooCommerce labels and badges information like **discount value**, **product quantity**, **product rating**, **shipping class**, **stock status**, **sale status**,  etc.
 
-[Plugin Home Page](https://advanced-woo-labels.com/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Features List](https://advanced-woo-labels.com/features/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Documentation](https://advanced-woo-labels.com/guide/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Get PRO](https://advanced-woo-labels.com/pricing/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+[Plugin Home Page](https://advanced-woo-labels.com/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Features List](https://advanced-woo-labels.com/features/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Documentation](https://advanced-woo-labels.com/guide/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [View demo](https://demo.advanced-woo-labels.com//?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Get PRO](https://advanced-woo-labels.com/pricing/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
 ## &#9889; Main Features =
 
@@ -226,6 +226,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+
+= 2.43 ( 04.05.2026 ) =
+* Update - Fix logic for label conditions with Any value
+* Fix - Bug with product bundles stock status conditions
+* Fix - Update styles for multi select admin fields
 
 = 2.42 ( 20.04.2026 ) =
 * Add - Allow to select multiple values for label display rules
@@ -434,9 +439,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 = 1.93 ( 06.05.2024 ) =
 * Add - Support for Zephyr theme
 * Add - Required plugins dependencies
-
-= 1.92 ( 22.04.2024 ) =
-* Add - Support for Thrive Theme Builder
-* Add - Support for Open Shop theme
-* Update - Tested with WC 8.8
-* Fix - Bug with product quantity when variable product is empty

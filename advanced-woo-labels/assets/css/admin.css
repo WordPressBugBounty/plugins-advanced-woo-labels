@@ -650,6 +650,7 @@
     align-items: center;
     min-height: 26px;
     padding: 0 0 2px;
+    margin: 0;
 }
 .awl-rules .select2-container--default .select2-selection--multiple .select2-selection__choice {
     max-width: calc(100% - 8px);

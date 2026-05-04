@@ -46,7 +46,9 @@ if (!class_exists('AWL_Product_Bundles')) :
         }
 
         /*
-         * Rewrite stock_status display conditions. Fix bundle products stock status
+         * Rewrite stock_status display conditions. Fix bundle products stock status.
+         * is_in_stock() is authoritative for bundles as it dynamically checks all bundled items,
+         * whereas get_stock_status() may return a stale stored meta value.
          */
         public function awl_label_condition_match_rule( $match_rule, $condition_name, $condition_rule ) {
 
@@ -54,21 +56,36 @@ if (!class_exists('AWL_Product_Bundles')) :
 
                 global $product;
 
-                if ( $product->is_type( 'bundle' ) ) {
+                if ( $product && $product->is_type( 'bundle' ) ) {
 
-                    global $product;
-                    $value = $product->get_stock_status();
-
-                    if ( ! $product->is_in_stock() ) {
-                        $value = 'outofstock';
+                    if ( $product->is_in_stock() ) {
+                        $stock_status = 'instock';
+                    } else {
+                        $stored = $product->get_stock_status();
+                        $stock_status = ( 'onbackorder' === $stored ) ? 'onbackorder' : 'outofstock';
                     }
 
-                    $compare_value = $condition_rule['value'];
+                    $compare_value = isset( $condition_rule['value'] ) ? $condition_rule['value'] : '';
+                    $operator      = isset( $condition_rule['operator'] ) ? $condition_rule['operator'] : '';
 
-                    if ( 'equal' == $condition_rule['operator'] ) {
-                        $match_rule = ($compare_value == $value);
-                    } else {
-                        $match_rule = ($compare_value != $value);
+                    if ( 'equal' === $operator ) {
+                        $match_rule = ( $compare_value == $stock_status );
+                    } elseif ( 'not_equal' === $operator ) {
+                        $match_rule = ( $compare_value != $stock_status );
+                    } elseif ( 'in_list' === $operator ) {
+                        $rule_values = is_array( $compare_value ) ? array_map( 'strval', $compare_value ) : array( (string) $compare_value );
+                        if ( in_array( 'awl_any', $rule_values, true ) ) {
+                            $match_rule = true;
+                        } else {
+                            $match_rule = in_array( $stock_status, $rule_values, true );
+                        }
+                    } elseif ( 'not_in_list' === $operator ) {
+                        $rule_values = is_array( $compare_value ) ? array_map( 'strval', $compare_value ) : array( (string) $compare_value );
+                        if ( in_array( 'awl_any', $rule_values, true ) ) {
+                            $match_rule = false;
+                        } else {
+                            $match_rule = ! in_array( $stock_status, $rule_values, true );
+                        }
                     }
 
                 }

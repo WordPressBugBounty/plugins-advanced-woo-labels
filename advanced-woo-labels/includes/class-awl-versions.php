@@ -203,19 +203,18 @@ if ( ! class_exists( 'AWL_Versions' ) ) :
                         }
 
                         if ( isset( $rule_values['operator'] ) ) {
-                            $is_any = isset( $rule_values['value'] ) && 'awl_any' === $rule_values['value'];
                             if ( 'equal' === $rule_values['operator'] ) {
-                                $label_options['conditions'][ $group_id ][ $rule_id ]['operator'] = $is_any ? 'not_in_list' : 'in_list';
+                                $label_options['conditions'][ $group_id ][ $rule_id ]['operator'] = 'in_list';
                                 $updated = true;
                             } elseif ( 'not_equal' === $rule_values['operator'] ) {
-                                $label_options['conditions'][ $group_id ][ $rule_id ]['operator'] = $is_any ? 'in_list' : 'not_in_list';
+                                $label_options['conditions'][ $group_id ][ $rule_id ]['operator'] = 'not_in_list';
                                 $updated = true;
                             }
                         }
 
                         if ( isset( $rule_values['value'] ) && ! is_array( $rule_values['value'] ) ) {
                             $value = sanitize_text_field( $rule_values['value'] );
-                            $label_options['conditions'][ $group_id ][ $rule_id ]['value'] = ( '' !== $value && 'awl_any' !== $value ) ? array( $value ) : array();
+                            $label_options['conditions'][ $group_id ][ $rule_id ]['value'] = '' !== $value ? array( $value ) : array();
                             $updated = true;
                         }
                     }
