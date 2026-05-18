@@ -3,9 +3,9 @@ Contributors: Mihail Barinov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 2.43
+Stable tag: 2.44
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.44 ( 18.05.2026 ) =
+* Update - Change settings page styles related to WP7 styles changes
+* Fix - But with taxonomy labels with WPML plugin
+
 = 2.43 ( 04.05.2026 ) =
 * Update - Fix logic for label conditions with Any value
 * Fix - Bug with product bundles stock status conditions
@@ -435,7 +439,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 1.94 ( 20.05.2024 ) =
 * Fix - Strip some tags from label text
-
-= 1.93 ( 06.05.2024 ) =
-* Add - Support for Zephyr theme
-* Add - Required plugins dependencies

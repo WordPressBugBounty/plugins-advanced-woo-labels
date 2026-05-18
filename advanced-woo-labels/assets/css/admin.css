@@ -226,6 +226,10 @@
     margin-top: 8px;
 }
 
+.awl-wp-min-70 #awl_form .awl-hooks-table tfoot th .button .dashicons {
+    line-height: 1;
+}
+
 #awl_form .awl-hooks-table.awl-has-hooks tfoot th .button.generate-hook-group {
     display: none;
 }
@@ -341,6 +345,11 @@
     pointer-events: none;
     background: #ececec;
     opacity: 0.8;
+}
+
+.awl-wp-min-70 #awl_form .description {
+    display: inline-block;
+    padding-top: 4px;
 }
 
 /* Labels rules  */
@@ -569,6 +578,9 @@
     height: 26px;
     min-height: 26px;
 }
+.awl-wp-min-70 .wp-admin .select2-container--default .select2-search--dropdown .select2-search__field {
+    min-height: 36px;
+}
 .wp-admin .select2-container--default .select2-search--dropdown .select2-search__field:focus {
     outline: none;
     box-shadow: none;
@@ -599,7 +611,9 @@
     background: #fff url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55%;
     background-size: 16px 16px;
 }
-
+.awl-wp-min-70 .awl-rules .select2-container--default .select2-selection {
+    min-height: 40px;
+}
 .select2-container--default .awl-select2-dropdown-multiple .select2-results__option {
     padding-left: 24px;
 }
@@ -626,6 +640,9 @@
     background: #fff url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55%;
     background-size: 16px 16px;
 }
+.awl-wp-min-70 .awl-rules .select2-container--default .select2-selection--single {
+    min-height: 40px;
+}
 .awl-rules .select2-container--default .select2-selection--single:focus {
     outline-color: #007cba;
 }
@@ -644,6 +661,9 @@
     background: #fff url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55%;
     background-size: 16px 16px;
 }
+.awl-wp-min-70 .awl-rules .select2-container--default .select2-selection--multiple {
+    min-height: 40px;
+}
 .awl-rules .select2-container--default .select2-selection--multiple .select2-selection__rendered {
     display: flex;
     flex-wrap: wrap;
@@ -651,6 +671,9 @@
     min-height: 26px;
     padding: 0 0 2px;
     margin: 0;
+}
+.awl-wp-min-70 .awl-rules .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    min-height: 36px;
 }
 .awl-rules .select2-container--default .select2-selection--multiple .select2-selection__choice {
     max-width: calc(100% - 8px);
@@ -1305,6 +1328,8 @@
 .awl-toggle-label input[type=checkbox]:checked + .awl-toggle {
     border-color: #4dc247;
     background-color: #4dc247;
+    border-color: var(--wp-admin-theme-color);
+    background-color: var(--wp-admin-theme-color);
 }
 
 .awl-toggle-label .awl-toggle:before {
@@ -2164,6 +2189,8 @@
 .awl-ajax-toggle.awl-toggle.active {
     border-color: #4dc247;
     background-color: #4dc247;
+    border-color: var(--wp-admin-theme-color);
+    background-color: var(--wp-admin-theme-color);
 }
 
 .awl-ajax-toggle.awl-toggle.awl-precessing {

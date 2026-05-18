@@ -94,8 +94,10 @@ if (!class_exists('AWL_WPML')) :
             $condition_name = $condition_rule['param'];
             $tax_name = '';
 
-            if ( $condition_name === 'product_category' || $condition_name === 'product_tag' ) {
-                $tax_name = $condition_name;
+            if ( $condition_name === 'product_category' ) {
+                $tax_name = 'product_cat';
+            } elseif ( $condition_name === 'product_tag' ) {
+                $tax_name = 'product_tag';
             } elseif ( $condition_name === 'product_taxonomy' || $condition_name === 'product_attributes' ) {
                 $tax_name = isset( $condition_rule['suboption'] ) ? $condition_rule['suboption'] : '';
             }
@@ -107,13 +109,29 @@ if (!class_exists('AWL_WPML')) :
                 if ( $sitepress ) {
 
                     $current_lang = $sitepress->get_current_language();
+                    $value = isset( $condition_rule['value'] ) ? $condition_rule['value'] : '';
 
-                    $trid = isset( $condition_rule['value'] ) ? $sitepress->get_element_trid( intval( $condition_rule['value'] ), 'tax_' . $tax_name ) : false;
-                    if ( $trid ) {
-                        $translations = $sitepress->get_element_translations( $trid, 'tax_' . $tax_name );
-                        if ( $translations && isset( $translations[$current_lang] ) ) {
-                            $term_trans = $translations[$current_lang];
-                            $condition_rule['value'] = $term_trans->element_id;
+                    if ( is_array( $value ) ) {
+                        $translated = array();
+                        foreach ( $value as $term_id ) {
+                            $trid = $sitepress->get_element_trid( intval( $term_id ), 'tax_' . $tax_name );
+                            if ( $trid ) {
+                                $translations = $sitepress->get_element_translations( $trid, 'tax_' . $tax_name );
+                                if ( $translations && isset( $translations[ $current_lang ] ) ) {
+                                    $translated[] = $translations[ $current_lang ]->element_id;
+                                    continue;
+                                }
+                            }
+                            $translated[] = $term_id;
+                        }
+                        $condition_rule['value'] = $translated;
+                    } else {
+                        $trid = $value ? $sitepress->get_element_trid( intval( $value ), 'tax_' . $tax_name ) : false;
+                        if ( $trid ) {
+                            $translations = $sitepress->get_element_translations( $trid, 'tax_' . $tax_name );
+                            if ( $translations && isset( $translations[ $current_lang ] ) ) {
+                                $condition_rule['value'] = $translations[ $current_lang ]->element_id;
+                            }
                         }
                     }
 
