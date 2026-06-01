@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 2.44
+Stable tag: 2.45
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.45 ( 01.06.2026 ) =
+* Update - Tested with WC 10.8
+
 = 2.44 ( 18.05.2026 ) =
 * Update - Change settings page styles related to WP7 styles changes
 * Fix - But with taxonomy labels with WPML plugin
@@ -436,6 +439,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Support for Woostify theme
 * Update - Tested with WC 8.9
 * Update - Integration with XStore theme
-
-= 1.94 ( 20.05.2024 ) =
-* Fix - Strip some tags from label text
