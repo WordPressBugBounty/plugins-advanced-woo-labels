@@ -577,6 +577,27 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
             return $text;
         }
 
+        /*
+         * Sanitize custom CSS value
+         *
+         * The value is later printed inside a <style> block. Valid CSS never
+         * contains angle brackets, so we strip them (along with any encoded
+         * variants) to prevent breaking out of the style tag and injecting
+         * arbitrary HTML/JS (stored XSS).
+         *
+         * @return string
+         */
+        static public function sanitize_custom_css( $css ) {
+            if ( ! is_string( $css ) ) {
+                return '';
+            }
+            // Decode entities first so encoded payloads (e.g. &lt;) can't slip through.
+            $css = wp_specialchars_decode( $css, ENT_QUOTES );
+            // Remove characters that could close the <style> tag or open new ones.
+            $css = str_replace( array( '<', '>' ), '', $css );
+            return $css;
+        }
+
         /**
          * Get description of available text variables
          * @return string

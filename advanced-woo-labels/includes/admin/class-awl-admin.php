@@ -123,6 +123,10 @@ if ( ! class_exists( 'AWL_Admin' ) ) :
             $label = $_POST['awl_label_params'];
             //$label['conditions'] = wpc_sanitize_conditions( $_POST['conditions'] );
 
+            if ( isset( $label['settings']['custom_css'] ) ) {
+                $label['settings']['custom_css'] = AWL_Admin_Helpers::sanitize_custom_css( $label['settings']['custom_css'] );
+            }
+
             if ( isset( $label['conditions'] ) ) {
                 $label['conditions'] = AWL_Admin_Helpers::sanitize_label_conditions( $label['conditions'] );
             }

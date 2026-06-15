@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 2.45
+Stable tag: 2.46
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.46 ( 15.06.2026 ) =
+* Fix - Add additional sanitize for custom css options
+* Fix - Styles for admin page emojis selector
+
 = 2.45 ( 01.06.2026 ) =
 * Update - Tested with WC 10.8
 
@@ -434,8 +438,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 1.96 ( 17.06.2024 ) =
 * Update - Support for Flatsome theme. Fix grid gallery labels placement
-
-= 1.95 ( 05.06.2024 ) =
-* Update - Support for Woostify theme
-* Update - Tested with WC 8.9
-* Update - Integration with XStore theme

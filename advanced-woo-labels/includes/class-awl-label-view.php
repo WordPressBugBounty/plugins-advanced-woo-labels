@@ -141,8 +141,11 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
             $css = '';
 
             if ( $this->custom_styles && isset( $this->settings['custom_css'] ) && $this->settings['custom_css'] ) {
+                // Strip angle brackets as a safeguard against breaking out of the
+                // style tag (defense-in-depth for values stored before sanitization).
+                $custom_css = str_replace( array( '<', '>' ), '', $this->settings['custom_css'] );
                 $css .= '<style type="text/css">';
-                $css .= preg_replace( '/(\.awl-[\w\-\s\.]+{)/', '.awl-label-id-' . strval( $this->label_id ) . ' $1', $this->settings['custom_css'] );
+                $css .= preg_replace( '/(\.awl-[\w\-\s\.]+{)/', '.awl-label-id-' . strval( $this->label_id ) . ' $1', $custom_css );
                 $css .= '</style>';
                 $css = str_replace('.awl-label-id-'.strval( $this->label_id ).' .awl-label-wrap', '.awl-label-id-'.strval( $this->label_id ).'.awl-label-wrap', $css );
             }

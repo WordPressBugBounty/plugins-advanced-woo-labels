@@ -1071,6 +1071,7 @@
     position: relative;
     top: 50%;
     margin-top: -11px;
+    vertical-align: top;
 }
 
 /* Responsive settings */
