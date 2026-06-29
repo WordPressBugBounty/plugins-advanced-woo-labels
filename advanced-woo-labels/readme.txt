@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 2.46
+Stable tag: 2.47
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.47 ( 29.06.2026 ) =
+* Update - Tested with WC 10.9
+* Fix - Labels display conditions based on sales count for HPOS table
+
 = 2.46 ( 15.06.2026 ) =
 * Fix - Add additional sanitize for custom css options
 * Fix - Styles for admin page emojis selector
@@ -435,6 +439,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Support for Hitek theme
 * Update - Tested with WC 9.0
 * Fix - Load labels for products generated via ajax calls
-
-= 1.96 ( 17.06.2024 ) =
-* Update - Support for Flatsome theme. Fix grid gallery labels placement

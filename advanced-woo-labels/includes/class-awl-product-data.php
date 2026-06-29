@@ -19,7 +19,6 @@ if ( ! class_exists( 'AWL_Product_Data' ) ) :
          * @return integer
          */
         static public function get_sales_count( $query, $product ) {
-            global $woocommerce;
 
             $value = 0;
 
@@ -29,56 +28,152 @@ if ( ! class_exists( 'AWL_Product_Data' ) ) :
 
             } else {
 
-                include_once( $woocommerce->plugin_path() . '/includes/admin/reports/class-wc-admin-report.php' );
-                $wc_report = new WC_Admin_Report();
-
-                $data = $wc_report->get_order_report_data(
-                    array(
-                        'data'         => array(
-                            '_product_id' => array(
-                                'type'            => 'order_item_meta',
-                                'order_item_type' => 'line_item',
-                                'function'        => '',
-                                'name'            => 'product_id',
-                            ),
-                            '_qty'     => array(
-                                'type'            => 'order_item_meta',
-                                'order_item_type' => 'line_item',
-                                'function'        => 'SUM',
-                                'name'            => 'sales',
-                            ),
-                            'post_date'   => array(
-                                'type'     => 'post_data',
-                                'function' => '',
-                                'name'     => 'post_date',
-                            ),
-                        ),
-                        'where'        => array(
-                            array(
-                                'key'      => 'post_date',
-                                'value'    => date_i18n( 'Y-m-d', strtotime( $query, current_time( 'timestamp' ) ) ),
-                                'operator' => '>',
-                            ),
-                            array(
-                                'key'      => 'order_item_meta__product_id.meta_value',
-                                'value'    => $product->get_id(),
-                                'operator' => '=',
-                            ),
-                        ),
-                        'group_by'     => 'product_id',
-                        'query_type'   => 'get_results',
-                        'filter_range' => false,
-                    )
-                );
-
-                if ( $data && is_array( $data ) ) {
-                    $value = $data[0]->sales;
-                }
+                $value = self::get_period_sales_count( $query, $product );
 
             }
 
             return $value;
 
+        }
+
+        /**
+         * Get product sales count for a given time period.
+         *
+         * When WooCommerce High-Performance Order Storage ( HPOS ) is the active
+         * order storage the legacy reports class can no longer read the orders
+         * ( it is hardcoded to the posts table ), so the count is taken directly
+         * from the orders table. Otherwise the original reports query is used.
+         *
+         * @since 2.47
+         * @param  string $query Relative date query ( e.g. '-1 month' )
+         * @param  object $product Product
+         * @return integer
+         */
+        static private function get_period_sales_count( $query, $product ) {
+
+            if ( self::orders_table_enabled() ) {
+                return self::get_period_sales_count_hpos( $query, $product );
+            }
+
+            return self::get_period_sales_count_legacy( $query, $product );
+
+        }
+
+        /**
+         * Get product sales count for a given time period from the HPOS orders table.
+         *
+         * @since 2.47
+         * @param  string $query Relative date query ( e.g. '-1 month' )
+         * @param  object $product Product
+         * @return integer
+         */
+        static private function get_period_sales_count_hpos( $query, $product ) {
+            global $wpdb;
+
+            $product_id = $product->get_id();
+
+            // Boundary date in GMT, matching the legacy reports behaviour.
+            $date = get_gmt_from_date( date_i18n( 'Y-m-d', strtotime( $query, current_time( 'timestamp' ) ) ) . ' 00:00:00' );
+
+            // Order statuses counted as a sale ( same defaults as WC reports ).
+            $statuses = "'wc-" . implode( "','wc-", array( 'completed', 'processing', 'on-hold' ) ) . "'";
+
+            $value = $wpdb->get_var( $wpdb->prepare(
+                "SELECT SUM( qty.meta_value )
+                FROM {$wpdb->prefix}woocommerce_order_items AS items
+                INNER JOIN {$wpdb->prefix}woocommerce_order_itemmeta AS product
+                    ON items.order_item_id = product.order_item_id AND product.meta_key = '_product_id'
+                INNER JOIN {$wpdb->prefix}woocommerce_order_itemmeta AS qty
+                    ON items.order_item_id = qty.order_item_id AND qty.meta_key = '_qty'
+                INNER JOIN {$wpdb->prefix}wc_orders AS orders
+                    ON items.order_id = orders.id
+                WHERE items.order_item_type = 'line_item'
+                    AND product.meta_value = %d
+                    AND orders.type = 'shop_order'
+                    AND orders.status IN ( $statuses )
+                    AND orders.date_created_gmt > %s",
+                $product_id,
+                $date
+            ) );
+
+            return $value ? intval( $value ) : 0;
+
+        }
+
+        /**
+         * Get product sales count for a given time period using the legacy reports query.
+         *
+         * @since 2.47
+         * @param  string $query Relative date query ( e.g. '-1 month' )
+         * @param  object $product Product
+         * @return integer
+         */
+        static private function get_period_sales_count_legacy( $query, $product ) {
+            global $woocommerce;
+
+            $value = 0;
+
+            include_once( $woocommerce->plugin_path() . '/includes/admin/reports/class-wc-admin-report.php' );
+            $wc_report = new WC_Admin_Report();
+
+            $data = $wc_report->get_order_report_data(
+                array(
+                    'data'         => array(
+                        '_product_id' => array(
+                            'type'            => 'order_item_meta',
+                            'order_item_type' => 'line_item',
+                            'function'        => '',
+                            'name'            => 'product_id',
+                        ),
+                        '_qty'     => array(
+                            'type'            => 'order_item_meta',
+                            'order_item_type' => 'line_item',
+                            'function'        => 'SUM',
+                            'name'            => 'sales',
+                        ),
+                        'post_date'   => array(
+                            'type'     => 'post_data',
+                            'function' => '',
+                            'name'     => 'post_date',
+                        ),
+                    ),
+                    'where'        => array(
+                        array(
+                            'key'      => 'post_date',
+                            'value'    => date_i18n( 'Y-m-d', strtotime( $query, current_time( 'timestamp' ) ) ),
+                            'operator' => '>',
+                        ),
+                        array(
+                            'key'      => 'order_item_meta__product_id.meta_value',
+                            'value'    => $product->get_id(),
+                            'operator' => '=',
+                        ),
+                    ),
+                    'group_by'     => 'product_id',
+                    'query_type'   => 'get_results',
+                    'filter_range' => false,
+                )
+            );
+
+            if ( $data && is_array( $data ) ) {
+                $value = $data[0]->sales;
+            }
+
+            return $value;
+
+        }
+
+        /**
+         * Check whether WooCommerce HPOS ( custom orders table ) storage is in use.
+         *
+         * @since 2.47
+         * @return boolean
+         */
+        static private function orders_table_enabled() {
+            if ( class_exists( '\Automattic\WooCommerce\Utilities\OrderUtil' ) ) {
+                return \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
+            }
+            return false;
         }
 
         /**
