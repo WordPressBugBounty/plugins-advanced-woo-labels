@@ -269,8 +269,8 @@ if ( ! class_exists( 'AWL_Admin_Meta_Boxes' ) ) :
 
                     $html .= '</ul>';
 
-                    $html .= '<a class="button-primary awl-pro-learn" target="_blank" href="https://advanced-woo-labels.com/pro/?utm_source=plugin&utm_medium=premium-metabox&utm_campaign=learn">' . __( 'Learn More', 'advanced-woo-labels' ) . '</a>';
-                    $html .= '<a class="button-primary awl-pro-buy" target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=premium-metabox&utm_campaign=pricing">' . __( 'Get PRO!', 'advanced-woo-labels' ) . '</a>';
+                    $html .= '<a class="button-primary awl-pro-learn" target="_blank" href="https://kramakit.com/plugins/advanced-woo-labels//?utm_source=plugin&utm_medium=premium-metabox&utm_campaign=learn">' . __( 'Learn More', 'advanced-woo-labels' ) . '</a>';
+                    $html .= '<a class="button-primary awl-pro-buy" target="_blank" href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=premium-metabox&utm_campaign=pricing#pricing">' . __( 'Get PRO!', 'advanced-woo-labels' ) . '</a>';
 
                 $html .= '</div>';
 
@@ -304,16 +304,16 @@ if ( ! class_exists( 'AWL_Admin_Meta_Boxes' ) ) :
                                 $html .= '<div class="awl-welcome-panel-column">';
                                     $html .= '<h4>' . __( 'Documentation', 'advanced-woo-labels' ) . '</h4>';
                                     $html .= '<ul>';
-                                        $html .= '<li><a href="https://advanced-woo-labels.com/guide/create-new-label/" class="awl-welcome-icon awl-welcome-edit-page" target="_blank">' . __( 'Creating New Label', 'advanced-woo-labels' ) . '</a></li>';
-                                        $html .= '<li><a href="https://advanced-woo-labels.com/guide/label-conditions/" class="awl-welcome-icon awl-welcome-edit-page" target="_blank">' . __( 'Label Conditions', 'advanced-woo-labels' ) . '</a></li>';
-                                        $html .= '<li><a href="https://advanced-woo-labels.com/guide/styling-settings/" class="awl-welcome-icon awl-welcome-edit-page" target="_blank">' . __( 'Label Styling Settings', 'advanced-woo-labels' ) . '</a></li>';
+                                        $html .= '<li><a href="https://kramakit.com/guide/create-new-label-awl/?utm_source=wp-plugin&utm_medium=welcome&utm_campaign=docs" class="awl-welcome-icon awl-welcome-edit-page" target="_blank">' . __( 'Creating New Label', 'advanced-woo-labels' ) . '</a></li>';
+                                        $html .= '<li><a href="https://kramakit.com/guide/label-conditions-awl/?utm_source=wp-plugin&utm_medium=welcome&utm_campaign=docs" class="awl-welcome-icon awl-welcome-edit-page" target="_blank">' . __( 'Label Conditions', 'advanced-woo-labels' ) . '</a></li>';
+                                        $html .= '<li><a href="https://kramakit.com/guide/styling-settings-awl/?utm_source=wp-plugin&utm_medium=welcome&utm_campaign=docs" class="awl-welcome-icon awl-welcome-edit-page" target="_blank">' . __( 'Label Styling Settings', 'advanced-woo-labels' ) . '</a></li>';
                                     $html .= '</ul>';
                                 $html .= '</div>';
                                 $html .= '<div class="awl-welcome-panel-column awl-welcome-panel-last">';
                                     $html .= '<h4>' . __( 'Help', 'advanced-woo-labels' ) . '</h4>';
                                     $html .= '<ul>';
                                         $html .= '<li><div class="awl-welcome-icon awl-welcome-widgets-menus"><a href="https://wordpress.org/support/plugin/advanced-woo-labels/" target="_blank">' . __( 'Support Forums', 'advanced-woo-labels' ) . '</a></div></li>';
-                                        $html .= '<li><div class="awl-welcome-icon awl-welcome-widgets-menus"><a href="https://advanced-woo-labels.com/contact/" target="_blank">' . __( 'Contact Form', 'advanced-woo-labels' ) . '</a></div></li>';
+                                        $html .= '<li><div class="awl-welcome-icon awl-welcome-widgets-menus"><a href="https://kramakit.com/contact/?utm_source=wp-plugin&utm_medium=welcome&utm_campaign=help" target="_blank">' . __( 'Contact Form', 'advanced-woo-labels' ) . '</a></div></li>';
                                     $html .= '</ul>';
                                 $html .= '</div>';
                             $html .= '</div>';

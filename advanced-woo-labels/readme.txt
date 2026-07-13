@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 2.47
+Stable tag: 2.48
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.48 ( 13.07.2026 ) =
+* Update - Change admin page link to new kramakit domain
+
 = 2.47 ( 29.06.2026 ) =
 * Update - Tested with WC 10.9
 * Fix - Labels display conditions based on sales count for HPOS table
@@ -431,11 +434,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Tested with WC 9.1
 * Update - Integration with Woodmart theme
 * Dev - Add awl_register_post_type_labels filter
-
-= 1.97 ( 01.07.2024 ) =
-* Add - Support for Polylang plugin
-* Update - Integration with Iconic WooThumbs plugin
-* Update - Support for OceanWP theme
-* Update - Support for Hitek theme
-* Update - Tested with WC 9.0
-* Fix - Load labels for products generated via ajax calls

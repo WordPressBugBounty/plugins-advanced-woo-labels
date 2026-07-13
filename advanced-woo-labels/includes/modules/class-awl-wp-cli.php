@@ -26,7 +26,7 @@ class AWL_WP_CLI {
         WP_CLI::line( '' );
         WP_CLI::line( '- Plugin Version: ' . AWL_VERSION );
         WP_CLI::line( '- Plugin Directory: ' . AWL_DIR );
-        WP_CLI::line( '- Plugin Website: https://advanced-woo-labels.com/' );
+        WP_CLI::line( '- Plugin Website: https://kramakit.com/' );
         WP_CLI::line( '' );
     }
 

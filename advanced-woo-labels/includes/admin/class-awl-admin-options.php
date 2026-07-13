@@ -296,7 +296,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             $options['general'][] = array(
                 "name" => __( "Change display hooks", "advanced-woo-labels" ),
-                "desc"  => __( "Change hooks that used to display labels on different product positions.", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/guide/hooks-settings/"> ' . __( "Learn more.", "advanced-woo-labels" ) . '</a>',
+                "desc"  => __( "Change hooks that used to display labels on different product positions.", "advanced-woo-labels" ) . ' <a target="_blank" href="https://kramakit.com/guide/hooks-settings-awl/"> ' . __( "Learn more.", "advanced-woo-labels" ) . '</a>',
                 "id"   => "hooks",
                 "type"  => "hooks_table",
             );
@@ -639,7 +639,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             // pro only
             $options['styles'][] = array(
-                "name" => __( "Border", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=border">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Border", "advanced-woo-labels" ) . ' <a target="_blank" href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=border">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "border",
                 "value" => 'none',
                 "type"  => "select",
@@ -652,7 +652,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             // pro only
             $options['styles'][] = array(
-                "name" => __( "Shadow", "advanced-woo-labels" ) . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=shadow">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Shadow", "advanced-woo-labels" ) . ' <a target="_blank" href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=shadow">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "shadow",
                 "value" => 'none',
                 "type"  => "select",
@@ -696,7 +696,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
 
             // pro only
             $options['styles'][] = array(
-                "name" => __( "Rotation (deg)", "advanced-woo-labels" )  . ' <a target="_blank" href="https://advanced-woo-labels.com/pricing/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=rotate">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "name" => __( "Rotation (deg)", "advanced-woo-labels" )  . ' <a target="_blank" href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=rotate">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "rotate",
                 "value" => '0',
                 "min" => "0",
@@ -713,7 +713,7 @@ if ( ! class_exists( 'AWL_Admin_Options' ) ) :
                 "id"   => "custom_css",
                 "value" => '',
                 "tip"   => __( "Set custom styles for your label.", "advanced-woo-labels" ) .
-                    ' <a href="https://advanced-woo-labels.com/guide/label-custom-styles/" target="_blank">' . __( "Learn more.", "advanced-woo-labels" ) . '</a>',
+                    ' <a href="https://kramakit.com/guide/label-custom-styles-awl/" target="_blank">' . __( "Learn more.", "advanced-woo-labels" ) . '</a>',
                 "type"  => "textarea",
             );
 

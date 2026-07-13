@@ -630,7 +630,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
 
             }
 
-            $info .= __( "for more info visit", "advanced-woo-labels" ) . '<a target="_blank" href="https://advanced-woo-labels.com/guide/text-variables/?utm_source=plugin&utm_medium=settings&utm_campaign=awl-pro-plugin"> ' . __( "guide page", "advanced-woo-labels" ) . '</a>';
+            $info .= __( "for more info visit", "advanced-woo-labels" ) . '<a target="_blank" href="https://kramakit.com/guide/text-variables-awl/?utm_source=plugin&utm_medium=settings&utm_campaign=awl-pro-plugin"> ' . __( "guide page", "advanced-woo-labels" ) . '</a>';
 
             return $info;
 
@@ -743,7 +743,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'wcfm',
                     'name' => __( 'WCFM Multivendor Marketplace plugin.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/wcfm-multivendor-marketplace/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=wcfm',
+                    'link' => 'https://kramakit.com/guide/wcfm-multivendor-marketplace-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=wcfm',
                 );
             }
 
@@ -751,7 +751,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'acf',
                     'name' => __( 'Advanced Custom Fields ( ACF ) plugin.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/advanced-custom-fields-acf-support/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=acf',
+                    'link' => 'https://kramakit.com/guide/advanced-custom-fields-acf-support-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=acf',
                 );
             }
 
@@ -759,7 +759,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'barntable',
                     'name' => __( 'WooCommerce Product Table by Barn2 plugin.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/woocommerce-product-table-by-barn2-integration/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=barntable',
+                    'link' => 'https://kramakit.com/guide/woocommerce-product-table-by-barn2-integration-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=barntable',
                 );
             }
 
@@ -767,7 +767,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'yithwish',
                     'name' => __( 'YITH WooCommerce Wishlist plugin.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/yith-wishlist-support/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=yithwish',
+                    'link' => 'https://kramakit.com/guide/yith-wishlist-support-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=yithwish',
                 );
             }
 
@@ -775,7 +775,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'dokan',
                     'name' => __( 'Dokan – WooCommerce Multivendor Marketplace Solution plugin.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/dokan-woocommerce-multivendor-marketplace/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=dokan',
+                    'link' => 'https://kramakit.com/guide/dokan-woocommerce-multivendor-marketplace-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=dokan',
                 );
             }
 
@@ -783,7 +783,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'pbrands',
                     'name' => __( 'Perfect Brands for WooCommerce plugin.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/perfect-brands-for-woocommerce/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=pbrands',
+                    'link' => 'https://kramakit.com/guide/perfect-brands-for-woocommerce-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=pbrands',
                 );
             }
 
@@ -791,7 +791,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'multivendorx',
                     'name' => __( 'MultiVendorX – WooCommerce Multivendor Marketplace plugin.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/multivendorx/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=multivendorx',
+                    'link' => 'https://kramakit.com/guide/multivendorx-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=multivendorx',
                 );
             }
 
@@ -799,7 +799,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'wcmember',
                     'name' => __( 'WooCommerce Memberships plugin.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/woocommerce-memberships/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=wcmember',
+                    'link' => 'https://kramakit.com/guide/woocommerce-memberships-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=wcmember',
                 );
             }
 
@@ -807,7 +807,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'algwcean',
                     'name' => __( 'EAN for WooCommerce.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/ean-for-woocommerce/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=algwcean',
+                    'link' => 'https://kramakit.com/guide/ean-for-woocommerce-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=algwcean',
                 );
             }
 
@@ -815,7 +815,7 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
                 $integrations[] = array(
                     'id' => 'wcvendors',
                     'name' => __( 'WC Vendors.', 'advanced-woo-labels' ),
-                    'link' => 'https://advanced-woo-labels.com/guide/wc-vendors/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=wcvendors',
+                    'link' => 'https://kramakit.com/guide/wc-vendors-awl/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=wcvendors',
                 );
             }
 
