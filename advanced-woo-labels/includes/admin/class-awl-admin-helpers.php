@@ -598,6 +598,48 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
             return $css;
         }
 
+        /*
+         * Sanitize label settings values
+         *
+         * Most settings (bg_color, text_color, font_size, opacity, letter_spacing,
+         * the *_unit fields, padding/margin, etc.) are printed into inline style=""
+         * attributes on the frontend, so stray markup or quote characters must be
+         * stripped before the values are stored. This is defense-in-depth: the style
+         * sink itself is also escaped via esc_attr() in AWL_Label_View::implode_styles().
+         *
+         * Two keys are intentionally left untouched here:
+         *  - 'text'       may contain limited HTML and is sanitized on output with
+         *                 wp_kses() ( see AWL_Helpers::get_label_text() ); stripping
+         *                 tags here would break label text formatting.
+         *  - 'custom_css' is sanitized separately via self::sanitize_custom_css().
+         *
+         * @param array $settings Raw settings array
+         * @return array
+         */
+        static public function sanitize_label_settings( $settings ) {
+
+            if ( ! is_array( $settings ) ) {
+                return array();
+            }
+
+            $skip_keys = array( 'text', 'custom_css' );
+
+            foreach ( $settings as $key => $value ) {
+
+                if ( in_array( $key, $skip_keys, true ) ) {
+                    continue;
+                }
+
+                $settings[ $key ] = is_array( $value )
+                    ? map_deep( $value, 'sanitize_text_field' )
+                    : sanitize_text_field( $value );
+
+            }
+
+            return $settings;
+
+        }
+
         /**
          * Get description of available text variables
          * @return string

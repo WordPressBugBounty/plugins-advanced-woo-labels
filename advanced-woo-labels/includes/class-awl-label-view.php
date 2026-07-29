@@ -557,7 +557,12 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
 
             if ( $styles && ! empty( $styles ) ) {
                 foreach( $styles as $style_name => $style ) {
-                    $style_string .= $style_name . ':' . $style . ';';
+                    // Escape each value before it is placed inside the style="" attribute.
+                    // Stored settings values (e.g. bg_color) may contain a stray double
+                    // quote that would otherwise break out of the attribute and inject
+                    // markup (stored XSS). Escaping the sink also neutralises any legacy
+                    // values that were stored before input sanitization was added.
+                    $style_string .= $style_name . ':' . esc_attr( $style ) . ';';
                 }
             }
 
