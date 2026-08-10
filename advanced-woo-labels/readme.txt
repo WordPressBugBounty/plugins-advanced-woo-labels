@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 2.49
+Stable tag: 2.50
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.50 ( 10.08.2026 ) =
+* Update - Tested with WC 11.0
+
 = 2.49 ( 29.07.2026 ) =
 * Fix - Improved sanitization for label settings
 
@@ -426,8 +429,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 2.00 ( 12.08.2024 ) =
 * Dev - Fix functions naming
-
-= 1.99 ( 05.08.2024 ) =
-* Update - Add new text variable {NAME}
-* Update - New admin integration notice
-* Fix - Labels display when applying filters from Jet Ajax Filters plugin
