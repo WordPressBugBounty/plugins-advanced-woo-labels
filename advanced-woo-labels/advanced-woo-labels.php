@@ -3,7 +3,7 @@
 /*
 Plugin Name: Advanced Woo Labels
 Description: Advance WooCommerce product labels plugin
-Version: 2.50
+Version: 2.51
 Author: ILLID
 Plugin URI: https://kramakit.com/
 Author URI: https://kramakit.com/
@@ -91,7 +91,7 @@ final class AWL_Main {
      */
     private function define_constants() {
 
-        $this->define( 'AWL_VERSION', '2.50' );
+        $this->define( 'AWL_VERSION', '2.51' );
 
         $this->define( 'AWL_DIR', plugin_dir_path( AWL_FILE ) );
         $this->define( 'AWL_URL', plugin_dir_url( AWL_FILE ) );
@@ -203,14 +203,33 @@ final class AWL_Main {
     }
 
     /*
-     * Get plugin settings
+     * Get label settings
      */
     public function get_label_settings( $id, $single = true ) {
+
         $label = get_post_meta( $id, '_awl_label', $single );
+
         if ( isset( $label['settings'] ) && isset( $label['settings']['text'] ) ) {
             $label['settings']['text'] = urldecode( $label['settings']['text'] );
         }
+
+        /**
+         * Filter label settings
+         *
+         * Fires for every label read, on the front end and in the admin.
+         * Values returned here are used to render the label and are also
+         * shown in the label edit screen - check is_admin() before changing
+         * anything that should not be written back on the next label save.
+         *
+         * @since 2.51
+         * @param array $label Label data ( 'settings', 'conditions', 'awl_label_status' )
+         * @param int $id Label ID
+         * @param bool $single Whether a single meta value was requested
+         */
+        $label = apply_filters( 'awl_label_settings', $label, $id, $single );
+
         return $label;
+
     }
 
     /*

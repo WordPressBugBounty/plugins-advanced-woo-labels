@@ -3,9 +3,9 @@ Contributors: Mihail Barinov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=FDRDNZE6XAKE8
 Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.0
-Stable tag: 2.50
+Stable tag: 2.51
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.51 ( 01.09.2026 ) =
+* Dev - Add awl_label_settings filter hook
+
 = 2.50 ( 10.08.2026 ) =
 * Update - Tested with WC 11.0
 
@@ -426,6 +429,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Add - Support for TastyDaily theme
 * Update - Support for Product Filter by WBW plugin. Fix labels display on archive pages
 * Update - Tested with WC 9.2
-
-= 2.00 ( 12.08.2024 ) =
-* Dev - Fix functions naming
