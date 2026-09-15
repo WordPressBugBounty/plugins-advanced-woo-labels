@@ -35,6 +35,10 @@ if ( ! class_exists( 'AWL_Admin_Ajax' ) ) :
 
             check_ajax_referer( 'awl_admin_ajax_nonce' );
 
+            if ( ! current_user_can( 'edit_posts' ) ) {
+                wp_send_json_error( 'Insufficient permissions.' );
+            }
+
             $name = sanitize_text_field( $_POST['name'] );
             $group_id = sanitize_text_field( $_POST['groupID'] );
             $rule_id = sanitize_text_field( $_POST['ruleID'] );
@@ -73,6 +77,10 @@ if ( ! class_exists( 'AWL_Admin_Ajax' ) ) :
 
             check_ajax_referer( 'awl_admin_ajax_nonce' );
 
+            if ( ! current_user_can( 'edit_posts' ) ) {
+                wp_send_json_error( 'Insufficient permissions.' );
+            }
+
             $param = sanitize_text_field( $_POST['param'] );
             $suboption = sanitize_text_field( $_POST['suboption'] );
             $group_id = sanitize_text_field( $_POST['groupID'] );
@@ -108,7 +116,13 @@ if ( ! class_exists( 'AWL_Admin_Ajax' ) ) :
 
             check_ajax_referer( 'awl_admin_ajax_nonce' );
 
-            $id = sanitize_text_field( $_POST['id'] );
+            $id = isset( $_POST['id'] ) ? absint( $_POST['id'] ) : 0;
+
+            // Only allow toggling actual labels the current user is able to edit,
+            // otherwise this writes label meta to an arbitrary post ID.
+            if ( ! $id || get_post_type( $id ) !== 'awl-labels' || ! current_user_can( 'edit_post', $id ) ) {
+                wp_send_json_error( 'Insufficient permissions.' );
+            }
 
             $label_options = AWL()->get_label_settings( $id );
 
@@ -179,6 +193,10 @@ if ( ! class_exists( 'AWL_Admin_Ajax' ) ) :
         public function show_current_hooks() {
             
             check_ajax_referer( 'awl_admin_ajax_nonce' );
+
+            if ( ! current_user_can( 'manage_options' ) ) {
+                wp_send_json_error( 'Insufficient permissions.' );
+            }
 
             $hooks = AWL_Helpers::get_hooks();
             $html = '';

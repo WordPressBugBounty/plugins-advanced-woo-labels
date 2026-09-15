@@ -50,6 +50,12 @@ class AWL_Admin_Duplicate_Labels {
 
         check_admin_referer( 'awl-duplicate-label_' . $label_id );
 
+        // The duplicate link is only rendered for users who may edit labels, but the
+        // action itself must enforce that too.
+        if ( get_post_type( $label_id ) !== 'awl-labels' || ! current_user_can( 'edit_post', $label_id ) || ! current_user_can( 'edit_posts' ) ) {
+            wp_die( esc_html__( 'You are not allowed to duplicate this label.', 'advanced-woo-labels' ) );
+        }
+
         $label = get_posts( array(
             'post_type' => 'awl-labels',
             'numberposts' => -1,

@@ -578,24 +578,123 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
         }
 
         /*
+         * Normalize CSS for inspection
+         *
+         * Decodes CSS escape sequences and drops comments so that obfuscated
+         * variants such as "\75 rl(...)" or "@imp/**"."/ort" are seen for what they
+         * are.
+         *
+         * @return string
+         */
+        static private function normalize_css( $css ) {
+
+            $css = preg_replace( '#/\*.*?\*/#s', '', $css );
+
+            $css = preg_replace_callback( '/\\\\([0-9a-f]{1,6})\s?/i', function( $matches ) {
+                $code = hexdec( $matches[1] );
+                // html_entity_decode is used instead of mb_chr so that the plugin
+                // does not depend on the mbstring extension being present.
+                return ( $code > 0 && $code < 0x110000 ) ? html_entity_decode( '&#' . $code . ';', ENT_QUOTES, 'UTF-8' ) : '';
+            }, $css );
+
+            return preg_replace( '/\\\\(.)/s', '$1', $css );
+
+        }
+
+        /*
+         * Whether an url in a css value points at another host
+         * @return bool
+         */
+        static private function is_remote_url( $url ) {
+
+            $url = trim( $url );
+
+            // Relative paths and inline data are fine.
+            if ( $url === '' || strpos( $url, 'data:' ) === 0 ) {
+                return false;
+            }
+
+            if ( ! preg_match( '#^(?:[a-z][a-z0-9+.-]*:)?//#i', $url ) ) {
+                return false;
+            }
+
+            $host = wp_parse_url( $url, PHP_URL_HOST );
+            $site_host = wp_parse_url( home_url(), PHP_URL_HOST );
+
+            return ! $host || strtolower( $host ) !== strtolower( (string) $site_host );
+
+        }
+
+        /*
+         * Whether the CSS pulls in a resource from another host
+         * @return bool
+         */
+        static private function css_has_remote_ref( $css ) {
+
+            if ( preg_match( '/@\s*import\b/i', $css ) ) {
+                return true;
+            }
+
+            if ( preg_match_all( '/url\(\s*([\'"]?)(.*?)\1\s*\)/is', $css, $matches ) ) {
+                foreach ( $matches[2] as $url ) {
+                    if ( self::is_remote_url( $url ) ) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+
+        }
+
+        /*
+         * Remove off-site resource references from CSS
+         * @return string
+         */
+        static private function strip_remote_css_refs( $css ) {
+
+            $css = preg_replace( '/@\s*import\b[^;{]*(?:;|\{[^}]*\})?/i', '', $css );
+
+            return preg_replace_callback( '/url\(\s*([\'"]?)(.*?)\1\s*\)/is', function( $matches ) {
+                return self::is_remote_url( $matches[2] ) ? 'none' : $matches[0];
+            }, $css );
+
+        }
+
+        /*
          * Sanitize custom CSS value
          *
-         * The value is later printed inside a <style> block. Valid CSS never
-         * contains angle brackets, so we strip them (along with any encoded
-         * variants) to prevent breaking out of the style tag and injecting
-         * arbitrary HTML/JS (stored XSS).
+         * The value is printed inside a <style> block, so it must not be able to
+         * close that block. '<' cannot appear in valid CSS and is the only
+         * character needed to open or close a tag, so removing it is enough.
+         * '>' is deliberately kept - it is the CSS child combinator.
+         *
+         * Label css may not reach off-site: @import and url() targets on another
+         * host are removed, so a label cannot call out to a third party.
          *
          * @return string
          */
         static public function sanitize_custom_css( $css ) {
+
             if ( ! is_string( $css ) ) {
                 return '';
             }
+
             // Decode entities first so encoded payloads (e.g. &lt;) can't slip through.
             $css = wp_specialchars_decode( $css, ENT_QUOTES );
-            // Remove characters that could close the <style> tag or open new ones.
-            $css = str_replace( array( '<', '>' ), '', $css );
+            $css = str_replace( '<', '', $css );
+
+            // Ordinary css is returned untouched, comments and escapes included.
+            // Anything reaching off-site is rewritten from the normalized form so
+            // that comment or escape obfuscation cannot hide part of the reference.
+            $normalized = self::normalize_css( $css );
+
+            if ( self::css_has_remote_ref( $normalized ) ) {
+                $css = self::strip_remote_css_refs( $normalized );
+            }
+
             return $css;
+
         }
 
         /*

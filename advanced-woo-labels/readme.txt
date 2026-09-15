@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.0
-Stable tag: 2.51
+Stable tag: 2.52
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.52 ( 15.09.2026 ) =
+* Update - Tested with WC 11.1
+* Update - Add escaping for custom css options
+
 = 2.51 ( 01.09.2026 ) =
 * Dev - Add awl_label_settings filter hook
 
@@ -424,8 +428,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Support for Product Filter by WBW plugin. Fix labels display on archive pages
 * Update - Integration with Additional Variation Images Gallery for WooCommerce plugin
 * Fix - Strip some html from labels preview
-
-= 2.01 ( 02.09.2024 ) =
-* Add - Support for TastyDaily theme
-* Update - Support for Product Filter by WBW plugin. Fix labels display on archive pages
-* Update - Tested with WC 9.2

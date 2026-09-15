@@ -424,11 +424,15 @@ jQuery(document).ready(function ($) {
         var css = $(this).val();
         var cssBox = $('#awl-css');
 
-        if ( cssBox.length > 0 ) {
-            cssBox.text( css );
-        } else {
-            previewLabelContainer.before( $('<style id="awl-css">'+css+'</style>') );
+        // Never build the <style> element from a markup string: jQuery would parse
+        // the CSS as HTML and a payload could break out of the tag. Create an empty
+        // element and set its text content instead.
+        if ( cssBox.length === 0 ) {
+            previewLabelContainer.before( $('<style id="awl-css"></style>') );
+            cssBox = $('#awl-css');
         }
+
+        cssBox.text( css );
 
     });
 

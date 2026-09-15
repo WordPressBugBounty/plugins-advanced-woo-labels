@@ -96,7 +96,7 @@ if ( ! class_exists( 'AWL_Admin' ) ) :
          */
         public function save_meta_boxes( $post_id, $post ) {
 
-            if ( ! isset( $_POST['awl_label_meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['awl_label_meta_box_nonce'], 'awl_label_meta_box' ) ) {
+            if ( ! isset( $_POST['awl_label_meta_box_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['awl_label_meta_box_nonce'] ) ), 'awl_label_meta_box' ) ) {
                 return $post_id;
             }
 
@@ -104,7 +104,9 @@ if ( ! class_exists( 'AWL_Admin' ) ) :
                 return $post_id;
             }
 
-            if ( ! current_user_can( 'edit_posts' ) ) {
+            // Check the capability against this specific label instead of the
+            // generic 'edit_posts' primitive cap.
+            if ( ! current_user_can( 'edit_post', $post_id ) ) {
                 return $post_id;
             }
 

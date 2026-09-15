@@ -400,7 +400,7 @@ if ( ! class_exists( 'AWL_Admin_Label_Settings' ) ) :
 
             $disabled = isset( $field['disabled'] ) && $field['disabled'] ? ' disabled' : '';
 
-            $html = '<textarea id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" cols="45" rows="3"'. $disabled .'>' . stripslashes( $this->field_value ) . '</textarea>';
+            $html = '<textarea id="' . AWL_Admin_Helpers::sanitize_tag( $this->field_name ) . '" name="' . esc_attr( $this->field_name ) . '" cols="45" rows="3"'. $disabled .'>' . esc_textarea( stripslashes( $this->field_value ) ) . '</textarea>';
 
             return $html;
 

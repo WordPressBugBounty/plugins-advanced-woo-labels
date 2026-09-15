@@ -109,7 +109,7 @@ if ( ! class_exists( 'AWL_Admin_Page_Fields' ) ) :
                             <td>
                                 <?php $textarea_cols = isset( $value['cols'] ) ? $value['cols'] : "55"; ?>
                                 <?php $textarea_rows = isset( $value['rows'] ) ? $value['rows'] : "4"; ?>
-                                <textarea id="<?php echo esc_attr( $value['id'] ); ?>" name="<?php echo esc_attr( $value['id'] ); ?>" cols="<?php echo $textarea_cols; ?>" rows="<?php echo $textarea_rows; ?>"><?php print stripslashes( $plugin_options[ $value['id'] ] ); ?></textarea>
+                                <textarea id="<?php echo esc_attr( $value['id'] ); ?>" name="<?php echo esc_attr( $value['id'] ); ?>" cols="<?php echo $textarea_cols; ?>" rows="<?php echo $textarea_rows; ?>"><?php echo esc_textarea( stripslashes( $plugin_options[ $value['id'] ] ) ); ?></textarea>
                                 <br><span class="description"><?php echo wp_kses_post( $value['desc'] ); ?></span>
                             </td>
                         </tr>

@@ -141,9 +141,10 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
             $css = '';
 
             if ( $this->custom_styles && isset( $this->settings['custom_css'] ) && $this->settings['custom_css'] ) {
-                // Strip angle brackets as a safeguard against breaking out of the
-                // style tag (defense-in-depth for values stored before sanitization).
-                $custom_css = str_replace( array( '<', '>' ), '', $this->settings['custom_css'] );
+                // Safeguard for values stored before input sanitization existed.
+                // Only '<' is removed: it is all that is needed to close the style
+                // tag, while '>' is a legitimate css child combinator.
+                $custom_css = str_replace( '<', '', $this->settings['custom_css'] );
                 $css .= '<style type="text/css">';
                 $css .= preg_replace( '/(\.awl-[\w\-\s\.]+{)/', '.awl-label-id-' . strval( $this->label_id ) . ' $1', $custom_css );
                 $css .= '</style>';

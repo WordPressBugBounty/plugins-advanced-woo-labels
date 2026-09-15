@@ -245,7 +245,7 @@ if ( ! class_exists( 'AWL_Taxonomy' ) ) :
                 return $post_id;
             }
 
-            if ( ! current_user_can( 'edit_posts' ) ) {
+            if ( ! current_user_can( 'edit_post', $post_id ) ) {
                 return $post_id;
             }
 
