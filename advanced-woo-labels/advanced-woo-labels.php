@@ -3,7 +3,7 @@
 /*
 Plugin Name: Advanced Woo Labels
 Description: Advance WooCommerce product labels plugin
-Version: 2.52
+Version: 2.53
 Author: ILLID
 Plugin URI: https://kramakit.com/
 Author URI: https://kramakit.com/
@@ -91,7 +91,7 @@ final class AWL_Main {
      */
     private function define_constants() {
 
-        $this->define( 'AWL_VERSION', '2.52' );
+        $this->define( 'AWL_VERSION', '2.53' );
 
         $this->define( 'AWL_DIR', plugin_dir_path( AWL_FILE ) );
         $this->define( 'AWL_URL', plugin_dir_url( AWL_FILE ) );

@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.0
-Stable tag: 2.52
+Stable tag: 2.53
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -227,6 +227,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.53 ( 05.10.2026 ) =
+* Update - Label settings page for Link tab
+* Fix - Code changes for latest php versions
+
 = 2.52 ( 15.09.2026 ) =
 * Update - Tested with WC 11.1
 * Update - Add escaping for custom css options
@@ -419,12 +423,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Update - Integration with Uncode theme
 * Update - Integration with WooCommerce Product Table plugin
 * Fix - Support for WooCommerce Load More Products plugin
-
-= 2.02 ( 16.09.2024 ) =
-* Add - Support for Shopical theme
-* Add - Support for CommerceKit by CommerceGurus plugin
-* Add - Support for Breakdance plugin
-* Update - Tested with WC 9.3
-* Update - Support for Product Filter by WBW plugin. Fix labels display on archive pages
-* Update - Integration with Additional Variation Images Gallery for WooCommerce plugin
-* Fix - Strip some html from labels preview

@@ -826,6 +826,18 @@ if ( ! class_exists( 'AWL_Admin_Options_Premium' ) ) :
             );
 
             $options['link'][] = array(
+                "name" => __( "Label link text", "advanced-woo-labels" ) . ' <a target="_blank" href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=link_text">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
+                "id"   => "link_text",
+                "value" => '',
+                "spoiler" => array(
+                    "title" => '* ' . __( "supports variables", "advanced-woo-labels" ),
+                    "text"  => AWL_Admin_Helpers::get_text_variables_info(),
+                ),
+                "type"  => "text",
+                "disabled" => true,
+            );
+
+            $options['link'][] = array(
                 "name" => __( "Open in new window", "advanced-woo-labels" ) . ' <a target="_blank" href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=pro-option-link&utm_campaign=pricing&utm_content=link_window">' . __( "(Pro)", "advanced-woo-labels" ) . '</a>',
                 "id"   => "link_window",
                 "value" => 'false',

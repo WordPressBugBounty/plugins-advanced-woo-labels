@@ -331,14 +331,14 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                     $hooks['on_image']['archive'] = array( 'woocommerce_before_shop_loop_item' => array( 'priority' => 10, 'js' => array( '.kw-prodimage', 'append' ) ) );
                     break;
 
-                case 'OceanWP';
+                case 'OceanWP':
                     $hooks['on_image']['archive'] = array( 'ocean_before_archive_product_image' => array( 'priority' => 10 ) );
                     $hooks['before_title']['archive'] = array( 'ocean_before_archive_product_categories' => array( 'priority' => 1 ), 'ocean_before_archive_product_title' => array( 'priority' => 1 ) );
                     $hooks['on_image']['single']['ocean_woo_quick_view_product_image'] = array( 'priority' => 10 );
                     $hooks['before_title']['single']['ocean_before_single_product_title'] = array( 'priority' => 10 );
                     break;
 
-                case 'Shopkeeper';
+                case 'Shopkeeper':
                     $hooks['on_image']['archive'] = array( 'woocommerce_shop_loop_item_thumbnail' => array( 'priority' => 1 ) );
                     $hooks['before_title']['archive'] = array( 'woocommerce_shop_loop_item_thumbnail' => array( 'priority' => 10 ) );
                     $hooks['before_title']['single'] = array( 'woocommerce_single_product_summary_single_title' => array( 'priority' => 1 ) );
@@ -457,7 +457,7 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                     $hooks['before_title']['archives']['shopical_woocommerce_after_shop_loop_item_title'] = array( 'priority' => 2, 'js' => array( '.product-title a', 'before' ) );
                     break;
 
-                case 'Shoptimizer';
+                case 'Shoptimizer':
                     $hooks['on_image']['archives']['woocommerce_before_shop_loop_item_title'] = array( 'priority' => 4 );
                     break;
 
