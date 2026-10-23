@@ -21,7 +21,7 @@ Customize label styles with build-in options to change **color**, **size**, **st
 
 Attract users attention by displaying inside WooCommerce labels and badges information like **discount value**, **product quantity**, **product rating**, **shipping class**, **stock status**, **sale status**,  etc.
 
-[Plugin Home Page](https://advanced-woo-labels.com/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Features List](https://advanced-woo-labels.com/features/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Documentation](https://advanced-woo-labels.com/guide/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [View demo](https://demo.advanced-woo-labels.com//?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Get PRO](https://advanced-woo-labels.com/pricing/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+[Plugin Home Page](https://kramakit.com/plugins/advanced-woo-labels/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Documentation](https://kramakit.com/guide-category/awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [View demo](https://demo.advanced-woo-labels.com//?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo) | [Get PRO](https://kramakit.com/plugins/advanced-woo-labels/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo#pricing)
 
 ## &#9889; Main Features =
 
@@ -46,7 +46,7 @@ Attract users attention by displaying inside WooCommerce labels and badges infor
 
 ## &#127775; Premium Features =
 
-Additional features that are available only in the [PRO plugin version](https://advanced-woo-labels.com/pricing/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo).
+Additional features that are available only in the [PRO plugin version](https://kramakit.com/plugins/advanced-woo-labels/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo#pricing).
 
 &#9989; **Image Labels**. Use one of predefined images as a product badge or upload your custom one. Additionally it is possible to use SVG images.
 &#9989; **Emojis Support**: Use any emoji inside the text label. Mix theme with text variables, plain text or other emojis.
@@ -62,7 +62,7 @@ Additional features that are available only in the [PRO plugin version](https://
 &#9989; **WCFM Plugin Support**: Advanced integration with *WCFM Multivendor Marketplace* plugin. Show vendor related data inside product labels and create special labels display conditions based on these data.
 &#9989; **Dokan Plugin Support**: Advanced integration with *Dokan WooCommerce Multivendor Marketplace* plugin. Show product vendor information inside labels and use label display conditions based on Dokan vendor data.
 &#9989; **MultiVendorX Plugin Support**: Advanced integration with *MultiVendorX Multivendor Marketplace* plugin.
-&#9989; **More Integrations**: And the [huge list of other integrations](https://advanced-woo-labels.com/guide-category/integrations/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo).
+&#9989; **More Integrations**: And the [huge list of other integrations](https://kramakit.com/guide-category/integrations-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo).
 
 ## &#127991;&#65039; WooCommerce Product Labels & Badges
 
@@ -111,22 +111,22 @@ You have full control on where to place WooCommerce product labels and how they 
 
 Plugin has a large number of built-in integrations that greatly increase its functionality.
 
-* [ACF](https://advanced-woo-labels.com/guide/advanced-custom-fields-acf-support/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show value of any ACF field inside product labels. Show/hide labels based on current product ACF fields.
-* [WPML](https://advanced-woo-labels.com/guide/wpml/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Automatically works with multilingual sites. Translate and show labels in different languages.
-* [Polylang](https://advanced-woo-labels.com/guide/polylang/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Translate and show labels in different languages.
-* [Elementor](https://advanced-woo-labels.com/guide/elementor-integration/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Automatically show labels for all Elementor WooCommerce blocks. Disable labels for any specific blocks on your choice.
-* [Gutenberg](https://advanced-woo-labels.com/guide/wp-block-editor-gutenberg/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Automatically show labels for all WordPress Block Editor WooCommerce blocks.
-* [Bricks Builder](https://advanced-woo-labels.com/guide/bricks-builder/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Labels will works for all Bricks Builder blocks that displayed WooCommerce products. Also you can hide/show labels only for specific blocks.
-* [Breakdance Builder](https://advanced-woo-labels.com/guide/bricks-builder/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Automatically show all labels/badges for all WooCommerce product blocks created via Breakdance Builder.
-* [Dokan](https://advanced-woo-labels.com/guide/dokan-woocommerce-multivendor-marketplace/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show Dokan related parameters inside label text and set labels display rules based on those parameters.
-* [WCFM](https://advanced-woo-labels.com/guide/wcfm-multivendor-marketplace/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): User text variables with WCFM parameters and set labels display rules based on those parameters.
-* [MultiVendorX](https://advanced-woo-labels.com/guide/multivendorx/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show MultiVendorX plugin related parameters inside label text and set labels display rules based on those parameters.
-* [WC Vendors](https://advanced-woo-labels.com/guide/wc-vendors/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show WC Vendors plugin related parameters inside label text and set labels display rules based on those parameters.
-* [WooCommerce Memberships](https://advanced-woo-labels.com/guide/woocommerce-memberships/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show data related to WooCommerce Memberships plugin inside product labels and create labels display rules based on this data.
-* [Advanced Woo Search](https://advanced-woo-labels.com/guide/advanced-woo-search-integration/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show labels inside search results. 
-* [YITH Wishlist](https://advanced-woo-labels.com/guide/yith-wishlist-support/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show labels inside wishlists. Use special label text variables and label display conditions.
+* [ACF](https://kramakit.com/guide/advanced-custom-fields-acf-support-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show value of any ACF field inside product labels. Show/hide labels based on current product ACF fields.
+* [WPML](https://kramakit.com/guide/wpml-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Automatically works with multilingual sites. Translate and show labels in different languages.
+* [Polylang](https://kramakit.com/guide/polylang-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Translate and show labels in different languages.
+* [Elementor](https://kramakit.com/guide/elementor-integration-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Automatically show labels for all Elementor WooCommerce blocks. Disable labels for any specific blocks on your choice.
+* [Gutenberg](https://kramakit.com/guide/wp-block-editor-gutenberg-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Automatically show labels for all WordPress Block Editor WooCommerce blocks.
+* [Bricks Builder](https://kramakit.com/guide/bricks-builder-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Labels will works for all Bricks Builder blocks that displayed WooCommerce products. Also you can hide/show labels only for specific blocks.
+* [Breakdance Builder](https://kramakit.com/guide/bricks-builder-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Automatically show all labels/badges for all WooCommerce product blocks created via Breakdance Builder.
+* [Dokan](https://kramakit.com/guide/dokan-woocommerce-multivendor-marketplace-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show Dokan related parameters inside label text and set labels display rules based on those parameters.
+* [WCFM](https://kramakit.com/guide/wcfm-multivendor-marketplace-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): User text variables with WCFM parameters and set labels display rules based on those parameters.
+* [MultiVendorX](http://kramakit.com/guide/multivendorx-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show MultiVendorX plugin related parameters inside label text and set labels display rules based on those parameters.
+* [WC Vendors](https://kramakit.com/guide/wc-vendors-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show WC Vendors plugin related parameters inside label text and set labels display rules based on those parameters.
+* [WooCommerce Memberships](https://kramakit.com/guide/woocommerce-memberships-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show data related to WooCommerce Memberships plugin inside product labels and create labels display rules based on this data.
+* [Advanced Woo Search](https://kramakit.com/guide/advanced-woo-search-integration-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show labels inside search results. 
+* [YITH Wishlist](https://kramakit.com/guide/yith-wishlist-support-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo): Show labels inside wishlists. Use special label text variables and label display conditions.
 
-This is only a part of available integrations. [View full list of integrations](https://advanced-woo-labels.com/guide-category/integrations/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo).
+This is only a part of available integrations. [View full list of integrations](https://kramakit.com/guide-category/integrations-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo).
 
 
 ## &#128187; More Plugins From Us
@@ -138,14 +138,12 @@ Here are some additional plugins that were made with love.
 
 ## &#128279; More Useful Links
 
-* [Homepage](https://advanced-woo-labels.com/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
-* [Documentation](https://advanced-woo-labels.com/guide/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
-* [Features List](https://advanced-woo-labels.com/features/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
-* [PRO Features](https://advanced-woo-labels.com/pro/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
-* [Contact Form](https://advanced-woo-labels.com/contact/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
-* [Pricing](https://advanced-woo-labels.com/pricing/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+* [Homepage](https://kramakit.com/plugins/advanced-woo-labels/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+* [Documentation](https://kramakit.com/guide-category/awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+* [Contact Form](https://kramakit.com/contact/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+* [Pricing](https://kramakit.com/plugins/advanced-woo-labels//?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo#pricing)
 * [Demo](https://demo.advanced-woo-labels.com/)
-* [Twitter Account](https://twitter.com/LabelsWoo)
+* [Twitter Account](https://twitter.com/kramakit)
 
 == Installation ==
 
@@ -187,11 +185,11 @@ Yes, for any WooCommerce product you can display an unlimited number of differen
 = Can I choose what product labels must be displayed? =
 
 Sure. For any created label you can create special conditions rules that will describe on what products, pages and for what users these labels must be displayed.
-There is a large variety of such conditions and more information you can find [here](https://advanced-woo-labels.com/guide/label-conditions/).
+There is a large variety of such conditions and more information you can find [here](https://kramakit.com/guide/label-conditions-awl/).
 
 = Can I show inside labels text some values like product discount or quantity? =
 
-Yes, you can use a plugin [text variables](https://advanced-woo-labels.com/guide/text-variables/) to show a variety of different product parameters like price, discount value, sku, quantity, sales number, reviews, rating, attributes, etc.
+Yes, you can use a plugin [text variables](https://kramakit.com/guide/text-variables-awl/) to show a variety of different product parameters like price, discount value, sku, quantity, sales number, reviews, rating, attributes, etc.
 
 = Can I replace my default labels with plugin ones? =
 
@@ -205,7 +203,7 @@ If you still have any specific issue with your page builder or them - please con
 
 = Can I show labels on some custom positions? =
 
-By default you can show labels on two predefined positions - **on product image** and **before product title**. If you need to show them in some other position - it is also possible by changing display hooks. Please read this article to learn more - [How to customize labels positions](https://advanced-woo-labels.com/guide/how-to-customize-labels-positions/).
+By default you can show labels on two predefined positions - **on product image** and **before product title**. If you need to show them in some other position - it is also possible by changing display hooks. Please read this article to learn more - [How to customize labels positions](https://kramakit.com/guide/how-to-customize-labels-positions-awl/).
 
 = How can I report security bugs? =
 
@@ -225,7 +223,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-[View full changelog](https://advanced-woo-labels.com/guide/free-version-changelog/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
+[View full changelog](https://kramakit.com/guide/free-version-changelog-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
 = 2.54 ( 19.10.2026 ) =
 * Update - Tested with WC 11.2
