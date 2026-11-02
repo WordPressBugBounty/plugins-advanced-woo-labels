@@ -702,9 +702,10 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
          *
          * Most settings (bg_color, text_color, font_size, opacity, letter_spacing,
          * the *_unit fields, padding/margin, etc.) are printed into inline style=""
-         * attributes on the frontend, so stray markup or quote characters must be
-         * stripped before the values are stored. This is defense-in-depth: the style
-         * sink itself is also escaped via esc_attr() in AWL_Label_View::implode_styles().
+         * attributes on the frontend, so stray markup must be stripped before the
+         * values are stored. sanitize_text_field() keeps quote characters, so every
+         * sink must still escape its own output: the style sink does this via
+         * esc_attr() in AWL_Label_View::implode_styles().
          *
          * Two keys are intentionally left untouched here:
          *  - 'text'       may contain limited HTML and is sanitized on output with

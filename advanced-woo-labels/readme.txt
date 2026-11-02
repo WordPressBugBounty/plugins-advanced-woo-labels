@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.0
-Stable tag: 2.54
+Stable tag: 2.55
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -225,6 +225,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://kramakit.com/guide/free-version-changelog-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.55 ( 02.11.2026 ) =
+* Fix - Strip some label setting on frontend
+* Fix - Links inside admin notices
+
 = 2.54 ( 19.10.2026 ) =
 * Update - Tested with WC 11.2
 
@@ -417,10 +421,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * Add - Support for Ultimate Addons for Beaver Builder plugin
 * Update - Support for Product Gallery Slider for Woocommerce plugin
 * Update - Admin page notices about integrations
-
-= 2.03 ( 01.10.2024 ) =
-* Add - Support for Product Video Gallery for Woocommerce plugin
-* Update - Support for Product Gallery Slider for Woocommerce plugin
-* Update - Integration with Uncode theme
-* Update - Integration with WooCommerce Product Table plugin
-* Fix - Support for WooCommerce Load More Products plugin

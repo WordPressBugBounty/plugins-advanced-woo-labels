@@ -109,7 +109,8 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
             $class = '';
             $class .= ' awl-position-type-' . sanitize_title( $this->position_type );
             $class .= ' awl-label-type-' . AWL_Helpers::get_label_type();
-            $class .= ( $this->position_type === 'on_image' ) ? ' awl-align-' . $this->labels[0]['position'] : ' awl-align-' . sanitize_title( $this->labels[0]['position_x'] );
+            $position = ( $this->position_type === 'on_image' ) ? $this->labels[0]['position'] : $this->labels[0]['position_x'];
+            $class .= ' awl-align-' . sanitize_title( is_string( $position ) ? $position : '' );
             return str_replace( '_', '-', $class );
         }
 

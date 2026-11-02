@@ -150,8 +150,8 @@ if ( ! class_exists( 'AWL_Taxonomy' ) ) :
                     $position = '';
                     if ( $label_settings ) {
                         $position_val = $label_settings['position_type'] === 'on_image' ? $label_settings['position'] : $label_settings['position_x'];
-                        $position .= isset( $label_settings['position_type'] ) ? str_replace( '_', ' ', $label_settings['position_type'] ) : '';
-                        $position .= $position_val ? '<br>' . str_replace( '_', ' ', $position_val ) : '';
+                        $position .= isset( $label_settings['position_type'] ) ? str_replace( '_', ' ', esc_html( $label_settings['position_type'] ) ) : '';
+                        $position .= $position_val ? '<br>' . str_replace( '_', ' ', esc_html( $position_val ) ) : '';
                     }
 
                     echo '<span style="text-transform:capitalize;">' . $position . '</span>';

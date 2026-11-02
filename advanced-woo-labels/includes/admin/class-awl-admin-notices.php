@@ -99,7 +99,7 @@ if ( ! class_exists( 'AWL_Admin_Notices' ) ) :
                         $html .= '<ul style="list-style:disc;padding-left:20px;margin:15px 0 18px;">' . $notice_message. '</ul>';
                         $html .= '<a href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=all_pro" target="_blank" class="button button-primary">' . __( 'All PRO Features', 'advanced-woo-labels' ) . '</a>&nbsp;&nbsp;<a href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=wp-plugin&utm_medium=integration_notice&utm_campaign=pricing" target="_blank" class="button button-primary">' . __( 'View Pricing', 'advanced-woo-labels' ) . '</a>';
                         $html .= '<div style="margin-bottom:15px;"></div>';
-                        $html .= '<a href="' . $dismiss_link . $notice_id . '" title="' . __( 'Dismiss', 'advanced-woo-labels'  ) . '" style="color:#787c82;text-decoration:none;font-size:16px;position:absolute;top:0;right:1px;border:none;margin:0;padding:9px;background:0 0;cursor:pointer;"><span style="font-size:16px;" class="dashicons dashicons-dismiss"></span></a>';
+                        $html .= '<a href="' . esc_url( $dismiss_link . $notice_id ) . '" title="' . __( 'Dismiss', 'advanced-woo-labels'  ) . '" style="color:#787c82;text-decoration:none;font-size:16px;position:absolute;top:0;right:1px;border:none;margin:0;padding:9px;background:0 0;cursor:pointer;"><span style="font-size:16px;" class="dashicons dashicons-dismiss"></span></a>';
                     $html .= '</div>';
                 $html .= '</div>';
 
