@@ -3,14 +3,14 @@
 /*
 Plugin Name: Advanced Woo Labels
 Description: Advance WooCommerce product labels plugin
-Version: 2.55
+Version: 2.56
 Author: ILLID
 Plugin URI: https://kramakit.com/
 Author URI: https://kramakit.com/
 Text Domain: advanced-woo-labels
 Requires Plugins: woocommerce
 WC requires at least: 3.0.0
-WC tested up to: 11.2.0
+WC tested up to: 11.3.0
 */
 
 
@@ -91,7 +91,7 @@ final class AWL_Main {
      */
     private function define_constants() {
 
-        $this->define( 'AWL_VERSION', '2.55' );
+        $this->define( 'AWL_VERSION', '2.56' );
 
         $this->define( 'AWL_DIR', plugin_dir_path( AWL_FILE ) );
         $this->define( 'AWL_URL', plugin_dir_url( AWL_FILE ) );
@@ -126,6 +126,7 @@ final class AWL_Main {
         include_once( 'includes/admin/class-awl-admin-helpers.php' );
         include_once( 'includes/admin/class-awl-admin-meta-boxes.php' );
         include_once( 'includes/admin/class-awl-admin-page.php' );
+        include_once( 'includes/admin/class-awl-admin-black-friday.php' );
         include_once( 'includes/admin/class-awl-admin-page-fields.php' );
         include_once( 'includes/admin/class-awl-admin-page-premium.php' );
         include_once( 'includes/admin/class-awl-admin-label-rules.php' );

@@ -406,6 +406,7 @@ if ( ! class_exists( 'AWL_Integrations' ) ) :
                         'blocksy:woocommerce:product-card:thumbnail:start' => array( 'priority' => 10 ),
                         'woocommerce_product_get_image' => array( 'priority' => 10, 'type' => 'filter', 'callback' => 'AWL_Integrations_Callbacks::wrap_thumb_container_filter', 'args' => 1 ),
                     );
+                    $hooks['on_image']['single']['woocommerce_single_product_image_thumbnail_html'] = array( 'priority' => 10, 'type' => 'filter', 'callback' => 'AWL_Integrations_Callbacks::blocksy_single_product_image_thumbnail_html', 'args' => 1 );
                     break;
 
                 case 'Basel':

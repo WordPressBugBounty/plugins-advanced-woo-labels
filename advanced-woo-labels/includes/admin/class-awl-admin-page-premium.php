@@ -37,266 +37,165 @@ if ( ! class_exists( 'AWL_Admin_Page_Premium' ) ) :
             echo '</div>';
 
 
-            echo '<div class="buy-premium">';
-                echo '<a href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">';
-                    echo '<span class="desc">' . __( 'Upgrade to the', 'advanced-woo-labels' ) . '<b> ' . __( 'Premium plugin version', 'advanced-woo-labels' ) . '</b><br>' . __( 'to have all available features!', 'advanced-woo-labels' ) . '</span>';
-                    echo '<ul>';
-                        echo '<li>' . __( '30-day money back guarantee', 'advanced-woo-labels' ) . '</li>';
-                        echo '<li>' . __( 'Priority support', 'advanced-woo-labels' ) . '</li>';
-                        echo '<li>' . __( '1 year of support and updates', 'advanced-woo-labels' ) . '</li>';
-                    echo '</ul>';
+            $promo_deal = class_exists( 'AWL_Admin_Black_Friday' ) ? AWL_Admin_Black_Friday::get_card_badge() : '';
+
+            echo '<div class="buy-premium-row">';
+
+                echo '<div class="buy-premium">';
+                    echo '<a href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">';
+                        echo $promo_deal;
+                        echo '<span class="desc">' . __( 'Upgrade to the', 'advanced-woo-labels' ) . '<b> ' . __( 'Premium plugin version', 'advanced-woo-labels' ) . '</b><br>' . __( 'to have all available features!', 'advanced-woo-labels' ) . '</span>';
+                        echo '<ul>';
+                            echo '<li>' . __( '30-day money back guarantee', 'advanced-woo-labels' ) . '</li>';
+                            echo '<li>' . __( 'Priority support', 'advanced-woo-labels' ) . '</li>';
+                        echo '</ul>';
                     echo '</a>';
-            echo '</div>';
-
-            echo '<div class="features">';
-
-                echo '<h3>' . __( 'Premium Features', 'advanced-woo-labels' ) . '</h3>';
-
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'Image Labels', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo  __(  'Use one of predefined images as a product label or upload your custom one. Use png/jpg/gif or SVG images.' , 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/image-labels-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
-                            echo '<ul>';
-                                echo '<li>' . __( 'Upload a custom image or use one of predefined', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Use png/jpg/gif/svg images', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Set any image size', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Set image opacity', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-image-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
                 echo '</div>';
 
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'More Label Shapes', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'Choose from a variety of different templates for your text label to attract users attention.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/styling-settings-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
-                            echo '<ul>';
-                                echo '<li>' . __( 'Choose from several new label shapes', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-shapes-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-
-                 echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'Label Animation', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'Set unique animation for each label with different customizable parameters.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/label-animations-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
-                            echo '<ul>';
-                                echo '<li>' . __( 'Choose one of predefined animation types', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Customize animation parameters', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Create your own custom animations', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-animation.gif' . '" />';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'Emojis Support', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'Use any emoji inside the text label. Mix theme with text variables, plain text to other emojis.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/emojis-support-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
-                            echo '<ul>';
-                                echo '<li>' . __( 'Use any emoji inside the label', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Use emojis together with plain text/text vars', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-emoji-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'More Label Conditions', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'Number of label conditions has been significantly increased. Now you can create more complex label display rules by using additional conditions.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/label-conditions-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
-                            echo '<ul>';
-                                echo '<li>' . __( 'More product related conditions', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'User based conditions', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Page based conditions', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Date/time conditions', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-cond-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'More Text Variables', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'Use some additional text variables to make labels text even more attractive and product-specific.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/text-variables-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
-                            echo '<ul>';
-                                echo '<li>' . __( 'Additional text variables', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Attributes, taxonomies, custom fields display', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Math calculations with CALC function', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-text-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'Label Custom Links', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'Add any custom link inside your label. So now your product labels not just tell users some important information but can contain some useful links.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/label-custom-links-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
-                            echo '<ul>';
-                                echo '<li>' . __( 'Link label to any page', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Works with all label types', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-link-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'Label Styles', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'Use even more label styling options to fully adapt it to your needs.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/styling-settings-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
-                            echo '<ul>';
-                                echo '<li>' . __( 'Set label shadows', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Set label borders color', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Set label borders size', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Set label rotation', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Additional label templates', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-styles-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'ACF Plugin Support', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'Advanced integration with Advanced Custom Fields plugin. Show value of any ACF field inside label. Also set label display conditions based on ACF fields values.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/advanced-custom-fields-acf-support-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . '</a>';
-                            echo '<ul>';
-                                echo '<li>' . __( 'Display ACF fields values inside labels', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Conditions based on ACF fields', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-acf-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'WCFM / Dokan / WC Vendors Plugins Support', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'Build-in integration with WCFM Multivendor Marketplace, WC Vendors and Dokan Multivendor Marketplace plugins. Show vendor related data inside product labels and create special labels display conditions based on these data.', 'advanced-woo-labels' );
-                            echo '<br><a href="https://kramakit.com/guide/wcfm-multivendor-marketplace-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . ' (WCFM)</a>';
-                            echo '<br><a href="https://kramakit.com/guide/dokan-woocommerce-multivendor-marketplace-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . ' (Dokan)</a>';
-                            echo '<br><a href="https://kramakit.com/guide/wc-vendors-awl/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'Learn more', 'advanced-woo-labels' ) . ' (WC Vendors)</a>';
-
-                            echo '<ul>';
-                                echo '<li>' . __( 'Show vendor data via text variables', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Label display conditions based on vendor data', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-wcfm-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-
-                echo '<div class="features-item">';
-                    echo '<div class="column">';
-                        echo '<h4 class="title">';
-                            echo __( 'Priority Support', 'advanced-woo-labels' );
-                        echo '</h4>';
-                        echo '<p class="desc">';
-                            echo __( 'You will benefit from our full support for any issues you have with this plugin.', 'advanced-woo-labels' );
-                            echo '<ul>';
-                                echo '<li>' . __( 'Always ready to help', 'advanced-woo-labels' ) . '</li>';
-                                echo '<li>' . __( 'Fast and professional support', 'advanced-woo-labels' ) . '</li>';
-                            echo '</ul>';
-                        echo '</p>';
-                    echo '</div>';
-                    echo '<div class="column">';
-                        echo '<div class="img">';
-                            echo '<img alt="" src="' . AWL_URL . '/assets/img/pro/feature-sup-pro.png' . '" />';
-                        echo '</div>';
-                    echo '</div>';
+                echo '<div class="buy-premium buy-bundle">';
+                    echo '<a href="https://kramakit.com/plugins/bundle/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">';
+                        echo $promo_deal;
+                        echo '<span class="desc">' . esc_html__( 'OR get the', 'advanced-woo-labels' ) . '<b> ' . esc_html__( 'KramaKit Bundle', 'advanced-woo-labels' ) . '</b><br>' . esc_html__( 'and save 30% on all our plugins!', 'advanced-woo-labels' ) . '</span>';
+                        echo '<ul>';
+                            echo '<li>' . esc_html__( 'All 3 plugins', 'advanced-woo-labels' ) . '</li>';
+                            echo '<li>' . esc_html__( 'All future plugins', 'advanced-woo-labels' ) . '</li>';
+                        echo '</ul>';
+                    echo '</a>';
                 echo '</div>';
 
             echo '</div>';
 
+            echo '<div class="compare">';
 
+                echo '<h3>' . esc_html__( 'Free vs. Pro', 'advanced-woo-labels' ) . '</h3>';
+                echo '<p class="compare-desc">' . esc_html__( 'Everything in the free version, plus powerful Pro features for growing stores.', 'advanced-woo-labels' ) . '</p>';
 
+                $features = array(
+                    array(
+                        'name' => __( 'Themes, page builders support', 'advanced-woo-labels' ),
+                        'tip'  => __( 'We work hard to make labels compatible with almost all available themes. Also labels will be visible for all blocks created via such plugins like Elementor, WP Block Editor, Beaver Builder, Divi Builder, etc.', 'advanced-woo-labels' ),
+                        'free' => true,
+                    ),
+                    array(
+                        'name' => __( 'Unlimited number of labels', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Show unlimited number of labels for each WooCommerce product. Optionally you can limit the maximal number of labels per product by special plugin settings.', 'advanced-woo-labels' ),
+                        'free' => true,
+                    ),
+                    array(
+                        'name' => __( 'Labels groups', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Several labels on the same position for the same product combined in groups. Set group alignment, distance, max number of labels.', 'advanced-woo-labels' ),
+                        'free' => true,
+                    ),
+                    array(
+                        'name' => __( 'Labels positions and align', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Display labels in two available positions: on product image or before product title. Align labels to the left, center or right relative to product content ( top, center, bottom additionally for product image ).', 'advanced-woo-labels' ),
+                        'free' => true,
+                    ),
+                    array(
+                        'name' => __( 'Labels display conditions', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Use powerful display conditions to choose for what product/page/user labels must be visible. For example - show labels only for products with certain categories and attributes.', 'advanced-woo-labels' ),
+                        'free' => true,
+                    ),
+                    array(
+                        'name' => __( 'Text and text variables', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Set any custom text for your labels. Use special text variables to show important product information like Price, Sale Price, Discount Percentage, etc.', 'advanced-woo-labels' ),
+                        'free' => true,
+                    ),
+                    array(
+                        'name' => __( 'Styling options', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Create your unique label view by using styling options to change label background color, text color, font, margins, paddings, borders, shadows.', 'advanced-woo-labels' ),
+                        'free' => true,
+                    ),
+                    array(
+                        'name' => __( 'Different labels shapes', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Choose from several predefined label templates.', 'advanced-woo-labels' ),
+                        'free' => true,
+                    ),
+                    array(
+                        'name' => __( 'Additional labels display conditions', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Use even more label display conditions based on current page, user, product or date.', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                    array(
+                        'name' => __( 'Additional text variables', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Use some additional text variables to make labels text even more attractive and product-specific.', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                    array(
+                        'name' => __( 'Image labels', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Use one of predefined images as a product label or upload your custom one. Use png/jpg/gif or SVG images.', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                    array(
+                        'name' => __( 'Animation options', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Set unique animation for each label with different customizable parameters.', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                    array(
+                        'name' => __( 'Emojis support', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Use any emoji inside the text label. Mix them with text variables, plain text and other emojis.', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                    array(
+                        'name' => __( 'Labels styles: borders and shadows', 'advanced-woo-labels' ),
+                        'tip'  => __( 'More label styling options: set label shadow and border ( size and color ).', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                    array(
+                        'name' => __( 'Additional label shapes', 'advanced-woo-labels' ),
+                        'tip'  => __( 'New cool templates for your text labels to attract users\' attention.', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                    array(
+                        'name' => __( 'Label custom links', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Add any custom link inside your label. So now your product labels not just tell users some important information but can contain some useful links.', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                    array(
+                        'name' => __( 'ACF plugin support', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Advanced integration with Advanced Custom Fields plugin. Show value of any ACF field inside the label. Also set label display conditions based on ACF fields values.', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                    array(
+                        'name' => __( 'WCFM, Dokan, MultiVendorX, WC Vendors plugins support', 'advanced-woo-labels' ),
+                        'tip'  => __( 'Built-in integration with WCFM Multivendor Marketplace, Dokan WooCommerce Multivendor Marketplace, WC Vendors and MultiVendorX plugins. Show vendor related data inside product labels and create special labels display conditions based on these data.', 'advanced-woo-labels' ),
+                        'free' => false,
+                    ),
+                );
+
+                $check = '<span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>';
+                $dash = '<span class="dash">-</span>';
+
+                echo '<table class="compare-table">';
+                    echo '<thead>';
+                        echo '<tr>';
+                            echo '<th>' . esc_html__( 'Feature', 'advanced-woo-labels' ) . '</th>';
+                            echo '<th>' . esc_html__( 'Free', 'advanced-woo-labels' ) . '</th>';
+                            echo '<th class="pro-col">' . esc_html__( 'Pro', 'advanced-woo-labels' ) . '</th>';
+                        echo '</tr>';
+                    echo '</thead>';
+                    echo '<tbody>';
+                        foreach ( $features as $feature ) {
+                            echo '<tr>';
+                                echo '<td><span class="feat">' . esc_html( $feature['name'] ) . '<span class="feat-i" aria-hidden="true"></span><span class="feat-tip">' . esc_html( $feature['tip'] ) . '</span></span></td>';
+                                echo '<td>' . ( $feature['free'] ? $check : $dash ) . '</td>';
+                                echo '<td>' . $check . '</td>';
+                            echo '</tr>';
+                        }
+                    echo '</tbody>';
+                echo '</table>';
+
+                echo '<div class="compare-ctas">';
+                    echo '<a class="compare-learn" href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . esc_html__( 'Learn more', 'advanced-woo-labels' ) . '</a>';
+                    echo '<a class="compare-buy" href="https://kramakit.com/plugins/advanced-woo-labels/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin#pricing" target="_blank">' . esc_html__( 'Get Pro Version', 'advanced-woo-labels' ) . ' &rarr;</a>';
+                echo '</div>';
+
+                echo '<p class="compare-guarantee">';
+                    echo '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>';
+                    echo esc_html__( '30-day money-back guarantee, no questions asked', 'advanced-woo-labels' );
+                echo '</p>';
+
+            echo '</div>';
 
 
             echo '<div class="screenshots">';
@@ -395,7 +294,7 @@ if ( ! class_exists( 'AWL_Admin_Page_Premium' ) ) :
                         echo __( 'What payment methods do you accept?', 'advanced-woo-labels' );
                     echo '</h4>';
                     echo '<div class="answer">';
-                        echo __( 'Checkout is powered FastSpring company. They supports major credit and debit cards, PayPal, and a variety of other mainstream payment methods, so there’s plenty to pick from.', 'advanced-woo-labels' );
+                        echo __( 'Checkout is powered by FastSpring. It supports major credit and debit cards, PayPal, and a variety of other mainstream payment methods, so there’s plenty to pick from.', 'advanced-woo-labels' );
                     echo '</div>';
                 echo '</div>';
 
@@ -413,7 +312,7 @@ if ( ! class_exists( 'AWL_Admin_Page_Premium' ) ) :
                         echo __( 'I have other pre-sale questions, can you help?', 'advanced-woo-labels' );
                     echo '</h4>';
                     echo '<div class="answer">';
-                        echo __( 'Yes! You can ask us any question through our', 'advanced-woo-labels' ) . ' <a href="https://kramakit.com/contact/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=sti-pro-plugin" target="_blank">' . __( 'contact form.', 'advanced-woo-labels' ) . '</a>';
+                        echo __( 'Yes! You can ask us any question through our', 'advanced-woo-labels' ) . ' <a href="https://kramakit.com/contact/?utm_source=plugin&utm_medium=premium-tab&utm_campaign=awl-pro-plugin" target="_blank">' . __( 'contact form.', 'advanced-woo-labels' ) . '</a>';
                     echo '</div>';
                 echo '</div>';
 

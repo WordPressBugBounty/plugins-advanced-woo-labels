@@ -713,6 +713,9 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
          *                 tags here would break label text formatting.
          *  - 'custom_css' is sanitized separately via self::sanitize_custom_css().
          *
+         * 'id' key is removed: it is not a label setting, label id is always set
+         * from the label post id when the label is displayed.
+         *
          * @param array $settings Raw settings array
          * @return array
          */
@@ -721,6 +724,8 @@ if ( ! class_exists( 'AWL_Admin_Helpers' ) ) :
             if ( ! is_array( $settings ) ) {
                 return array();
             }
+
+            unset( $settings['id'] );
 
             $skip_keys = array( 'text', 'custom_css' );
 

@@ -1005,4 +1005,55 @@ jQuery(document).ready(function ($) {
 
     });
 
+
+    // Black Friday banner countdown and hide button
+
+    $('.awl-promo-banner').each( function() {
+
+        var $promoBanner = $(this);
+
+        var promoEnds = parseInt( $promoBanner.data('ends'), 10 ) * 1000;
+
+        var promoTimer = setInterval( function() {
+
+            var left = Math.floor( ( promoEnds - Date.now() ) / 1000 );
+
+            if ( left <= 0 ) {
+                clearInterval( promoTimer );
+                $promoBanner.hide();
+                return;
+            }
+
+            var counters = {
+                days: Math.floor( left / 86400 ),
+                hours: Math.floor( left % 86400 / 3600 ),
+                minutes: Math.floor( left % 3600 / 60 ),
+                seconds: left % 60
+            };
+
+            $.each( counters, function( name, value ) {
+                $promoBanner.find( '[data-countdown="' + name + '"]' ).text( name === 'days' ? value : ( '0' + value ).slice( -2 ) );
+            });
+
+        }, 1000 );
+
+        $promoBanner.on( 'click', '.awl-promo-close', function() {
+
+            clearInterval( promoTimer );
+            $('.awl-promo-banner').remove();
+
+            $.ajax({
+                type: 'POST',
+                url: awl_vars.ajaxurl,
+                data: {
+                    action: 'awl-hidePromoBanner',
+                    _ajax_nonce: awl_vars.ajax_nonce
+                },
+                dataType: "json"
+            });
+
+        });
+
+    });
+
 });

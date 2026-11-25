@@ -5,7 +5,7 @@ Tags: woocommerce, labels, product labels, badges, woocommerce labels
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.0
-Stable tag: 2.55
+Stable tag: 2.56
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -225,6 +225,14 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 [View full changelog](https://kramakit.com/guide/free-version-changelog-awl/?utm_source=wp-repo&utm_medium=listing&utm_campaign=awl-repo)
 
+= 2.56 ( 25.11.2026 ) =
+* Update - Admin page notices
+* Update - Admin Premium page content
+* Update - Tested with WC 11.3
+* Update - Update capabilities to manage labels
+* Fix - Security issue with label settings inside awl_get_label_by_id shortcode
+* Fix - Integration with Blocksy theme
+
 = 2.55 ( 02.11.2026 ) =
 * Fix - Strip some label setting on frontend
 * Fix - Links inside admin notices
@@ -416,8 +424,3 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 2.05 ( 28.10.2024 ) =
 * Fix - Strip some html from labels preview
-
-= 2.04 ( 14.10.2024 ) =
-* Add - Support for Ultimate Addons for Beaver Builder plugin
-* Update - Support for Product Gallery Slider for Woocommerce plugin
-* Update - Admin page notices about integrations

@@ -117,6 +117,15 @@ if ( ! class_exists( 'AWL_Integrations_Callbacks' ) ) :
             return $html;
         }
 
+        public static function blocksy_single_product_image_thumbnail_html( $html ) {
+            $slider = '<div class="flexy">';
+            $pos = strpos( $html, $slider );
+            if ( $pos !== false ) {
+                $html = substr_replace( $html, AWL_Label_Display::instance()->show_label( 'on_image' ), $pos + strlen( $slider ), 0 );
+            }
+            return $html;
+        }
+
     }
 
 endif;

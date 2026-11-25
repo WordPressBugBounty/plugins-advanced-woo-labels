@@ -1636,23 +1636,23 @@
 }
 
 .awl-premium-box .awl-premium-list .awl-pro-buy {
-    background: #9a5ab7;
-    border-color: #9a5ab7;
+    background: #7f54b3;
+    border-color: #7f54b3;
 }
 .awl-premium-box .awl-premium-list .awl-pro-buy:hover {
     background: #fff;
-    border-color: #9a5ab7;
-    color: #9a5ab7;
+    border-color: #7f54b3;
+    color: #7f54b3;
 }
 
 .awl-premium-box .awl-premium-list .awl-pro-learn {
     margin-right: 10px;
     background: #fff;
-    border-color: #9a5ab7;
-    color: #9a5ab7;
+    border-color: #7f54b3;
+    color: #7f54b3;
 }
 .awl-premium-box .awl-premium-list .awl-pro-learn:hover {
-    background: #9a5ab7;
+    background: #7f54b3;
     color: #fff;
 }
 
@@ -1865,7 +1865,7 @@
 #awl_form .buy-premium a {
     position: relative;
     display: block;
-    background-color: #9a5ab7;
+    background-color: #7f54b3;
     color: #fff;
     border-radius: 6px;
     padding: 16px 15px;
@@ -1873,7 +1873,7 @@
 }
 
 #awl_form .buy-premium a:hover {
-    background-color: #944cb5;
+    background-color: #6b4499;
 }
 
 #awl_form .buy-premium a:after {
@@ -1907,6 +1907,54 @@
     margin: 0;
     font-size: 12px;
     line-height: 15px;
+}
+
+#awl_form .buy-premium-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px auto;
+}
+
+#awl_form .buy-premium-row .buy-premium {
+    flex: 0 1 400px;
+    width: auto;
+    margin: 0;
+}
+
+#awl_form .buy-premium-row .buy-premium a {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 12px 58px 12px 14px;
+}
+
+#awl_form .buy-premium-row .buy-premium a:after {
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+}
+
+#awl_form .buy-premium-row .buy-premium a .desc {
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+#awl_form .buy-premium-row .buy-premium a ul {
+    margin-top: 8px;
+}
+
+#awl_form .buy-bundle a {
+    background-color: #2a2545;
+}
+
+#awl_form .buy-bundle a:hover {
+    background-color: #3d3663;
+}
+
+#awl_form .buy-bundle a:after {
+    background-image: url(../img/bundle.svg);
 }
 
 
@@ -2034,120 +2082,259 @@
 }
 
 #awl_form .links ul li a {
-    color: #9a5ab7;
+    color: #7f54b3;
 }
 #awl_form .links ul li a:hover {
     text-decoration: none;
 }
 
-#awl_form .features {
-    max-width: 1050px;
+#awl_form .compare {
+    max-width: 720px;
     margin: 70px auto 90px;
 }
 
-#awl_form .features h3 {
-    margin: 0 0 70px;
+#awl_form .compare h3 {
+    margin: 0 0 14px;
     font-size: 36px;
     color: #444;
     text-align: center;
 }
 
-#awl_form .features .features-item {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 60px;
-    padding-bottom: 60px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-/*#awl_form .features .features-item:last-child {*/
-/*    border: none;*/
-/*    padding-bottom: 0;*/
-/*}*/
-
-#awl_form .features .features-item .column {
-    padding: 0;
-    width: 48%;
-}
-
-#awl_form .features .features-item .column .title {
-    font-size: 24px;
-    margin: 0 0 16px;
-    font-weight: 700;
-}
-
-#awl_form .features .features-item .column .desc {
+#awl_form .compare .compare-desc {
+    margin: 0 0 40px;
     font-size: 16px;
-    line-height: 1.6;
-    color: #444;
+    color: #50575e;
+    text-align: center;
 }
 
-#awl_form .features .features-item .column .desc a {
-    color: #9a5ab7;
-}
-#awl_form .features .features-item .column .desc a:hover {
-    text-decoration: none;
+#awl_form .compare-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border: 1px solid #d5c7ea;
+    border-radius: 14px;
 }
 
-#awl_form .features .features-item .column ul {
+#awl_form .compare-table thead th:first-child {
+    border-top-left-radius: 14px;
+}
+
+#awl_form .compare-table thead th:last-child {
+    border-top-right-radius: 14px;
+}
+
+#awl_form .compare-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 14px;
+}
+
+#awl_form .compare-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 14px;
+}
+
+#awl_form .compare-table thead th {
+    padding: 18px 24px;
+    font-size: 15px;
+    font-weight: 700;
+    background: #e8ddf5;
+    text-align: left;
+    color: #0e1420;
+}
+
+#awl_form .compare-table thead th:not(:first-child) {
+    text-align: center;
+    width: 120px;
+}
+
+#awl_form .compare-table thead th.pro-col {
+    color: #7f54b3;
+}
+
+#awl_form .compare-table tbody tr td {
+    border-top: 1px solid #e3d9f0;
+}
+
+#awl_form .compare-table tbody tr:hover {
+    background: #f5effb;
+}
+
+#awl_form .compare-table td {
+    padding: 9px 24px;
+    font-size: 14px;
+    color: #1d2327;
+}
+
+#awl_form .compare-table td:not(:first-child) {
+    text-align: center;
+}
+
+#awl_form .compare-table .feat {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+#awl_form .compare-table .feat:hover {
+    color: #0e1420;
+}
+
+#awl_form .compare-table .feat-i {
+    display: inline-block;
+    vertical-align: -3px;
+    margin-left: 5px;
+    width: 16px;
+    height: 16px;
+    color: #787c82;
+    transition: color .15s;
+}
+
+#awl_form .compare-table .feat-i::before {
+    display: block;
+    font-family: Dashicons;
+    font-size: 16px;
+    line-height: 1;
+    content: "\f223";
+    -webkit-font-smoothing: antialiased;
+}
+
+#awl_form .compare-table .feat:hover .feat-i {
+    color: #7f54b3;
+}
+
+#awl_form .compare-table .feat-tip {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 9px);
+    width: max-content;
+    max-width: 240px;
+    z-index: 20;
+    background: #0e1420;
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.45;
+    text-align: left;
+    white-space: normal;
+    padding: 9px 12px;
+    border-radius: 9px;
+    box-shadow: 0 8px 24px rgba(14, 20, 32, .22);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: opacity .16s, transform .16s;
+}
+
+#awl_form .compare-table .feat-tip::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 100%;
+    border: 6px solid transparent;
+    border-top-color: #0e1420;
+}
+
+#awl_form .compare-table .feat:hover .feat-tip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#awl_form .compare-table .check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #f3eff9;
+}
+
+#awl_form .compare-table .check svg {
+    width: 12px;
+    height: 12px;
+    stroke: #7f54b3;
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+#awl_form .compare-table .dash {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fbe9e9;
+    color: #c0505a;
+    font-size: 14px;
+}
+
+#awl_form .compare .compare-ctas {
     display: flex;
     flex-wrap: wrap;
-    justify-content:flex-start;
-    margin: 25px 10px 0;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 40px;
 }
 
-#awl_form .features .features-item .column ul li {
-    position: relative;
-    margin-bottom: 10px;
-    padding-left: 15px;
-    width: 100%;
-    font-weight: 500;
+#awl_form .compare .compare-buy,
+#awl_form .compare .compare-learn {
+    display: inline-block;
+    padding: 13px 30px;
+    border: 1px solid #7f54b3;
+    border-radius: 10px;
+    background: #7f54b3;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: background .18s, color .18s, transform .18s;
 }
 
-#awl_form .features .features-item .column ul li:before {
-    background: url('../img/yes.svg') #9a5ab7 no-repeat 50% 50%;
-    content: '';
-    display: block;
-    top: 1px;
-    background-size: contain;
-    height: 17px;
-    width: 17px;
-    position: absolute;
-    left: -10px;
-    border-radius: 50%;
+#awl_form .compare .compare-buy:hover,
+#awl_form .compare .compare-buy:focus {
+    background: #6b4499;
+    border-color: #6b4499;
+    color: #fff;
+    transform: translateY(-1px);
 }
 
-#awl_form .features .features-item .column .img {
-    margin-bottom: 0;
-    padding: 0;
+#awl_form .compare .compare-learn {
+    background: #fff;
+    color: #7f54b3;
 }
 
-#awl_form .features .features-item .column .img img {
-    height: auto;
-    vertical-align: middle;
-    max-width: 100%;
-    box-shadow: none;
+#awl_form .compare .compare-learn:hover,
+#awl_form .compare .compare-learn:focus {
+    background: #f3eff9;
+    color: #6b4499;
+    transform: translateY(-1px);
 }
 
-#awl_form .features .features-item:nth-child(2n) .column:first-child {
-    order: 2;
+#awl_form .compare .compare-guarantee {
+    margin: 16px 0 0;
+    font-size: 13.5px;
+    color: #50575e;
+    text-align: center;
 }
 
-#awl_form .features .features-item:nth-child(2n) .column:first-child ul {
-    margin: 25px 20px 0;
+#awl_form .compare .compare-guarantee svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    vertical-align: -4px;
+    color: #7f54b3;
 }
 
-#awl_form .features .features-item .column .title,
-#awl_form .features .features-item .column .desc {
-    padding-right: 10px;
-}
+@media (max-width: 980px) {
 
-#awl_form .features .features-item:nth-child(2n) .column .title,
-#awl_form .features .features-item:nth-child(2n) .column .desc {
-    padding-right: 0;
-    padding-left: 10px;
+    #awl_form .compare-table td,
+    #awl_form .compare-table thead th {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
 }
 
 #TB_window .awl-screen {
@@ -2335,4 +2522,290 @@
 
 .awl-welcome-panel .button {
     margin: 15px 13px 3px 0;
+}
+
+/* Black Friday banner: in place of the premium box beside a label, and above the labels table.
+   Both frames share everything but their width, see class-awl-admin-black-friday.php */
+.awl-promo-banner {
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px 18px 16px;
+    border-radius: 10px;
+    background: #0e1420;
+    color: #fff;
+}
+
+.awl-promo-banner .awl-promo-close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+}
+
+.awl-promo-banner .awl-promo-close:before {
+    content: "\f335";
+    font: normal 20px/28px dashicons;
+}
+
+.awl-promo-banner .awl-promo-close:hover,
+.awl-promo-banner .awl-promo-close:focus {
+    background: rgba(255, 255, 255, .09);
+    color: #fff;
+}
+
+.awl-promo-banner .awl-promo-badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #7f54b3;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.awl-promo-banner .awl-promo-title {
+    margin: 10px 0 0;
+    font-size: 16px;
+    line-height: 1.35;
+    color: #fff;
+}
+
+.awl-promo-banner .awl-promo-title b {
+    color: #f5a623;
+}
+
+.awl-promo-banner .awl-promo-list {
+    /* the ticks are drawn by li:before, the browser's own markers would double them */
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.awl-promo-banner .awl-promo-list li {
+    position: relative;
+    margin: 0 0 5px;
+    padding-left: 21px;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, .85);
+}
+
+.awl-promo-banner .awl-promo-list li b {
+    color: #f5a623;
+    font-weight: 700;
+}
+
+.awl-promo-banner .awl-promo-list li:before {
+    content: "\f147";
+    position: absolute;
+    top: 0;
+    left: -2px;
+    font: normal 17px/1.2 dashicons;
+    color: #f5a623;
+}
+
+.awl-promo-banner .awl-promo-actions {
+    margin-top: 14px;
+}
+
+.awl-promo-banner .awl-promo-timer {
+    display: flex;
+    gap: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+.awl-promo-banner .awl-promo-counter {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: center;
+    min-width: 38px;
+    padding: 5px 4px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, .09);
+    line-height: 1;
+}
+
+.awl-promo-banner .awl-promo-counter b {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.awl-promo-banner .awl-promo-counter span {
+    margin-top: 4px;
+    font-size: 10px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .6);
+}
+
+.awl-promo-banner .awl-promo-cta {
+    display: block;
+    margin-top: 12px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: #f5a623;
+    color: #0e1420;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: filter .15s ease;
+}
+
+.awl-promo-banner .awl-promo-cta:hover,
+.awl-promo-banner .awl-promo-cta:focus {
+    color: #0e1420;
+    filter: brightness(1.07);
+}
+
+.awl-promo-banner .awl-promo-note {
+    margin: 8px 0 0;
+    font-size: 11.5px;
+    line-height: 1.4;
+    text-align: center;
+    color: rgba(255, 255, 255, .6);
+}
+
+/* above the labels table there is room for one row instead of a column, and the strip is kept
+   narrower than the table so it reads as a note over the page rather than part of it */
+.awl-promo-wide {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 18px;
+    /* the ticks stand one under the other, so the strip only needs the width of the longer
+       of the two next to the countdown. Below about 740px the headline drops under the badge
+       and the strip gets taller instead of smaller. */
+    max-width: 800px;
+    margin: 14px 0 8px;
+    padding: 11px 38px 11px 15px;
+}
+
+.awl-promo-wide .awl-promo-close {
+    top: 3px;
+    right: 3px;
+}
+
+.awl-promo-wide .awl-promo-text {
+    /* the badge keeps the headline company instead of taking a line of its own, which is the
+       one line this strip can save */
+    display: flex;
+    flex: 1 1 300px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px 10px;
+}
+
+.awl-promo-wide .awl-promo-list {
+    flex-basis: 100%;
+}
+
+.awl-promo-wide .awl-promo-badge {
+    padding: 2px 8px;
+    font-size: 10.5px;
+}
+
+.awl-promo-wide .awl-promo-title {
+    margin: 0;
+    font-size: 16px;
+}
+
+.awl-promo-wide .awl-promo-list {
+    margin: 0;
+}
+
+.awl-promo-wide .awl-promo-list li {
+    margin: 0 0 3px;
+    padding-left: 18px;
+    font-size: 12.5px;
+}
+
+.awl-promo-wide .awl-promo-list li:last-child {
+    margin-bottom: 0;
+}
+
+.awl-promo-wide .awl-promo-list li:before {
+    font-size: 14px;
+}
+
+.awl-promo-wide .awl-promo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    margin-top: 0;
+}
+
+.awl-promo-wide .awl-promo-timer {
+    gap: 3px;
+}
+
+.awl-promo-wide .awl-promo-counter {
+    min-width: 28px;
+    padding: 4px 2px;
+}
+
+.awl-promo-wide .awl-promo-counter b {
+    font-size: 15px;
+}
+
+.awl-promo-wide .awl-promo-counter span {
+    margin-top: 2px;
+    font-size: 9px;
+}
+
+.awl-promo-wide .awl-promo-cta {
+    margin-top: 0;
+    padding: 7px 13px;
+    font-size: 12.5px;
+}
+
+.awl-promo-wide .awl-promo-note {
+    display: none;
+}
+
+@media screen and (max-width: 782px) {
+
+    .awl-promo-wide {
+        padding: 12px 36px 12px 14px;
+    }
+
+    .awl-promo-wide .awl-promo-text,
+    .awl-promo-wide .awl-promo-actions {
+        flex-basis: 100%;
+    }
+
+}
+
+/* Black Friday badge over each purchase box of the premium tab */
+#awl_form .buy-premium a .awl-promo-deal {
+    /* table shrinks to its content and still takes a line of its own, which an inline-block
+       next to the inline .desc would not */
+    display: table;
+    margin: 0 0 10px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #f5a623;
+    color: #0e1420;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#awl_form .buy-premium a .awl-promo-deal b {
+    font-weight: 700;
+    text-transform: none;
 }

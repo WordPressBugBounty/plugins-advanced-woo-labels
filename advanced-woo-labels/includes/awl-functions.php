@@ -92,12 +92,22 @@ if ( ! function_exists( 'awl_get_label_html_by_id' ) ) {
 
     function awl_get_label_html_by_id( $label_id, $label_position_type = 'before_title' ) {
 
+        // label ID can come from [awl_get_label_by_id] shortcode attribute
+        $label_id = absint( $label_id );
+        $label_html = '';
+
+        // only published labels are shown, like with all other label displays, not drafts of any user that can create labels
+        if ( ! $label_id || get_post_type( $label_id ) !== 'awl-labels' || get_post_status( $label_id ) !== 'publish' ) {
+            return $label_html;
+        }
+
         $label_options = AWL()->get_label_settings( $label_id );
         $label_settings = isset( $label_options['settings'] ) ? $label_options['settings'] : false;
-        $label_html = '';
 
         if ( $label_settings ) {
 
+            // stored settings can't set label id, it is printed inside label class names
+            $label_settings['id'] = $label_id;
             $label_settings['position_type'] = $label_position_type;
             $label_settings['position'] = 'left_top';
             $label_settings['position_x'] = 'left';

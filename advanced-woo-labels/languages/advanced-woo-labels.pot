@@ -661,18 +661,6 @@ msgstr ""
 msgid "WCFM PLugin Support"
 msgstr ""
 
-msgid "WCFM / Dokan / WC Vendors Plugins Support"
-msgstr ""
-
-msgid "Build-in integration with WCFM Multivendor Marketplace, WC Vendors and Dokan Multivendor Marketplace plugins. Show vendor related data inside product labels and create special labels display conditions based on these data."
-msgstr ""
-
-msgid "Show vendor data via text variables"
-msgstr ""
-
-msgid "Label display conditions based on vendor data"
-msgstr ""
-
 msgid "Hi! Looks like you are using some plugins that have the advanced integration with %s. Please find more details below."
 msgstr ""
 
@@ -1145,4 +1133,133 @@ msgid "in list"
 msgstr ""
 
 msgid "not in list"
+msgstr ""
+
+msgid "OR get the"
+msgstr ""
+
+msgid "KramaKit Bundle"
+msgstr ""
+
+msgid "and save 30% on all our plugins!"
+msgstr ""
+
+msgid "All 3 plugins"
+msgstr ""
+
+msgid "All future plugins"
+msgstr ""
+
+msgid "Free vs. Pro"
+msgstr ""
+
+msgid "Everything in the free version, plus powerful Pro features for growing stores."
+msgstr ""
+
+msgid "Themes, page builders support"
+msgstr ""
+
+msgid "We work hard to make labels compatible with almost all available themes. Also labels will be visible for all blocks created via such plugins like Elementor, WP Block Editor, Beaver Builder, Divi Builder, etc."
+msgstr ""
+
+msgid "Unlimited number of labels"
+msgstr ""
+
+msgid "Show unlimited number of labels for each WooCommerce product. Optionally you can limit the maximal number of labels per product by special plugin settings."
+msgstr ""
+
+msgid "Labels groups"
+msgstr ""
+
+msgid "Several labels on the same position for the same product combined in groups. Set group alignment, distance, max number of labels."
+msgstr ""
+
+msgid "Labels positions and align"
+msgstr ""
+
+msgid "Display labels in two available positions: on product image or before product title. Align labels to the left, center or right relative to product content ( top, center, bottom additionally for product image )."
+msgstr ""
+
+msgid "Labels display conditions"
+msgstr ""
+
+msgid "Use powerful display conditions to choose for what product/page/user labels must be visible. For example - show labels only for products with certain categories and attributes."
+msgstr ""
+
+msgid "Text and text variables"
+msgstr ""
+
+msgid "Set any custom text for your labels. Use special text variables to show important product information like Price, Sale Price, Discount Percentage, etc."
+msgstr ""
+
+msgid "Styling options"
+msgstr ""
+
+msgid "Create your unique label view by using styling options to change label background color, text color, font, margins, paddings, borders, shadows."
+msgstr ""
+
+msgid "Different labels shapes"
+msgstr ""
+
+msgid "Choose from several predefined label templates."
+msgstr ""
+
+msgid "Additional labels display conditions"
+msgstr ""
+
+msgid "Use even more label display conditions based on current page, user, product or date."
+msgstr ""
+
+msgid "Image labels"
+msgstr ""
+
+msgid "Animation options"
+msgstr ""
+
+msgid "Emojis support"
+msgstr ""
+
+msgid "Use any emoji inside the text label. Mix them with text variables, plain text and other emojis."
+msgstr ""
+
+msgid "Labels styles: borders and shadows"
+msgstr ""
+
+msgid "More label styling options: set label shadow and border ( size and color )."
+msgstr ""
+
+msgid "Additional label shapes"
+msgstr ""
+
+msgid "New cool templates for your text labels to attract users' attention."
+msgstr ""
+
+msgid "Label custom links"
+msgstr ""
+
+msgid "ACF plugin support"
+msgstr ""
+
+msgid "Advanced integration with Advanced Custom Fields plugin. Show value of any ACF field inside the label. Also set label display conditions based on ACF fields values."
+msgstr ""
+
+msgid "WCFM, Dokan, MultiVendorX, WC Vendors plugins support"
+msgstr ""
+
+msgid "Built-in integration with WCFM Multivendor Marketplace, Dokan WooCommerce Multivendor Marketplace, WC Vendors and MultiVendorX plugins. Show vendor related data inside product labels and create special labels display conditions based on these data."
+msgstr ""
+
+msgid "Feature"
+msgstr ""
+
+msgid "Free"
+msgstr ""
+
+msgid "Pro"
+msgstr ""
+
+msgid "Get Pro Version"
+msgstr ""
+
+msgid "30-day money-back guarantee, no questions asked"
 msgstr ""

@@ -48,7 +48,8 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
 
                 $this->label_num++;
                 $this->settings = $label;
-                $this->label_id = $label['id'];
+                // label id is printed inside class="" attribute and custom css selectors, so only class name characters are kept
+                $this->label_id = isset( $label['id'] ) && is_scalar( $label['id'] ) ? sanitize_html_class( strval( $label['id'] ) ) : '';
                 $this->label_type = isset( $label['type'] ) ? $label['type'] : '';
                 $this->custom_styles = isset( $label['custom_styles'] ) && $label['custom_styles'] === 'true' ? true : false;
 
@@ -60,9 +61,9 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
 
                 $label_html .= $this->label_custom_css();
 
-                $label_html .= '<div class="awl-label-wrap' . $label_wrap_classes . '" style="' . $label_wrap_styles . '">';
+                $label_html .= '<div class="awl-label-wrap' . esc_attr( $label_wrap_classes ) . '" style="' . $label_wrap_styles . '">';
 
-                    $label_html .= '<span class="awl-product-label' . $label_classes . '" style="' . $label_styles . '">';
+                    $label_html .= '<span class="awl-product-label' . esc_attr( $label_classes ) . '" style="' . $label_styles . '">';
 
                         $label_html .= $this->label_side_block( 'before' );
 
@@ -87,7 +88,7 @@ if ( ! class_exists( 'AWL_Label_View' ) ) :
 
             }
 
-            $html = '<div class="advanced-woo-labels' . $label_container_classes . '" style="' . $label_container_styles . '">' . $html . '</div>';
+            $html = '<div class="advanced-woo-labels' . esc_attr( $label_container_classes ) . '" style="' . $label_container_styles . '">' . $html . '</div>';
 
             /**
              * Filter all available labels markup for this position type
